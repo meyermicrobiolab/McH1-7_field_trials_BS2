@@ -188,16 +188,10 @@ BS2-2685-HD-D	2685	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatmen
 BS2-2693-HD-D	2693	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2693-HD-D	NS2211
 BS2-2694-HH-D	2694	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2694-HH-D	NS2211
 BS2-2048-HD-D	2048	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2048-HD-D	NS2408
-BS2-2065-HH-O	2065	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2065-HH-O	NS2408
-BS2-2077-DD-O	2077	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2077-DD-O	NS2408
-BS2-2077-HD-O	2077	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2077-HD-O	NS2408
-BS2-2080-HD-O	2080	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2080-HD-O	NS2408
 BS2-2179-HD-D	2179	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2179-HD-D	NS2408
 BS2-2198-HD-O	2198	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2198-HD-O	NS2408
 BS2-2433-DD-D	2433	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2433-DD-D	NS2408
-BS2-2460-HD-O	2460	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2460-HD-O	NS2408
 BS2-2478-DD-D	2478	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2478-DD-D	NS2408
-BS2-2478-HD-O	2478	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2478-HD-O	NS2408
 BS2-2483-HD-D	2483	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2483-HD-D	NS2408
 BS2-2672-HH-D	2672	none	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after second treatment	BS2-2672-HH-D	NS2408
 BS2-2675-HD-O	2675	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after treatment	BS2-2675-HD-O	NS2408
@@ -214,15 +208,12 @@ BS3-2264-DD-A	2264	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatme
 BS3-2264-DD-B	2264	control paste and bag	BS3	MCAV	DD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2264-DD-B	NS2661
 BS3-2264-HD-A	2264	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatment	BS3-2264-HD-A	NS2661
 BS3-2264-HD-B	2264	control paste and bag	BS3	MCAV	HD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2264-HD-B	NS2661
-BS3-2265-DD-A	2265	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2265-DD-A	NS2661
 BS3-2265-DD-B	2265	control paste and bag	BS3	MCAV	DD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2265-DD-B	NS2661
-BS3-2265-HD-A	2265	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatment	BS3-2265-HD-A	NS2661
 BS3-2265-HD-B	2265	control paste and bag	BS3	MCAV	HD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2265-HD-B	NS2661
 BS3-2266-DD-A	2266	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2266-DD-A	NS2661
 BS3-2266-DD-B	2266	probiotic paste and bag	BS3	MCAV	DD	YES	Aug	2021	One month after treatment	One month after treatment	BS3-2266-DD-B	NS2661
 BS3-2266-HD-A	2266	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatment	BS3-2266-HD-A	NS2661
 BS3-2266-HD-B	2266	probiotic paste and bag	BS3	MCAV	HD	YES	Aug	2021	One month after treatment	One month after treatment	BS3-2266-HD-B	NS2661
-BS3-2267-HH-A	2267	none	BS3	MCAV	HH	NO	July	2021	Before treatment	Before treatment	BS3-2267-HH-A	NS2661
 BS3-2267-HH-B	2267	none	BS3	MCAV	HH	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2267-HH-B	NS2661
 BS3-2268-DD-A	2268	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2268-DD-A	NS2661
 BS3-2268-DD-B	2268	probiotic paste and bag	BS3	MCAV	DD	YES	Aug	2021	One month after treatment	One month after treatment	BS3-2268-DD-B	NS2661
@@ -240,7 +231,6 @@ BS3-2364-HD-A	2364	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatme
 BS3-2364-HD-B	2364	control paste and bag	BS3	MCAV	HD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2364-HD-B	NS2661
 BS3-2365-DD-A	2365	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2365-DD-A	NS2661
 BS3-2365-DD-B	2365	control paste and bag	BS3	MCAV	DD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2365-DD-B	NS2661
-BS3-2365-HD-A	2365	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatment	BS3-2365-HD-A	NS2661
 BS3-2365-HD-B	2365	control paste and bag	BS3	MCAV	HD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2365-HD-B	NS2661
 BS3-2366-DD-A	2366	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2366-DD-A	NS2661
 BS3-2366-DD-B	2366	control paste and bag	BS3	MCAV	DD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2366-DD-B	NS2661
@@ -307,7 +297,6 @@ BS3-2628-H-A	2628	none	BS3	MCAV	HH	NO	July	2021	Before treatment	Before treatmen
 BS3-2628-H-B	2628	resistant	BS3	MCAV	HH	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2628-H-B	NS2661
 BS3-2629-DD-A	2629	none	BS3	MCAV	DD	NO	July	2021	Before treatment	Before treatment	BS3-2629-DD-A	NS2661
 BS3-2629-DD-B	2629	none	BS3	MCAV	DD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2629-DD-B	NS2661
-BS3-2629-HD-A	2629	none	BS3	MCAV	HD	NO	July	2021	Before treatment	Before treatment	BS3-2629-HD-A	NS2661
 BS3-2629-HD-B	2629	none	BS3	MCAV	HD	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2629-HD-B	NS2661
 BS3-2631-H-A	2631	none	BS3	MCAV	HH	NO	July	2021	Before treatment	Before treatment	BS3-2631-H-A	NS2661
 BS3-2631-H-B	2631	resistant	BS3	MCAV	HH	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2631-H-B	NS2661
@@ -431,9 +420,3 @@ BS3-2897-HH-C	2897	none	BS3	MCAV	HH	NO	Nov	2021	Three months after treatment	Thr
 BS3-2899-HD-C	2899	none	BS3	MCAV	HD	NO	Nov	2021	Three months after treatment	Three months after treatment	BS3-2899-HD-C	NS2696
 BS3-2899-HH-B	2899	none	BS3	MCAV	HH	NO	Aug	2021	One month after treatment	One month after treatment	BS3-2899-HH-B	NS2696
 BS3-2899-HH-C	2899	none	BS3	MCAV	HH	NO	Nov	2021	Three months after treatment	Three months after treatment	BS3-2899-HH-C	NS2696
-												
-												
-												
-												
-												
-												
