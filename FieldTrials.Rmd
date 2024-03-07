@@ -345,13 +345,41 @@ st.all <- mergeSequenceTables(st1, st2, st3, st4, st5, st6, repeats="sum")
 #Remove chimeric sequences:
 seqtab.nochim <- removeBimeraDenovo(st.all, method="consensus", multithread=TRUE, verbose=TRUE)
 dim(seqtab.nochim)
+# 421 samples and 26,295 taxa
 sum(seqtab.nochim)/sum(st.all)
+# proportion of non-chimeric taxa: 0.9640057 (4% of ASVs were removed as chimeras)
+
 # SAVE the non-chimeric sequence variant table SO YOU DON'T HAVE TO REPEAT ALL OF THE ABOVE STEPS
 saveRDS(seqtab.nochim, file="~/Documents/McH1-7_field_trials_BS2andBS3/probiotics.rds")
 
-
-
+# if you need to read back in the rds file:
+# seqtab.nochim <- readRDS("~/Documents/McH1-7_field_trials_BS2andBS3/probiotics.rds")
 ```
 
 
+
+
+## Assign taxonomy in DADA2
+
+Make sure the taxonomy reference database is in your working directory. Keep the database file gzipped. Adjust path name below. This step is very time consuming.
+
+When taxonomy assignment is complete, we will use base R and phyloseq to clean up the taxonomy table. First, we will replace NAs and empty cells with the lowest taxonomy classification available. Second, we will use phyloseq to remove reads that are classified as Eukaryotes or unclassified at the domain level (ie, we are keeping only Bacteria and Archaea because that is what our primers target).
+
+```{r, echo=FALSE}
+taxa <- assignTaxonomy(seqtab.nochim, "~/Documents/silva_nr99_v138.1_train_set.fa.gz", multithread=TRUE)
+# FIX the NAs in the taxa table
+taxon <- as.data.frame(taxa,stringsAsFactors=FALSE)
+taxon$Phylum[is.na(taxon$Phylum)] <- taxon$Kingdom[is.na(taxon$Phylum)]
+taxon$Class[is.na(taxon$Class)] <- taxon$Phylum[is.na(taxon$Class)]
+taxon$Order[is.na(taxon$Order)] <- taxon$Class[is.na(taxon$Order)]
+taxon$Family[is.na(taxon$Family)] <- taxon$Order[is.na(taxon$Family)]
+taxon$Genus[is.na(taxon$Genus)] <- taxon$Family[is.na(taxon$Genus)]
+write.table(taxon,"silva_taxa_table.txt",sep="\t",col.names=NA)
+write.table(seqtab.nochim, "silva_otu_table.txt",sep="\t",col.names=NA)
+# Create phyloseq object from otu and taxonomy tables from dada2, along with the sample metadata.
+# reading in the otu table with over 700 samples took almost 2 hours!!!
+otu <- read.table("silva_otu_table.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_taxa_table.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_BS2andBS3.txt",sep="\t",header=T,row.names=1)
+```
 
