@@ -17,8 +17,8 @@ library(ggplot2)
 library(phyloseq)
 library(vegan)
 library(knitr)
-#library(ALDEx2)
-#library(CoDaSeq)
+library(ALDEx2)
+library(CoDaSeq)
 library(dplyr)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
@@ -376,10 +376,187 @@ taxon$Family[is.na(taxon$Family)] <- taxon$Order[is.na(taxon$Family)]
 taxon$Genus[is.na(taxon$Genus)] <- taxon$Family[is.na(taxon$Genus)]
 write.table(taxon,"silva_taxa_table.txt",sep="\t",col.names=NA)
 write.table(seqtab.nochim, "silva_otu_table.txt",sep="\t",col.names=NA)
+```
+
+
+Load data into phyloseq
+
+```{r, echo=FALSE}
 # Create phyloseq object from otu and taxonomy tables from dada2, along with the sample metadata.
-# reading in the otu table with over 700 samples took almost 2 hours!!!
 otu <- read.table("silva_otu_table.txt",sep="\t",header=TRUE, row.names=1)
 taxon <- read.table("silva_taxa_table.txt",sep="\t",header=TRUE,row.names=1)
 samples<-read.table("metadata_BS2andBS3.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps 
+# 421 samples and 26,295 taxa
 ```
 
+Remove chloroplasts, mitochondria, and eukaryotes
+
+```{r, echo=FALSE}
+# remove chloroplasts and mitochondria and Eukaryota
+get_taxa_unique(ps, "Family") #789
+get_taxa_unique(ps, "Order") #448
+get_taxa_unique(ps, "Kingdom") #3
+ps <- subset_taxa(ps, Family !="Mitochondria")
+ps <- subset_taxa(ps, Order !="Chloroplast")
+ps <- subset_taxa(ps, Kingdom !="Eukaryota")
+ps <- subset_taxa(ps, Kingdom !="NA")
+get_taxa_unique(ps, "Family") #786
+get_taxa_unique(ps, "Order") #446
+get_taxa_unique(ps, "Kingdom") #2
+ps
+# 421 samples and 25,137 taxa
+```
+
+Export tables for future reference
+
+```{r, echo=FALSE}
+# Now export cleaned otu and taxa tables from phyloseq for future reference
+otu = as(otu_table(ps), "matrix")
+taxon = as(tax_table(ps), "matrix")
+metadata = as(sample_data(ps), "matrix")
+write.table(otu,"silva_nochloronomito_otu_table.txt",sep="\t",col.names=NA)
+write.table(taxon,"silva_nochloronomito_taxa_table.txt",sep="\t",col.names=NA)
+```
+
+Export ASV table with relative abundances
+
+```{r, echo=FALSE}
+# export ASV table as relative abundance
+ps_ra<-transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
+otu_ra = as(otu_table(ps_ra), "matrix")
+write.table(otu_ra,"silva_nochloronomito_otu_table_RA.txt",sep="\t",col.names=NA)
+```
+
+Now, time to explore the data. I wanted to determine ASVs in dada2 using all samples, but I will now remove the blanks and create separate phyloseq objects for BS2 and BS3 sites - I will do plotting and analysis within sites. I will remove low abundance reads within sites.
+
+```{r, echo=FALSE}
+# read data in, if needed
+otu <- read.table("silva_nochloronomito_otu_table.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_BS2andBS3.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps #25137 taxa and 421 samples
+
+# Remove sample blanks and separate sites
+psnb = subset_samples(ps, Coral.tag != "blank")
+psnb #25137 taxa and 410 samples
+psBS2 = subset_samples(psnb, Site == "BS2")
+psBS2 #25137 taxa and 194 samples
+psBS3 = subset_samples(psnb, Site == "BS3")
+psBS3 #25137 taxa and 216 samples
+ 
+# export tables for BS2
+otu_psBS2 = as(otu_table(psBS2), "matrix")
+taxon_psBS2 = as(tax_table(psBS2), "matrix")
+metadata_psBS2 = as(sample_data(psBS2), "matrix")
+write.table(otu_psBS2,"silva_nochloronomito_otu_table_BS2.txt",sep="\t",col.names=NA)
+write.table(taxon_psBS2,"silva_nochloronomito_taxa_table_BS2.txt",sep="\t",col.names=NA)
+write.table(metadata_psBS2,"metadata_BS2.txt",sep="\t",col.names=NA)
+# export relative abundances
+psBS2_ra<-transform_sample_counts(psBS2, function(OTU) OTU/sum(OTU))
+otu_psBS2_ra = as(otu_table(psBS2_ra), "matrix")
+write.table(otu_psBS2_ra,"silva_nochloronomito_otu_table_psBS2_RA.txt",sep="\t",col.names=NA)
+
+# export tables for BS3
+otu_psBS3 = as(otu_table(psBS3), "matrix")
+taxon_psBS3 = as(tax_table(psBS3), "matrix")
+metadata_psBS3 = as(sample_data(psBS3), "matrix")
+write.table(otu_psBS3,"silva_nochloronomito_otu_table_BS3.txt",sep="\t",col.names=NA)
+write.table(taxon_psBS3,"silva_nochloronomito_taxa_table_BS3.txt",sep="\t",col.names=NA)
+write.table(metadata_psBS3,"metadata_BS3.txt",sep="\t",col.names=NA)
+# export relative abundances
+psBS3_ra<-transform_sample_counts(psBS3, function(OTU) OTU/sum(OTU))
+otu_psBS3_ra = as(otu_table(psBS3_ra), "matrix")
+write.table(otu_psBS3_ra,"silva_nochloronomito_otu_table_psBS3_RA.txt",sep="\t",col.names=NA)
+
+#explore BS2 data
+ntaxa(psBS2) #25137
+get_taxa_unique(psBS2, "Order") #446
+get_taxa_unique(psBS2, "Class") #188
+
+ps5_BS2<-filter_taxa(psBS2, function(x) mean(x) >5, TRUE)
+ntaxa(ps5_BS2) #755
+get_taxa_unique(ps5_BS2, "Order") #102
+get_taxa_unique(ps5_BS2, "Class") #46
+
+ps10_BS2<-filter_taxa(psBS2, function(x) mean(x) >10, TRUE)
+ntaxa(ps10_BS2) #392
+get_taxa_unique(ps10_BS2, "Order") #66
+get_taxa_unique(ps10_BS2, "Class") #27
+
+
+# Export files with low abundance taxa removed
+otu_ps5_BS2 = as(otu_table(ps5_BS2), "matrix")
+taxon_ps5_BS2 = as(tax_table(ps5_BS2), "matrix")
+metadata_ps5_BS2 = as(sample_data(ps5_BS2), "matrix")
+write.table(otu_ps5_BS2,"silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",col.names=NA)
+write.table(taxon_ps5_BS2,"silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",col.names=NA)
+write.table(metadata_ps5_BS2,"metadata_ps5_BS2.txt",sep="\t",col.names=NA)
+# also write out ASV table with relative abundance
+ps5_BS2_ra<-transform_sample_counts(ps5_BS2, function(OTU) OTU/sum(OTU))
+otu_ps5_BS2_ra = as(otu_table(ps5_BS2_ra), "matrix")
+write.table(otu_ps5_BS2_ra,"silva_nochloronomito_otu_table_ps5_BS2_RA.txt",sep="\t",col.names=NA)
+
+
+
+#explore BS3 data
+ntaxa(psBS3) #25137
+get_taxa_unique(psBS3, "Order") #446
+get_taxa_unique(psBS3, "Class") #188
+
+ps5_BS3<-filter_taxa(psBS3, function(x) mean(x) >5, TRUE)
+ntaxa(ps5_BS3) #246
+get_taxa_unique(ps5_BS3, "Order") #43
+get_taxa_unique(ps5_BS3, "Class") #17
+
+# Export files with low abundance taxa removed
+otu_ps5_BS3 = as(otu_table(ps5_BS3), "matrix")
+taxon_ps5_BS3 = as(tax_table(ps5_BS3), "matrix")
+metadata_ps5_BS3 = as(sample_data(ps5_BS3), "matrix")
+write.table(otu_ps5_BS3,"silva_nochloronomito_otu_table_ps5_BS3.txt",sep="\t",col.names=NA)
+write.table(taxon_ps5_BS3,"silva_nochloronomito_taxa_table_ps5_BS3.txt",sep="\t",col.names=NA)
+write.table(metadata_ps5_BS3,"metadata_ps5_BS3.txt",sep="\t",col.names=NA)
+# also write out ASV table with relative abundance
+ps5_BS3_ra<-transform_sample_counts(ps5_BS3, function(OTU) OTU/sum(OTU))
+otu_ps5_BS3_ra = as(otu_table(ps5_BS3_ra), "matrix")
+write.table(otu_ps5_BS3_ra,"silva_nochloronomito_otu_table_ps5_BS3_RA.txt",sep="\t",col.names=NA)
+
+```
+
+## Perform center-log-ratio transformation on ASVs and calculate Aitchison Distance and principal components
+
+
+```{r, echo=FALSE}
+# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks
+otu <- read.table("silva_nochloronomito_otu_table_ps5nb.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5nb.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5nb.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5nb <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5nb #470 taxa and 410 samples
+
+
+
+
+
+
+```
