@@ -542,21 +542,61 @@ write.table(otu_ps5_BS3_ra,"silva_nochloronomito_otu_table_ps5_BS3_RA.txt",sep="
 
 ```{r, echo=FALSE}
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks
-otu <- read.table("silva_nochloronomito_otu_table_ps5nb.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5nb.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5nb.txt",sep="\t",header=T,row.names=1)
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
 OTU = otu_table(otu, taxa_are_rows=FALSE)
 taxon<-as.matrix(taxon)
 TAX = tax_table(taxon)
 sampledata = sample_data(samples)
-ps5nb <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5nb #470 taxa and 410 samples
+ps5_BS2 #755 taxa and 194 samples
 
 
 
+# First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
+# Also transposing here, need samples as rows
+d.czm <- cmultRepl(t(otu), method="CZM", label=0)
+# Perform the center-log-ratio (CLR) transformation 
+d.clr <- codaSeq.clr(d.czm)
+# transpose matrix of CLR transformed data for ordination and dendrogram
+E.clr <- t(d.clr)
+# plot compositional PCA biplot (perform a singular value decomposition)
+d.pcx <- prcomp(E.clr)
+# calculate percent variance explained for the axis labels
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+biplot(d.pcx, cex=c(0.6,0.4), var.axes=F,scale=1, xlab=xlab, ylab=ylab)
+summary(d.pcx)
+str(d.pcx)
+screeplot(d.pcx)
 
+# replot PCA with ggplot2 (showing samples only)
+df_out <- as.data.frame(d.pcx$x)
+theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
+cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
+
+length(unique(samples$Treatment)) #6
+length(unique(samples$Collection.month)) #3
+
+#pdf("PCA.pdf",width=8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,fill=samples$Treatment,shape=samples$Collection.month))
+p<-p+geom_point(size=5)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  scale_fill_manual(values=cols)+
+  scale_shape_manual(values=c(21,22,23))+
+  guides(fill = guide_legend(override.aes=list(shape=21)))
+p+labs(x=xlab, y=ylab, fill="Treatment", shape="Month") + coord_fixed()
+#dev.off()
 
 
 ```
