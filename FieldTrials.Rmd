@@ -19,6 +19,7 @@ library(vegan)
 library(knitr)
 library(ALDEx2)
 library(CoDaSeq)
+library(microbiome)
 library(dplyr)
 library(randomcoloR)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
@@ -560,12 +561,8 @@ ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE),
                tax_table(taxon))
 ps5_BS2 #755 taxa and 194 samples
 
-
-# First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
-# Also transposing here, need samples as rows
-d.czm <- cmultRepl(t(otu), method="CZM", label=0)
-# Perform the center-log-ratio (CLR) transformation 
-d.clr <- codaSeq.clr(d.czm)
+# First, replace 0 values with an estimate and perform CLR
+d.clr <- microbiome::transform(otu, "clr")
 # transpose matrix of CLR transformed data for ordination and dendrogram
 E.clr <- t(d.clr)
 # plot compositional PCA biplot (perform a singular value decomposition)
@@ -584,8 +581,26 @@ screeplot(d.pcx)
 df_out <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
+sample_data(ps5_BS2)$Treatment<-factor(sample_data(ps5_BS2)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+sample_data(ps5_BS2)$Collection.month<-factor(sample_data(ps5_BS2)$Collection.month,levels=c("Aug","Oct","Jan"))
+
+
+p <- ggplot(df_out, aes(x = PC1, y = PC2, fill = samples$Treatment, shape = samples$Month)) +
+  geom_point(size = 4)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  #scale_fill_manual(values = cols)+
+  #scale_shape_manual(values = c(21, 22))+
+  labs(x = xlab, y = ylab, fill = "Treatment", shape = "Month")+
+  guides(fill = guide_legend(override.aes = list(shape = 21)))
+# Save the plot to a PDF file
+#pdf("PCA.pdf", width = 8.5)
+p + coord_fixed() 
+#dev.off()
+
+
 
 
 ####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
@@ -597,6 +612,85 @@ dist.clr <- dist(E.clr)
 perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2),"data.frame"))
 print(perm)
 ```
+
+
+
+Stacked bar charts
+```{r, echo=FALSE}
+# load in data and create phyloseq object
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps #755 taxa and 194 samples
+
+ps_ra<-transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
+ps_ra #755 taxa and 194 samples
+get_taxa_unique(ps_ra, "Class") #46
+get_taxa_unique(ps_ra, "Order") #102
+get_taxa_unique(ps_ra, "Family") #183
+get_taxa_unique(ps_ra, "Genus") #322
+
+n <- 46
+# after plotting, you can re-run the next line to create a different selection of colors
+palette <- distinctColorPalette(n)
+
+sample_data(ps_ra)$Treatment<-factor(sample_data(ps_ra)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+sample_data(ps_ra)$Collection.month<-factor(sample_data(ps_ra)$Collection.month,levels=c("Aug","Oct","Jan"))
+sample_data(ps_ra)$sampled<-factor(sample_data(ps_ra)$sampled,levels=c("Before","Two weeks after","Two months after"))
+
+
+pdf("barchart_Class.pdf",width=11)
+p1=plot_bar(ps_ra ,fill="Class")+
+  facet_grid(Condition~sampled,scales="free",space="free")+
+  geom_bar(aes(fill=Class), stat="identity",position="stack")+
+  theme_bw()+
+  theme(strip.text=element_text(face="bold", size=12))+
+  theme(axis.text.x=element_text(size=12))+
+  theme(axis.text.y=element_text(size=12))+
+  scale_fill_manual(values=palette)+
+  #theme(axis.title.x = element_blank())+
+  theme(legend.position = "bottom")
+p1
+dev.off()
+
+
+#take out untreated corals
+ps2 = subset_samples(ps_ra, Condition != "HH")
+pdf("barchart_Class_2.pdf",width=11)
+p1=plot_bar(ps2 ,fill="Class")+
+  facet_grid(Condition~sampled,scales="free",space="free")+
+  geom_bar(aes(fill=Class), stat="identity",position="stack")+
+  theme_bw()+
+  theme(strip.text=element_text(face="bold", size=12))+
+  theme(axis.text.x=element_blank())+
+  theme(axis.text.y=element_text(size=12))+
+  scale_fill_manual(values=palette)+
+  #theme(axis.title.x = element_blank())+
+  theme(legend.position = "bottom")
+p1
+dev.off()
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Perform center-log-ratio transformation on ASVs and calculate Aitchison Distance and principal components
@@ -641,8 +735,8 @@ screeplot(d.pcx)
 df_out <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
+sample_data(ps_ra)$Treatment<-factor(sample_data(ps_ra)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+sample_data(ps_ra)$Collection.month<-factor(sample_data(ps_ra)$Collection.month,levels=c("Aug","Oct","Jan"))
 
 
 ####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
@@ -656,51 +750,6 @@ print(perm)
 ```
 
 
-Stacked bar charts
-```{r, echo=FALSE}
-# load in data and create phyloseq object
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
-OTU = otu_table(otu, taxa_are_rows=FALSE)
-taxon<-as.matrix(taxon)
-TAX = tax_table(taxon)
-sampledata = sample_data(samples)
-ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
-               sample_data(samples), 
-               tax_table(taxon))
-ps #755 taxa and 194 samples
-
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
-
-ps_ra<-transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
-ps_ra #755 taxa and 194 samples
-get_taxa_unique(ps_ra, "Class") #46
-get_taxa_unique(ps_ra, "Order") #102
-get_taxa_unique(ps_ra, "Family") #183
-get_taxa_unique(ps_ra, "Genus") #322
-
-n <- 46
-# after plotting, you can re-run the next line to create a different selection of colors
-palette <- distinctColorPalette(n)
-
-pdf("barchart_Class.pdf",width=11)
-p1=plot_bar(ps_ra ,fill="Class")+
-  facet_grid(Condition~Collection.month,scales="free",space="free")+
-  geom_bar(aes(fill=Class), stat="identity",position="stack")+
-  theme_bw()+
-  theme(strip.text=element_text(face="bold", size=12))+
-  theme(axis.text.x=element_text(size=12))+
-  theme(axis.text.y=element_text(size=12))+
-  scale_fill_manual(values=palette)+
-  #theme(axis.title.x = element_blank())+
-  theme(legend.position = "bottom")
-p1
-dev.off()
-
-
-```
 
 
 
