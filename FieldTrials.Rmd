@@ -17,9 +17,7 @@ library(ggplot2)
 library(phyloseq)
 library(vegan)
 library(knitr)
-library(ALDEx2)
 library(CoDaSeq)
-library(microbiome)
 library(dplyr)
 library(randomcoloR)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
@@ -561,8 +559,13 @@ ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE),
                tax_table(taxon))
 ps5_BS2 #755 taxa and 194 samples
 
-# First, replace 0 values with an estimate and perform CLR
-d.clr <- microbiome::transform(otu, "clr")
+
+
+# First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
+# Also transposing here, need samples as rows
+d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
+# Perform the center-log-ratio (CLR) transformation 
+d.clr <- codaSeq.clr(d.czm)
 # transpose matrix of CLR transformed data for ordination and dendrogram
 E.clr <- t(d.clr)
 # plot compositional PCA biplot (perform a singular value decomposition)
@@ -581,26 +584,22 @@ screeplot(d.pcx)
 df_out <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-sample_data(ps5_BS2)$Treatment<-factor(sample_data(ps5_BS2)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-sample_data(ps5_BS2)$Collection.month<-factor(sample_data(ps5_BS2)$Collection.month,levels=c("Aug","Oct","Jan"))
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
 
-
-p <- ggplot(df_out, aes(x = PC1, y = PC2, fill = samples$Treatment, shape = samples$Month)) +
-  geom_point(size = 4)+
+pdf("PCA.pdf", width = 8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
+p<-p+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
   theme(legend.title = element_text(size=14))+
   theme(legend.text = element_text(size=12))+
-  #scale_fill_manual(values = cols)+
-  #scale_shape_manual(values = c(21, 22))+
-  labs(x = xlab, y = ylab, fill = "Treatment", shape = "Month")+
-  guides(fill = guide_legend(override.aes = list(shape = 21)))
-# Save the plot to a PDF file
-#pdf("PCA.pdf", width = 8.5)
-p + coord_fixed() 
-#dev.off()
-
-
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  facet_grid(~samples$Collection.month)
+p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+dev.off()
 
 
 ####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
