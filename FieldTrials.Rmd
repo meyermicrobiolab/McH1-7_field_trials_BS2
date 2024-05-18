@@ -20,6 +20,7 @@ library(knitr)
 library(CoDaSeq)
 library(dplyr)
 library(randomcoloR)
+library(biomehorizon)  
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
 
@@ -559,8 +560,6 @@ ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE),
                tax_table(taxon))
 ps5_BS2 #755 taxa and 194 samples
 
-
-
 # First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
 # Also transposing here, need samples as rows
 d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
@@ -610,7 +609,166 @@ frac<-as.character(samples$Collection.month)
 dist.clr <- dist(E.clr)
 perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2),"data.frame"))
 print(perm)
+
 ```
+
+
+Subset BS2 by month to examine treatments within time points
+
+### October = 2 weeks after treatment
+
+```{r, echo=FALSE}
+# permanova within time points
+ps5_BS2_oct = subset_samples(ps5_BS2, Collection.month == "Oct")
+ps5_BS2_oct #755 taxa and 71 samples
+otu_oct = as(otu_table(ps5_BS2_oct), "matrix")
+taxon_oct = as(tax_table(ps5_BS2_oct), "matrix")
+metadata_oct = as(sample_data(ps5_BS2_oct), "matrix")
+write.table(otu_oct,"silva_nochloronomito_otu_table_ps5_BS2_oct.txt",sep="\t",col.names=NA)
+write.table(taxon_oct,"silva_nochloronomito_taxa_table_ps5_BS2_oct.txt",sep="\t",col.names=NA)
+write.table(metadata_oct,"metadata_ps5_BS2_oct.txt",sep="\t",col.names=NA)
+
+# clear and read in again
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_oct.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_oct.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2_oct.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2_oct <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2_oct  #755 taxa and 71 samples
+
+d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out <- as.data.frame(d.pcx$x)
+theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
+cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+
+pdf("PCA_Oct.pdf", width = 8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
+p<-p+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))
+p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+dev.off()
+
+####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
+# set metadata as factors
+type<-as.character(samples$Treatment)
+frac<-as.character(samples$Collection.month)
+# permanova between groups using Aitchison distance
+dist.clr <- dist(E.clr)
+perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2_oct),"data.frame"))
+print(perm)
+
+```
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Treatment, data = as(sample_data(ps5_BS2_oct), "data.frame"))
+          Df SumOfSqs      R2      F Pr(>F)
+Treatment  5    10255 0.07159 1.0024  0.409
+Residual  65   133001 0.92841              
+Total     70   143256 1.00000 
+
+
+
+
+
+
+Subset BS2 by month to examine treatments within time points
+
+### January = 2 months after treatment
+
+```{r, echo=FALSE}
+# permanova within time points
+ps5_BS2_jan = subset_samples(ps5_BS2, Collection.month == "Jan")
+ps5_BS2_jan #755 taxa and 63 samples
+otu_jan = as(otu_table(ps5_BS2_jan), "matrix")
+taxon_jan = as(tax_table(ps5_BS2_jan), "matrix")
+metadata_jan = as(sample_data(ps5_BS2_jan), "matrix")
+write.table(otu_jan,"silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",col.names=NA)
+write.table(taxon_jan,"silva_nochloronomito_taxa_table_ps5_BS2_jan.txt",sep="\t",col.names=NA)
+write.table(metadata_jan,"metadata_ps5_BS2_jan.txt",sep="\t",col.names=NA)
+
+# clear and read in again
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2_jan  #755 taxa and 63 samples
+
+d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out <- as.data.frame(d.pcx$x)
+theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
+cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+
+pdf("PCA_Jan.pdf", width = 8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
+p<-p+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))
+p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+dev.off()
+
+####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
+# set metadata as factors
+type<-as.character(samples$Treatment)
+frac<-as.character(samples$Collection.month)
+# permanova between groups using Aitchison distance
+dist.clr <- dist(E.clr)
+perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2_jan),"data.frame"))
+print(perm)
+```
+
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Treatment, data = as(sample_data(ps5_BS2_jan), "data.frame"))
+          Df SumOfSqs      R2     F Pr(>F)
+Treatment  5    14066 0.08698 1.086  0.277
+Residual  57   147653 0.91302             
+Total     62   161719 1.00000             
+
+
 
 
 
