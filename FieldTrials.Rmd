@@ -19,6 +19,7 @@ library(vegan)
 library(knitr)
 library(CoDaSeq)
 library(dplyr)
+library(cowplot)
 library(randomcoloR)
 library(biomehorizon)  
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
@@ -615,6 +616,66 @@ print(perm)
 
 Subset BS2 by month to examine treatments within time points
 
+### August = before treatment
+
+```{r, echo=FALSE}
+# permanova within time points
+ps5_BS2_aug = subset_samples(ps5_BS2, Collection.month == "Aug")
+ps5_BS2_aug #755 taxa and 60 samples
+otu_aug = as(otu_table(ps5_BS2_aug), "matrix")
+taxon_aug = as(tax_table(ps5_BS2_aug), "matrix")
+metadata_aug = as(sample_data(ps5_BS2_aug), "matrix")
+write.table(otu_aug,"silva_nochloronomito_otu_table_ps5_BS2_aug.txt",sep="\t",col.names=NA)
+write.table(taxon_aug,"silva_nochloronomito_taxa_table_ps5_BS2_aug.txt",sep="\t",col.names=NA)
+write.table(metadata_aug,"metadata_ps5_BS2_aug.txt",sep="\t",col.names=NA)
+
+# clear and read in again
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_aug.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_aug.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2_aug.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2_aug <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2_aug  #755 taxa and 60 samples
+
+d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out.aug <- as.data.frame(d.pcx$x)
+theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
+cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+
+pdf("PCA_Aug.pdf", width = 8.5)
+p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples$Treatment))
+p1<-p1+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+p1
+dev.off()
+
+```
+
+
+
+
+Subset BS2 by month to examine treatments within time points
+
 ### October = 2 weeks after treatment
 
 ```{r, echo=FALSE}
@@ -649,22 +710,23 @@ pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
 pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
 xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
-df_out <- as.data.frame(d.pcx$x)
+df_out.oct <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 
 pdf("PCA_Oct.pdf", width = 8.5)
-p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
-p<-p+geom_point(size=2)+
+p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples$Treatment))
+p2<-p2+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
   theme(legend.title = element_text(size=14))+
   theme(legend.text = element_text(size=12))+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
-  guides(fill = guide_legend(override.aes=list(shape=21)))
-p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+p2
 dev.off()
 
 ####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
@@ -729,22 +791,23 @@ pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
 pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
 xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
-df_out <- as.data.frame(d.pcx$x)
+df_out.jan <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 
 pdf("PCA_Jan.pdf", width = 8.5)
-p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
-p<-p+geom_point(size=2)+
+p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples$Treatment))
+p3<-p3+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
   theme(legend.title = element_text(size=14))+
   theme(legend.text = element_text(size=12))+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
-  guides(fill = guide_legend(override.aes=list(shape=21)))
-p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+p3
 dev.off()
 
 ####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
@@ -769,6 +832,121 @@ Residual  57   147653 0.91302
 Total     62   161719 1.00000             
 
 
+
+### Use cowplot to bring 3 separate PCA plots together
+
+```{r, echo=FALSE}
+
+#clear data and read in just what is needed for plotting
+
+cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+
+
+### AUGUST
+otu.aug <- read.table("silva_nochloronomito_otu_table_ps5_BS2_aug.txt",sep="\t",header=TRUE, row.names=1)
+samples.aug<-read.table("metadata_ps5_BS2_aug.txt",sep="\t",header=T,row.names=1)
+samples.aug$Treatment<-factor(samples.aug$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+d.czm <- cmultRepl(t(otu.aug), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out.aug <- as.data.frame(d.pcx$x)
+p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples.aug$Treatment))
+p1<-p1+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment")+
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)
+
+### OCTOBER
+otu.oct <- read.table("silva_nochloronomito_otu_table_ps5_BS2_oct.txt",sep="\t",header=TRUE, row.names=1)
+samples.oct<-read.table("metadata_ps5_BS2_oct.txt",sep="\t",header=T,row.names=1)
+samples.oct$Treatment<-factor(samples.oct$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+d.czm <- cmultRepl(t(otu.oct), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out.oct <- as.data.frame(d.pcx$x)
+p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples.oct$Treatment))
+p2<-p2+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment")+
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)
+
+### JANUARY
+otu.jan <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
+samples.jan<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
+samples.jan$Treatment<-factor(samples.jan$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+d.czm <- cmultRepl(t(otu.jan), method="CZM", label=0, z.warning=1)
+d.clr <- codaSeq.clr(d.czm)
+E.clr <- t(d.clr)
+d.pcx <- prcomp(E.clr)
+pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
+pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
+xlab <- paste("PC1: ", pc1, sep="")
+ylab <- paste("PC2: ", pc2, sep="")
+df_out.jan <- as.data.frame(d.pcx$x)
+p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples.jan$Treatment))
+p3<-p3+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  labs(x=xlab, y=ylab, color="Treatment")+
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)
+
+#cowplot shared legends vignette: https://wilkelab.org/cowplot/articles/shared_legends.html
+
+# adjust width and height until it looks right for double columns
+pdf("PCA-3panels.pdf", width=12)
+
+panels<-plot_grid(
+  p1+theme(legend.position="none"),
+  p2+theme(legend.position="none"),
+  p3+theme(legend.position="none"),
+  align = 'vh',
+  labels=c("Before Treatment","Two weeks after treatment","Two months after treatment"), 
+  ncol=3, nrow=1)
+
+# extract the legend from one of the plots
+legend <- get_legend(p3)
+
+# add the legend to the row we made earlier. Give it one-third of 
+# the width of one plot (via rel_widths).
+plot_grid(panels, legend, ncol = 1)
+panels
+
+dev.off()
+
+```
 
 
 
