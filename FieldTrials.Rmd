@@ -586,9 +586,10 @@ theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor =
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
+samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
-pdf("PCA.pdf", width = 8.5)
-p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment))
+pdf("PCA.pdf",bg ="white",width = 8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
 p<-p+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -598,20 +599,34 @@ p<-p+geom_point(size=2)+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
   facet_grid(~samples$Collection.month)
-p + labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+p + labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
 dev.off()
 
-
-####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
-# set metadata as factors
-type<-as.character(samples$Treatment)
-frac<-as.character(samples$Collection.month)
-# permanova between groups using Aitchison distance
+####### Perform permanova using Aitchison distance
 dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2),"data.frame"))
+perm<-adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
 print(perm)
 
 ```
+
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Condition * Treatment, data = as(sample_data(ps5_BS2), "data.frame"))
+                     Df SumOfSqs      R2      F Pr(>F)    
+Condition             2    15112 0.03271 3.3082  0.001 ***
+Treatment             5    21588 0.04673 1.8903  0.002 ** 
+Condition:Treatment   4     9538 0.02065 1.0440  0.356    
+Residual            182   415688 0.89990                  
+Total               193   461925 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
 
 
 Subset BS2 by month to examine treatments within time points
@@ -654,9 +669,10 @@ df_out.aug <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
-pdf("PCA_Aug.pdf", width = 8.5)
-p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples$Treatment))
+pdf("PCA_Aug.pdf",bg ="white",width = 8.5)
+p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
 p1<-p1+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -665,11 +681,31 @@ p1<-p1+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+  labs(x=xlab, y=ylab,color="Treatment",shape="Condition") +coord_fixed()
 p1
 dev.off()
 
+# Perform permanova using Aitchison distance
+dist.clr <- dist(E.clr)
+perm<-adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"))
+print(perm)
+
 ```
+
+
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Condition, data = as(sample_data(ps5_BS2_aug), "data.frame"))
+          Df SumOfSqs      R2      F Pr(>F)    
+Condition  2    17614 0.09821 3.1039  0.001 ***
+Residual  57   161732 0.90179                  
+Total     59   179346 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
 
 
 
@@ -714,9 +750,10 @@ df_out.oct <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
-pdf("PCA_Oct.pdf", width = 8.5)
-p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples$Treatment))
+pdf("PCA_Oct.pdf",bg ="white",width = 8.5)
+p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
 p2<-p2+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -725,17 +762,13 @@ p2<-p2+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
 p2
 dev.off()
 
-####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
-# set metadata as factors
-type<-as.character(samples$Treatment)
-frac<-as.character(samples$Collection.month)
-# permanova between groups using Aitchison distance
+####### Perform permanova using Aitchison distance
 dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2_oct),"data.frame"))
+perm<-adonis2(dist.clr~Condition*Treatment,as(sample_data(ps5_BS2_oct),"data.frame"))
 print(perm)
 
 ```
@@ -744,11 +777,13 @@ Terms added sequentially (first to last)
 Permutation: free
 Number of permutations: 999
 
-adonis2(formula = dist.clr ~ Treatment, data = as(sample_data(ps5_BS2_oct), "data.frame"))
-          Df SumOfSqs      R2      F Pr(>F)
-Treatment  5    10255 0.07159 1.0024  0.409
-Residual  65   133001 0.92841              
-Total     70   143256 1.00000 
+adonis2(formula = dist.clr ~ Condition * Treatment, data = as(sample_data(ps5_BS2_oct), "data.frame"))
+                    Df SumOfSqs      R2      F Pr(>F)
+Condition            2     5564 0.03884 1.3670  0.168
+Treatment            5    10049 0.07015 0.9875  0.427
+Condition:Treatment  4     7564 0.05280 0.9291  0.505
+Residual            59   120079 0.83821              
+Total               70   143256 1.00000  
 
 
 
@@ -795,9 +830,10 @@ df_out.jan <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
-pdf("PCA_Jan.pdf", width = 8.5)
-p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples$Treatment))
+pdf("PCA_Jan.pdf",bg ="white",width = 8.5)
+p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
 p3<-p3+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -806,17 +842,13 @@ p3<-p3+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment") +coord_fixed()
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
 p3
 dev.off()
 
-####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
-# set metadata as factors
-type<-as.character(samples$Treatment)
-frac<-as.character(samples$Collection.month)
-# permanova between groups using Aitchison distance
+####### Perform PERMANOVA using Aitchison distance
 dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2_jan),"data.frame"))
+perm<-adonis2(dist.clr~Condition*Treatment,as(sample_data(ps5_BS2_jan),"data.frame"))
 print(perm)
 ```
 
@@ -825,11 +857,15 @@ Terms added sequentially (first to last)
 Permutation: free
 Number of permutations: 999
 
-adonis2(formula = dist.clr ~ Treatment, data = as(sample_data(ps5_BS2_jan), "data.frame"))
-          Df SumOfSqs      R2     F Pr(>F)
-Treatment  5    14066 0.08698 1.086  0.277
-Residual  57   147653 0.91302             
-Total     62   161719 1.00000             
+adonis2(formula = dist.clr ~ Condition * Treatment, data = as(sample_data(ps5_BS2_jan), "data.frame"))
+                    Df SumOfSqs      R2      F Pr(>F)  
+Condition            2     7636 0.04722 1.4671  0.074 .
+Treatment            5    11964 0.07398 0.9194  0.621  
+Condition:Treatment  4     9390 0.05806 0.9020  0.628  
+Residual            51   132729 0.82074                
+Total               62   161719 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 
 
@@ -846,6 +882,7 @@ cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","prob
 otu.aug <- read.table("silva_nochloronomito_otu_table_ps5_BS2_aug.txt",sep="\t",header=TRUE, row.names=1)
 samples.aug<-read.table("metadata_ps5_BS2_aug.txt",sep="\t",header=T,row.names=1)
 samples.aug$Treatment<-factor(samples.aug$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.aug$Condition<-factor(samples.aug$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.aug), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
 E.clr <- t(d.clr)
@@ -855,7 +892,7 @@ pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
 xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.aug <- as.data.frame(d.pcx$x)
-p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples.aug$Treatment))
+p1<-ggplot(df_out.aug,aes(x=PC1,y=PC2,color=samples.aug$Treatment,shape=samples.aug$Condition))
 p1<-p1+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -873,6 +910,7 @@ p1<-p1+geom_point(size=2)+
 otu.oct <- read.table("silva_nochloronomito_otu_table_ps5_BS2_oct.txt",sep="\t",header=TRUE, row.names=1)
 samples.oct<-read.table("metadata_ps5_BS2_oct.txt",sep="\t",header=T,row.names=1)
 samples.oct$Treatment<-factor(samples.oct$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.oct$Condition<-factor(samples.oct$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.oct), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
 E.clr <- t(d.clr)
@@ -882,7 +920,7 @@ pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
 xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.oct <- as.data.frame(d.pcx$x)
-p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples.oct$Treatment))
+p2<-ggplot(df_out.oct,aes(x=PC1,y=PC2,color=samples.oct$Treatment,shape=samples.oct$Condition))
 p2<-p2+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -891,7 +929,7 @@ p2<-p2+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment")+
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition")+
   ylim(-100,100)+
   xlim(-100,100)+
   coord_fixed(ratio=1)
@@ -900,6 +938,7 @@ p2<-p2+geom_point(size=2)+
 otu.jan <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
 samples.jan<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
 samples.jan$Treatment<-factor(samples.jan$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.jan$Condition<-factor(samples.jan$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.jan), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
 E.clr <- t(d.clr)
@@ -909,7 +948,7 @@ pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
 xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.jan <- as.data.frame(d.pcx$x)
-p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples.jan$Treatment))
+p3<-ggplot(df_out.jan,aes(x=PC1,y=PC2,color=samples.jan$Treatment,shape=samples.jan$Condition))
 p3<-p3+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
   theme(axis.text=element_text(size=12))+
@@ -924,26 +963,17 @@ p3<-p3+geom_point(size=2)+
   coord_fixed(ratio=1)
 
 #cowplot shared legends vignette: https://wilkelab.org/cowplot/articles/shared_legends.html
+#get legend no longer works - use inkscape to add legend 
 
-# adjust width and height until it looks right for double columns
-pdf("PCA-3panels.pdf", width=12)
-
+pdf("PCA-3panels.pdf",bg ="white",width=12,height=4.5)
 panels<-plot_grid(
   p1+theme(legend.position="none"),
   p2+theme(legend.position="none"),
   p3+theme(legend.position="none"),
   align = 'vh',
-  labels=c("Before Treatment","Two weeks after treatment","Two months after treatment"), 
-  ncol=3, nrow=1)
-
-# extract the legend from one of the plots
-legend <- get_legend(p3)
-
-# add the legend to the row we made earlier. Give it one-third of 
-# the width of one plot (via rel_widths).
-plot_grid(panels, legend, ncol = 1)
+  labels=c("Before treatment","Two weeks after treatment","Two months after treatment"), 
+  nrow=1)
 panels
-
 dev.off()
 
 ```
@@ -981,7 +1011,7 @@ sample_data(ps_ra)$Collection.month<-factor(sample_data(ps_ra)$Collection.month,
 sample_data(ps_ra)$sampled<-factor(sample_data(ps_ra)$sampled,levels=c("Before","Two weeks after","Two months after"))
 
 
-pdf("barchart_Class.pdf",width=11)
+pdf("barchart_Class.pdf",bg ="white",width=11)
 p1=plot_bar(ps_ra ,fill="Class")+
   facet_grid(Condition~sampled,scales="free",space="free")+
   geom_bar(aes(fill=Class), stat="identity",position="stack")+
@@ -998,7 +1028,7 @@ dev.off()
 
 #take out untreated corals
 ps2 = subset_samples(ps_ra, Condition != "HH")
-pdf("barchart_Class_2.pdf",width=11)
+pdf("barchart_Class_2.pdf",bg ="white",width=11)
 p1=plot_bar(ps2 ,fill="Class")+
   facet_grid(Condition~sampled,scales="free",space="free")+
   geom_bar(aes(fill=Class), stat="identity",position="stack")+
