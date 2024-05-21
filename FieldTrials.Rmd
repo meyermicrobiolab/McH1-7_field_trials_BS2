@@ -16,6 +16,7 @@ library(dada2)
 library(ggplot2)
 library(phyloseq)
 library(vegan)
+library(pairwiseAdonis)
 library(knitr)
 library(CoDaSeq)
 library(dplyr)
@@ -606,6 +607,23 @@ dev.off()
 dist.clr <- dist(E.clr)
 perm<-adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
 print(perm)
+
+perm2<-pairwise.adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
+print(perm2)
+
+perm3<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+print(perm3)
+
+ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
+ps5_BS2_DD #755 taxa and 79 samples
+otu_ps5_BS2_DD = as(otu_table(ps5_BS2_DD), "matrix")
+d.czm2 <- cmultRepl(t(otu_ps5_BS2_DD), method="CZM", label=0, z.warning=1)
+d.clr2 <- codaSeq.clr(d.czm2)
+E.clr2 <- t(d.clr2)
+dist.clr2 <- dist(E.clr2)
+
+perm4<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+print(perm4)
 
 ```
 
