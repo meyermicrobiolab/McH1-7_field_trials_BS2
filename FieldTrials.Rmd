@@ -614,6 +614,13 @@ print(perm2)
 perm3<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
 print(perm3)
 
+perm4<-pairwise.adonis2(dist.clr~Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+print(perm4)
+
+perm5<-pairwise.adonis2(dist.clr~Treatment*Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+print(perm5)
+
+#Look at diseased samples only
 ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
 ps5_BS2_DD #755 taxa and 79 samples
 otu_ps5_BS2_DD = as(otu_table(ps5_BS2_DD), "matrix")
@@ -622,29 +629,12 @@ d.clr2 <- codaSeq.clr(d.czm2)
 E.clr2 <- t(d.clr2)
 dist.clr2 <- dist(E.clr2)
 
-perm4<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
-print(perm4)
+perm6<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+print(perm6)
+
+
 
 ```
-
-Permutation test for adonis under reduced model
-Terms added sequentially (first to last)
-Permutation: free
-Number of permutations: 999
-
-adonis2(formula = dist.clr ~ Condition * Treatment, data = as(sample_data(ps5_BS2), "data.frame"))
-                     Df SumOfSqs      R2      F Pr(>F)    
-Condition             2    15112 0.03271 3.3082  0.001 ***
-Treatment             5    21588 0.04673 1.8903  0.002 ** 
-Condition:Treatment   4     9538 0.02065 1.0440  0.356    
-Residual            182   415688 0.89990                  
-Total               193   461925 1.00000                  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-
-
-
 
 
 Subset BS2 by month to examine treatments within time points

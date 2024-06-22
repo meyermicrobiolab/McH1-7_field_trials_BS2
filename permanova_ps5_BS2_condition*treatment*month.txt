@@ -1,0 +1,18 @@
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Condition * Treatment * Collection.month, data = as(sample_data(ps5_BS2), "data.frame"))
+                                      Df SumOfSqs      R2      F Pr(>F)    
+Condition                              2    15112 0.03271 3.5373  0.001 ***
+Treatment                              5    21588 0.04673 2.0212  0.001 ***
+Collection.month                       2    35721 0.07733 8.3614  0.001 ***
+Condition:Treatment                    4     7939 0.01719 0.9292  0.587    
+Condition:Collection.month             4     7379 0.01597 0.8636  0.719    
+Treatment:Collection.month             5     8840 0.01914 0.8277  0.812    
+Condition:Treatment:Collection.month   4     8623 0.01867 1.0092  0.436    
+Residual                             167   356723 0.77225                  
+Total                                193   461925 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
