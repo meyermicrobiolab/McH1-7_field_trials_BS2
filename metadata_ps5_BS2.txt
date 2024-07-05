@@ -1,195 +1,195 @@
-	Coral.tag	Treatment	Site	Coral.species	Condition	Treated	Collection.month	Collection.year	sampling	sampled	Sample.1	Sequencing.Run
-BS2-1-HH-A	1	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-1-HH-A	NS2107
-BS2-10H-A	10	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-10H-A	NS2107
-BS2-1566-DD-A	1566	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-1566-DD-A	NS2107
-BS2-1566-HD-A	1566	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-1566-HD-A	NS2107
-BS2-1689-DD-A	1689	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-1689-DD-A	NS2107
-BS2-1689-HD-A	1689	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-1689-HD-A	NS2107
-BS2-1842-DD-A	1842	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-1842-DD-A	NS2107
-BS2-1842-HD-A	1842	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-1842-HD-A	NS2107
-BS2-1894-HH-A	1894	none	BS2	MCAV	HH	NO	Aug	2020	Before first treatment	Before	BS2-1894-HH-A	NS2107
-BS2-1925-DD-A	1925	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-1925-DD-A	NS2107
-BS2-1925-HD-A	1925	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-1925-HD-A	NS2107
-BS2-2006-DD-A	2006	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2006-DD-A	NS2107
-BS2-2006-HD-A	2006	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2006-HD-A	NS2107
-BS2-2019-DD-A	2019	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2019-DD-A	NS2107
-BS2-2019-HD-A	2019	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2019-HD-A	NS2107
-BS2-2048-DD-A	2048	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2048-DD-A	NS2107
-BS2-2048-HD-A	2048	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2048-HD-A	NS2107
-BS2-2065-HH-A	2065	none	BS2	MCAV	HH	NO	Aug	2020	Before first treatment	Before	BS2-2065-HH-A	NS2107
-BS2-2076-DD-A	2076	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2076-DD-A	NS2107
-BS2-2076-HD-A	2076	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2076-HD-A	NS2107
-BS2-2077-DD-A	2077	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2077-DD-A	NS2107
-BS2-2077-HD-A	2077	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2077-HD-A	NS2107
-BS2-2078-DD-A	2078	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2078-DD-A	NS2107
-BS2-2078-HH-A	2078	none	BS2	MCAV	HH	NO	Aug	2020	Before first treatment	Before	BS2-2078-HH-A	NS2107
-BS2-2079-DD-A	2079	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2079-DD-A	NS2107
-BS2-2079-HD-A	2079	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2079-HD-A	NS2107
-BS2-2080-DD-A	2080	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2080-DD-A	NS2107
-BS2-2080-HD-A	2080	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2080-HD-A	NS2107
-BS2-2091-DD-A	2091	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2091-DD-A	NS2107
-BS2-2091-HD-A	2091	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2091-HD-A	NS2107
-BS2-2149-DD-A	2149	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2149-DD-A	NS2107
-BS2-2149-HD-A	2149	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2149-HD-A	NS2107
-BS2-2150-HH-A	2150	none	BS2	MCAV	HH	NO	Aug	2020	Before first treatment	Before	BS2-2150-HH-A	NS2107
-BS2-2155-DD-A	2155	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2155-DD-A	NS2107
-BS2-2155-HD-A	2155	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2155-HD-A	NS2107
-BS2-2161-DD-A	2161	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2161-DD-A	NS2107
-BS2-2179-DD-A	2179	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2179-DD-A	NS2107
-BS2-2179-HD-A	2179	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2179-HD-A	NS2107
-BS2-2180-DD-A	2180	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2180-DD-A	NS2107
-BS2-2180-HD-A	2180	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2180-HD-A	NS2107
-BS2-2198-DD-A	2198	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2198-DD-A	NS2107
-BS2-2198-HD-A	2198	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2198-HD-A	NS2107
-BS2-2415-DD-A	2415	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2415-DD-A	NS2107
-BS2-2415-HD-A	2415	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2415-HD-A	NS2107
-BS2-2432-DD-A	2432	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2432-DD-A	NS2107
-BS2-2432-HD-A	2432	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2432-HD-A	NS2107
-BS2-2433-DD-A	2433	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2433-DD-A	NS2107
-BS2-2433-HD-A	2433	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2433-HD-A	NS2107
-BS2-2474-DD-A	2474	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2474-DD-A	NS2107
-BS2-2474-HD-A	2474	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2474-HD-A	NS2107
-BS2-2482-DD-A	2482	none	BS2	MCAV	DD	NO	Aug	2020	Before first treatment	Before	BS2-2482-DD-A	NS2107
-BS2-2482-HD-A	2482	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2482-HD-A	NS2107
-BS2-2483-HD-A	2483	none	BS2	MCAV	HD	NO	Aug	2020	Before first treatment	Before	BS2-2483-HD-A	NS2107
-BS2-3-HH-A	3	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-3-HH-A	NS2107
-BS2-4H-A	4	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-4H-A	NS2107
-BS2-5-HH-A	5	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-5-HH-A	NS2107
-BS2-6H-A	6	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-6H-A	NS2107
-BS2-7H-A	7	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-7H-A	NS2107
-BS2-8H-A	8	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-8H-A	NS2107
-BS2-9H-A	9	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after second treatment	Two weeks after	BS2-9H-A	NS2107
-BS2-1566-DD-O	1566	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1566-DD-O	NS2172
-BS2-1566-HD-O	1566	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1566-HD-O	NS2172
-BS2-1689-DD-O	1689	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1689-DD-O	NS2172
-BS2-1689-HD-O	1689	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1689-HD-O	NS2172
-BS2-1842-DD-O	1842	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1842-DD-O	NS2172
-BS2-1842-HD-O	1842	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1842-HD-O	NS2172
-BS2-1925-DD-O	1925	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1925-DD-O	NS2172
-BS2-1925-HD-O	1925	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-1925-HD-O	NS2172
-BS2-2006-DD-O	2006	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2006-DD-O	NS2172
-BS2-2006-HD-O	2006	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2006-HD-O	NS2172
-BS2-2019-DD-O	2019	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2019-DD-O	NS2172
-BS2-2019-HD-O	2019	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2019-HD-O	NS2172
-BS2-2048-DD-O	2048	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2048-DD-O	NS2172
-BS2-2048-HD-O	2048	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2048-HD-O	NS2172
-BS2-2076-DD-O	2076	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2076-DD-O	NS2172
-BS2-2076-HD-O	2076	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2076-HD-O	NS2172
-BS2-2078-DD-O	2078	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2078-DD-O	NS2172
-BS2-2078-HD-O	2078	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2078-HD-O	NS2172
-BS2-2079-DD-O	2079	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2079-DD-O	NS2172
-BS2-2079-HD-O	2079	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2079-HD-O	NS2172
-BS2-2080-DD-O	2080	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2080-DD-O	NS2172
-BS2-2091-DD-O	2091	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2091-DD-O	NS2172
-BS2-2091-HD-O	2091	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2091-HD-O	NS2172
-BS2-2149-DD-O	2149	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2149-DD-O	NS2172
-BS2-2149-HD-O	2149	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2149-HD-O	NS2172
-BS2-2150-HH-O	2150	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2150-HH-O	NS2172
-BS2-2155-DD-O	2155	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2155-DD-O	NS2172
-BS2-2155-HD-O	2155	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2155-HD-O	NS2172
-BS2-2179-DD-O	2179	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2179-DD-O	NS2172
-BS2-2179-HD-O	2179	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2179-HD-O	NS2172
-BS2-2180-DD-O	2180	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2180-DD-O	NS2172
-BS2-2180-HD-O	2180	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2180-HD-O	NS2172
-BS2-2198-DD-O	2198	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2198-DD-O	NS2172
-BS2-2407-DD-O	2407	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2407-DD-O	NS2172
-BS2-2407-HD-O	2407	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2407-HD-O	NS2172
-BS2-2415-DD-O	2415	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2415-DD-O	NS2172
-BS2-2415-HD-O	2415	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2415-HD-O	NS2172
-BS2-2432-HH-O	2432	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2432-HH-O	NS2172
-BS2-2433-DD-O	2433	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2433-DD-O	NS2172
-BS2-2433-HD-O	2433	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2433-HD-O	NS2172
-BS2-2453-DD-O	2453	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2453-DD-O	NS2172
-BS2-2453-HD-O	2453	probiotic bag	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2453-HD-O	NS2172
-BS2-2460-DD-O	2460	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2460-DD-O	NS2172
-BS2-2464-DD-O	2464	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2464-DD-O	NS2172
-BS2-2464-HD-O	2464	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2464-HD-O	NS2172
-BS2-2474-DD-O	2474	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2474-DD-O	NS2172
-BS2-2474-HD-O	2474	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2474-HD-O	NS2172
-BS2-2475-DD-O	2475	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2475-DD-O	NS2172
-BS2-2475-HD-O	2475	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2475-HD-O	NS2172
-BS2-2478-DD-O	2478	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2478-DD-O	NS2172
-BS2-2479-DD-O	2479	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2479-DD-O	NS2172
-BS2-2479-HD-O	2479	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2479-HD-O	NS2172
-BS2-2480-HD-O	2480	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2480-HD-O	NS2172
-BS2-2482-DD-O	2482	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2482-DD-O	NS2172
-BS2-2482-HD-O	2482	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2482-HD-O	NS2172
-BS2-2483-DD-O	2483	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2483-DD-O	NS2172
-BS2-2483-HD-O	2483	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2483-HD-O	NS2172
-BS2-2499-DD-O	2499	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2499-DD-O	NS2172
-BS2-2499-HD-O	2499	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2499-HD-O	NS2172
-BS2-2500-DD-O	2500	control paste	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2500-DD-O	NS2172
-BS2-2500-HD-O	2500	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2500-HD-O	NS2172
-BS2-2662-HH-O	2662	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2662-HH-O	NS2172
-BS2-2672-HH-O	2672	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2672-HH-O	NS2172
-BS2-2673-HH-O	2673	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2673-HH-O	NS2172
-BS2-2675-DD-O	2675	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2675-DD-O	NS2172
-BS2-2685-DD-O	2685	probiotic bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2685-DD-O	NS2172
-BS2-2685-HD-O	2685	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2685-HD-O	NS2172
-BS2-2694-HH-O	2694	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2694-HH-O	NS2172
-BS2-1566-DD-D	1566	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1566-DD-D	NS2211
-BS2-1566-HD-D	1566	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1566-HD-D	NS2211
-BS2-1689-DD-D	1689	probiotic bag	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1689-DD-D	NS2211
-BS2-1689-HD-D	1689	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1689-HD-D	NS2211
-BS2-1842-HD-D	1842	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1842-HD-D	NS2211
-BS2-1925-HD-D	1925	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-1925-HD-D	NS2211
-BS2-2006-DD-D	2006	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2006-DD-D	NS2211
-BS2-2006-HD-D	2006	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2006-HD-D	NS2211
-BS2-2019-HD-D	2019	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2019-HD-D	NS2211
-BS2-2048-DD-D	2048	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2048-DD-D	NS2211
-BS2-2065-DD-D	2065	none	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2065-DD-D	NS2211
-BS2-2065-HD-D	2065	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2065-HD-D	NS2211
-BS2-2076-HD-D	2076	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2076-HD-D	NS2211
-BS2-2077-DD-D	2077	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2077-DD-D	NS2211
-BS2-2078-HD-D	2078	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2078-HD-D	NS2211
-BS2-2079-DD-D	2079	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2079-DD-D	NS2211
-BS2-2079-HD-D	2079	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2079-HD-D	NS2211
-BS2-2091-DD-D	2091	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2091-DD-D	NS2211
-BS2-2091-HD-D	2091	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2091-HD-D	NS2211
-BS2-2149-HD-D	2149	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2149-HD-D	NS2211
-BS2-2155-DD-D	2155	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2155-DD-D	NS2211
-BS2-2155-HD-D	2155	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2155-HD-D	NS2211
-BS2-2180-DD-D	2180	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2180-DD-D	NS2211
-BS2-2180-HD-D	2180	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2180-HD-D	NS2211
-BS2-2407-HD-D	2407	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2407-HD-D	NS2211
-BS2-2415-HD-D	2415	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2415-HD-D	NS2211
-BS2-2432-HD-D	2432	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2432-HD-D	NS2211
-BS2-2433-HD-D	2433	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2433-HD-D	NS2211
-BS2-2453-HD-D	2453	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2453-HD-D	NS2211
-BS2-2460-HD-D	2460	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2460-HD-D	NS2211
-BS2-2464-DD-D	2464	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2464-DD-D	NS2211
-BS2-2474-DD-D	2474	none	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2474-DD-D	NS2211
-BS2-2474-HD-D	2474	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2474-HD-D	NS2211
-BS2-2475-DD-D	2475	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2475-DD-D	NS2211
-BS2-2475-HD-D	2475	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2475-HD-D	NS2211
-BS2-2478-HD-D	2478	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2478-HD-D	NS2211
-BS2-2479-DD-D	2479	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2479-DD-D	NS2211
-BS2-2479-HD-D	2479	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2479-HD-D	NS2211
-BS2-2480-DD-D	2480	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2480-DD-D	NS2211
-BS2-2480-HD-D	2480	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2480-HD-D	NS2211
-BS2-2483-DD-D	2483	none	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2483-DD-D	NS2211
-BS2-2499-HD-D	2499	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2499-HD-D	NS2211
-BS2-2500-DD-D	2500	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2500-DD-D	NS2211
-BS2-2500-HD-D	2500	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2500-HD-D	NS2211
-BS2-2652-DD-D	2652	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2652-DD-D	NS2211
-BS2-2652-HD-D	2652	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2652-HD-D	NS2211
-BS2-2661-DD-D	2661	none	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2661-DD-D	NS2211
-BS2-2661-HD-D	2661	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2661-HD-D	NS2211
-BS2-2662-HH-D	2662	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2662-HH-D	NS2211
-BS2-2673-HH-D	2673	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2673-HH-D	NS2211
-BS2-2674-DD-D	2674	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2674-DD-D	NS2211
-BS2-2674-HD-D	2674	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2674-HD-D	NS2211
-BS2-2675-HD-D	2675	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2675-HD-D	NS2211
-BS2-2683-HH-D	2683	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2683-HH-D	NS2211
-BS2-2685-HD-D	2685	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2685-HD-D	NS2211
-BS2-2693-HD-D	2693	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2693-HD-D	NS2211
-BS2-2694-HH-D	2694	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2694-HH-D	NS2211
-BS2-2048-HD-D	2048	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2048-HD-D	NS2408
-BS2-2179-HD-D	2179	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2179-HD-D	NS2408
-BS2-2198-HD-O	2198	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2198-HD-O	NS2408
-BS2-2433-DD-D	2433	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after second treatment	Two months after	BS2-2433-DD-D	NS2408
-BS2-2478-DD-D	2478	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2478-DD-D	NS2408
-BS2-2483-HD-D	2483	none	BS2	MCAV	HD	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2483-HD-D	NS2408
-BS2-2672-HH-D	2672	none	BS2	MCAV	HH	NO	Jan	2021	Two months after second treatment	Two months after	BS2-2672-HH-D	NS2408
-BS2-2675-HD-O	2675	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2675-HD-O	NS2408
-BS2-2683-HH-O	2683	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after second treatment	Two weeks after	BS2-2683-HH-O	NS2408
+""	"Coral.tag"	"Complete_sets"	"Proportion_TissueLost_Jan21"	"Proportion_TissueLost_End"	"Treatment"	"Site"	"Coral.species"	"Condition"	"Probiotic"	"Collection.month"	"Collection.year"	"sampled"	"Sequencing.Run"
+"BS2-1-HH-A"	"1"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-10H-A"	"10"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-1566-DD-A"	"1566"	"yes"	"11.3"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1566-HD-A"	"1566"	"yes"	"11.3"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1689-DD-A"	"1689"	"yes"	"15.6"	"53.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1689-HD-A"	"1689"	"yes"	"15.6"	"53.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1842-DD-A"	"1842"	"yes"	"84.3"	"94.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1842-HD-A"	"1842"	"yes"	"84.3"	"94.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1894-HH-A"	"1894"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1925-DD-A"	"1925"	"yes"	"8.6"	"10.9"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-1925-HD-A"	"1925"	"yes"	"8.6"	"10.9"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2006-DD-A"	"2006"	"yes"	"10"	"40.7"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2006-HD-A"	"2006"	"yes"	"10"	"40.7"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2019-DD-A"	"2019"	"yes"	"0.2"	"0.1"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2019-HD-A"	"2019"	"yes"	"0.2"	"0.1"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2048-DD-A"	"2048"	"yes"	"45.3"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2048-HD-A"	"2048"	"yes"	"45.3"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2065-HH-A"	"2065"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2076-DD-A"	"2076"	"yes"	"0.7"	"71.8"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2076-HD-A"	"2076"	"yes"	"0.7"	"71.8"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2077-DD-A"	"2077"	"no"	"93.9"	"93.7"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2077-HD-A"	"2077"	"no"	"93.9"	"93.7"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2078-DD-A"	"2078"	"yes"	"11.7"	"25.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2078-HH-A"	"2078"	"yes"	"11.7"	"25.2"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2079-DD-A"	"2079"	"yes"	"24.7"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2079-HD-A"	"2079"	"yes"	"24.7"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2080-DD-A"	"2080"	"no"	"100"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2080-HD-A"	"2080"	"no"	"100"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2091-DD-A"	"2091"	"yes"	"4"	"1.8"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2091-HD-A"	"2091"	"yes"	"4"	"1.8"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2149-DD-A"	"2149"	"yes"	"34.7"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2149-HD-A"	"2149"	"yes"	"34.7"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2150-HH-A"	"2150"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2155-DD-A"	"2155"	"yes"	"4.5"	"45.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2155-HD-A"	"2155"	"yes"	"4.5"	"45.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2161-DD-A"	"2161"	"no"	"0.6"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2179-DD-A"	"2179"	"yes"	"5.9"	"4.5"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2179-HD-A"	"2179"	"yes"	"5.9"	"4.5"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2180-DD-A"	"2180"	"yes"	"18.1"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2180-HD-A"	"2180"	"yes"	"18.1"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2198-DD-A"	"2198"	"yes"	"2.2"	"9.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2198-HD-A"	"2198"	"yes"	"2.2"	"9.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2415-DD-A"	"2415"	"yes"	"7.8"	"9.7"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2415-HD-A"	"2415"	"yes"	"7.8"	"9.7"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2432-DD-A"	"2432"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2432-HD-A"	"2432"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2433-DD-A"	"2433"	"yes"	"-1.8"	"25.8"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2433-HD-A"	"2433"	"yes"	"-1.8"	"25.8"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2474-DD-A"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2474-HD-A"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2482-DD-A"	"2482"	"yes"	"100"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2482-HD-A"	"2482"	"yes"	"100"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-2483-HD-A"	"2483"	"yes"	"91.5"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Aug"	"2020"	"Before treatment"	"NS2107"
+"BS2-3-HH-A"	"3"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-4H-A"	"4"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-5-HH-A"	"5"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-6H-A"	"6"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-7H-A"	"7"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-8H-A"	"8"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-9H-A"	"9"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Aug"	"2020"	"Two weeks after treatment"	"NS2107"
+"BS2-1566-DD-O"	"1566"	"yes"	"11.3"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1566-HD-O"	"1566"	"yes"	"11.3"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1689-DD-O"	"1689"	"yes"	"15.6"	"53.2"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1689-HD-O"	"1689"	"yes"	"15.6"	"53.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1842-DD-O"	"1842"	"yes"	"84.3"	"94.2"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1842-HD-O"	"1842"	"yes"	"84.3"	"94.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1925-DD-O"	"1925"	"yes"	"8.6"	"10.9"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1925-HD-O"	"1925"	"yes"	"8.6"	"10.9"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2006-DD-O"	"2006"	"yes"	"10"	"40.7"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2006-HD-O"	"2006"	"yes"	"10"	"40.7"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2019-DD-O"	"2019"	"yes"	"0.2"	"0.1"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2019-HD-O"	"2019"	"yes"	"0.2"	"0.1"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2048-DD-O"	"2048"	"yes"	"45.3"	"100"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2048-HD-O"	"2048"	"yes"	"45.3"	"100"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2076-DD-O"	"2076"	"yes"	"0.7"	"71.8"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2076-HD-O"	"2076"	"yes"	"0.7"	"71.8"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2078-DD-O"	"2078"	"yes"	"11.7"	"25.2"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2078-HD-O"	"2078"	"yes"	"11.7"	"25.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2079-DD-O"	"2079"	"yes"	"24.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2079-HD-O"	"2079"	"yes"	"24.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2080-DD-O"	"2080"	"no"	"100"	"100"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2091-DD-O"	"2091"	"yes"	"4"	"1.8"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2091-HD-O"	"2091"	"yes"	"4"	"1.8"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2149-DD-O"	"2149"	"yes"	"34.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2149-HD-O"	"2149"	"yes"	"34.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2150-HH-O"	"2150"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2155-DD-O"	"2155"	"yes"	"4.5"	"45.2"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2155-HD-O"	"2155"	"yes"	"4.5"	"45.2"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2179-DD-O"	"2179"	"yes"	"5.9"	"4.5"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2179-HD-O"	"2179"	"yes"	"5.9"	"4.5"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2180-DD-O"	"2180"	"yes"	"18.1"	"100"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2180-HD-O"	"2180"	"yes"	"18.1"	"100"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2198-DD-O"	"2198"	"yes"	"2.2"	"9.2"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2407-DD-O"	"2407"	"no"	"nd"	"nd"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2407-HD-O"	"2407"	"no"	"nd"	"nd"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2415-DD-O"	"2415"	"yes"	"7.8"	"9.7"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2415-HD-O"	"2415"	"yes"	"7.8"	"9.7"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2432-HH-O"	"2432"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2433-DD-O"	"2433"	"yes"	"-1.8"	"25.8"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2433-HD-O"	"2433"	"yes"	"-1.8"	"25.8"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2453-DD-O"	"2453"	"no"	"0.7"	"10.2"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2453-HD-O"	"2453"	"no"	"0.7"	"10.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2460-DD-O"	"2460"	"no"	"3.4"	"39.7"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2464-DD-O"	"2464"	"no"	"96.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2464-HD-O"	"2464"	"no"	"96.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2474-DD-O"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2474-HD-O"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2475-DD-O"	"2475"	"yes"	"8.5"	"19.5"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2475-HD-O"	"2475"	"yes"	"8.5"	"19.5"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2478-DD-O"	"2478"	"no"	"4.9"	"91.7"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2479-DD-O"	"2479"	"yes"	"3"	"12.7"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2479-HD-O"	"2479"	"yes"	"3"	"12.7"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2480-HD-O"	"2480"	"no"	"1.5"	"39.7"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2482-DD-O"	"2482"	"yes"	"100"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2482-HD-O"	"2482"	"yes"	"100"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2483-DD-O"	"2483"	"yes"	"91.5"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2483-HD-O"	"2483"	"yes"	"91.5"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2499-DD-O"	"2499"	"no"	"1.2"	"12.7"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2499-HD-O"	"2499"	"no"	"1.2"	"12.7"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2500-DD-O"	"2500"	"yes"	"14.2"	"32.9"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2500-HD-O"	"2500"	"yes"	"14.2"	"32.9"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2662-HH-O"	"2662"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2672-HH-O"	"2672"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2673-HH-O"	"2673"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2675-DD-O"	"2675"	"no"	"0"	"-3.9"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2685-DD-O"	"2685"	"no"	"0"	"-0.3"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2685-HD-O"	"2685"	"no"	"0"	"-0.3"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-2694-HH-O"	"2694"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2172"
+"BS2-1566-DD-D"	"1566"	"yes"	"11.3"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-1566-HD-D"	"1566"	"yes"	"11.3"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-1689-DD-D"	"1689"	"yes"	"15.6"	"53.2"	"probiotic bag"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-1689-HD-D"	"1689"	"yes"	"15.6"	"53.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-1842-HD-D"	"1842"	"yes"	"84.3"	"94.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-1925-HD-D"	"1925"	"yes"	"8.6"	"10.9"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2006-DD-D"	"2006"	"yes"	"10"	"40.7"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2006-HD-D"	"2006"	"yes"	"10"	"40.7"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2019-HD-D"	"2019"	"yes"	"0.2"	"0.1"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2048-DD-D"	"2048"	"yes"	"45.3"	"100"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2065-DD-D"	"2065"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2065-HD-D"	"2065"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2076-HD-D"	"2076"	"yes"	"0.7"	"71.8"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2077-DD-D"	"2077"	"no"	"93.9"	"93.7"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2078-HD-D"	"2078"	"yes"	"11.7"	"25.2"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2079-DD-D"	"2079"	"yes"	"24.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2079-HD-D"	"2079"	"yes"	"24.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2091-DD-D"	"2091"	"yes"	"4"	"1.8"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2091-HD-D"	"2091"	"yes"	"4"	"1.8"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2149-HD-D"	"2149"	"yes"	"34.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2155-DD-D"	"2155"	"yes"	"4.5"	"45.2"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2155-HD-D"	"2155"	"yes"	"4.5"	"45.2"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2180-DD-D"	"2180"	"yes"	"18.1"	"100"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2180-HD-D"	"2180"	"yes"	"18.1"	"100"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2407-HD-D"	"2407"	"no"	"nd"	"nd"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2415-HD-D"	"2415"	"yes"	"7.8"	"9.7"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2432-HD-D"	"2432"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2433-HD-D"	"2433"	"yes"	"-1.8"	"25.8"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2453-HD-D"	"2453"	"no"	"0.7"	"10.2"	"probiotic bag"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2460-HD-D"	"2460"	"no"	"3.4"	"39.7"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2464-DD-D"	"2464"	"no"	"96.7"	"100"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2474-DD-D"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2474-HD-D"	"2474"	"yes"	"7.9"	"30.6"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2475-DD-D"	"2475"	"yes"	"8.5"	"19.5"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2475-HD-D"	"2475"	"yes"	"8.5"	"19.5"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2478-HD-D"	"2478"	"no"	"4.9"	"91.7"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2479-DD-D"	"2479"	"yes"	"3"	"12.7"	"control bag"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2479-HD-D"	"2479"	"yes"	"3"	"12.7"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2480-DD-D"	"2480"	"no"	"1.5"	"39.7"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2480-HD-D"	"2480"	"no"	"1.5"	"39.7"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2483-DD-D"	"2483"	"yes"	"91.5"	"100"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2499-HD-D"	"2499"	"no"	"1.2"	"12.7"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2500-DD-D"	"2500"	"yes"	"14.2"	"32.9"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2500-HD-D"	"2500"	"yes"	"14.2"	"32.9"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2652-DD-D"	"2652"	"no"	"0"	"36.8"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2652-HD-D"	"2652"	"no"	"0"	"36.8"	"probiotic paste"	"BS2"	"MCAV"	"HD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2661-DD-D"	"2661"	"no"	"0"	"39.1"	"none"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2661-HD-D"	"2661"	"no"	"0"	"39.1"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2662-HH-D"	"2662"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2673-HH-D"	"2673"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2674-DD-D"	"2674"	"no"	"0"	"39.2"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2674-HD-D"	"2674"	"no"	"0"	"39.2"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2675-HD-D"	"2675"	"no"	"0"	"-3.9"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2683-HH-D"	"2683"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2685-HD-D"	"2685"	"no"	"0"	"-0.3"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2693-HD-D"	"2693"	"no"	"0"	"28.9"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2694-HH-D"	"2694"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2211"
+"BS2-2048-HD-D"	"2048"	"yes"	"45.3"	"100"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2179-HD-D"	"2179"	"yes"	"5.9"	"4.5"	"control paste"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2198-HD-O"	"2198"	"yes"	"2.2"	"9.2"	"control bag"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2408"
+"BS2-2433-DD-D"	"2433"	"yes"	"-1.8"	"25.8"	"probiotic paste"	"BS2"	"MCAV"	"DD"	"YES"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2478-DD-D"	"2478"	"no"	"4.9"	"91.7"	"control paste"	"BS2"	"MCAV"	"DD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2483-HD-D"	"2483"	"yes"	"91.5"	"100"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2672-HH-D"	"2672"	"no"	"nd"	"nd"	"none"	"BS2"	"MCAV"	"HH"	"NO"	"Jan"	"2021"	"Two months after second treatment"	"NS2408"
+"BS2-2675-HD-O"	"2675"	"no"	"0"	"-3.9"	"none"	"BS2"	"MCAV"	"HD"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2408"
+"BS2-2683-HH-O"	"2683"	"no"	"nd"	"nd"	"resistant"	"BS2"	"MCAV"	"HH"	"NO"	"Oct"	"2020"	"Two weeks after treatment"	"NS2408"
