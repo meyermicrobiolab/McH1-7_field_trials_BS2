@@ -22,7 +22,6 @@ library(CoDaSeq)
 library(dplyr)
 library(cowplot)
 library(randomcoloR)
-library(biomehorizon)  
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
 
