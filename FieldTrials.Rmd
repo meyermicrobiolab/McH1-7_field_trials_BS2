@@ -22,6 +22,7 @@ library(CoDaSeq)
 library(dplyr)
 library(cowplot)
 library(randomcoloR)
+library(reshape2)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
 
@@ -792,7 +793,7 @@ panels<-plot_grid(
   p2+theme(legend.position="none"),
   p3+theme(legend.position="none"),
   align = 'vh',
-  labels=c("Before treatment","Two weeks after treatment","Two months after treatment"), 
+  #labels=c("Before treatment","Two weeks after treatment","Two months after treatment"), #the alignment of labels is weird, add with inkscape when I add the legend
   nrow=1)
 panels
 dev.off()
@@ -801,7 +802,8 @@ dev.off()
 
 
 
-Stacked bar charts
+Stacked bar charts - won't use for manuscript
+
 ```{r, echo=FALSE}
 # load in data and create phyloseq object
 otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
@@ -814,14 +816,14 @@ sampledata = sample_data(samples)
 ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps #755 taxa and 194 samples
+ps #756 taxa and 194 samples
 
 ps_ra<-transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
-ps_ra #755 taxa and 194 samples
+ps_ra #756 taxa and 194 samples
 get_taxa_unique(ps_ra, "Class") #46
 get_taxa_unique(ps_ra, "Order") #102
 get_taxa_unique(ps_ra, "Family") #183
-get_taxa_unique(ps_ra, "Genus") #322
+get_taxa_unique(ps_ra, "Genus") #323
 
 n <- 46
 # after plotting, you can re-run the next line to create a different selection of colors
@@ -866,76 +868,88 @@ dev.off()
 
 ```
 
+### Create bubble plot to show common taxa across time
 
+Subset data for the 24 colonies that have complete or near complete sets of samples (all three time points, paired HD and DD samples)
 
-
-
-
-
-
-
-
-
-
-
-
-## Perform center-log-ratio transformation on ASVs and calculate Aitchison Distance and principal components
-
-## BS3
+Create bubble plots of predominant taxa
 
 ```{r, echo=FALSE}
-# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS3.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS3.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5_BS3.txt",sep="\t",header=T,row.names=1)
+
+# load in data and create phyloseq object
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
 OTU = otu_table(otu, taxa_are_rows=FALSE)
 taxon<-as.matrix(taxon)
 TAX = tax_table(taxon)
 sampledata = sample_data(samples)
-ps5_BS3 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5_BS3 #246 taxa and 216 samples
+ps #756 taxa and 194 samples
+
+# get samples that have paired sample types (HD/DD) and multiple time points
+ps2 = subset_samples(ps, Complete_sets == "yes")
+ps2 #756 taxa and 125 samples
+ps2 <- prune_taxa(taxa_sums(ps2) > 1, ps2) 
+ps2 #736 taxa and 125 samples, removed 20 taxa only found in HH samples
+
+ps_ra<-transform_sample_counts(ps2, function(OTU) OTU/sum(OTU))
+ps_ra #736 taxa and 125 samples
+get_taxa_unique(ps_ra, "Class") #45
+get_taxa_unique(ps_ra, "Order") #96
+get_taxa_unique(ps_ra, "Family") #174
+get_taxa_unique(ps_ra, "Genus") #314
+
+# Get most prevalent taxa
+ps20<-prune_taxa(names(sort(taxa_sums(ps_ra),TRUE)[1:20]), ps_ra)
+ps20 #20 taxa and 125 samples
+get_taxa_unique(ps20, "Genus") #13
+
+# Export phyloseq object as spreadsheets for plotting
+otu_20 = as(otu_table(ps20), "matrix")
+taxon_20 = as(tax_table(ps20), "matrix")
+metadata_20 = as(sample_data(ps20), "matrix")
+write.table(otu_20,"silva_nochloronomito_otu_table_ps20.txt",sep="\t",col.names=NA)
+write.table(taxon_20,"silva_nochloronomito_taxa_table_ps20.txt",sep="\t",col.names=NA)
+write.table(metadata_20,"metadata_ps20.txt",sep="\t",col.names=NA)
+
+# read in otu table with graph-appropriate ASV names
+asv <- read.table("silva_nochloronomito_otu_table_ps20_v3.txt",sep="\t",header=TRUE, row.names=1)
+# make sample names a column
+asv <- tibble::rownames_to_column(asv, "sample")
+asv_long<-melt(asv, id.vars=c("sample"))
+names(asv_long)[names(asv_long)=="variable"] <- "ASV"
+names(asv_long)[names(asv_long)=="value"] <- "relative abundance"
+
+meta<-read.table("metadata_ps20.txt",sep="\t",header=T,row.names=1)
+# make sample names a column
+meta <- tibble::rownames_to_column(meta, "sample")
+
+#merge asv table and metadata
+asv_meta <- merge(asv_long,meta, "sample")
+
+#adjust settings for plotting
+asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+asv_meta$Condition<-factor(asv_meta$Condition,levels=c("HD","DD"))
+# color palatte for bactrial class
+# sort ASVs by taxonomy
+
+#make bubble plot with facte grid: horizontal=time, vertical=treatment
+bubble <- ggplot(asv_meta, aes(sample,ASV))+
+  geom_point(aes(size="relative abundance"),alpha=0.8)+ # the alpha value is the opacity of the bubble
+  scale_size(range = c(0,40), name="relative abundance")+ #adjust the two numbers here to change bubble sizes
+  theme_bw()+
+  theme(axis.text.x=element_text(size=10,angle=90,hjust=1,vjust=0))+
+  theme(axis.text.y=element_text(size=10))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  theme(legend.text = element_text(size=10))
+bubble  
 
 
-# First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
-# Also transposing here, need samples as rows
-d.czm <- cmultRepl(t(otu), method="CZM", label=0)
-# Perform the center-log-ratio (CLR) transformation 
-d.clr <- codaSeq.clr(d.czm)
-# transpose matrix of CLR transformed data for ordination and dendrogram
-E.clr <- t(d.clr)
-# plot compositional PCA biplot (perform a singular value decomposition)
-d.pcx <- prcomp(E.clr)
-# calculate percent variance explained for the axis labels
-pc1 <- round(d.pcx$sdev[1]^2/sum(d.pcx$sdev^2),2)
-pc2 <- round(d.pcx$sdev[2]^2/sum(d.pcx$sdev^2),2)
-xlab <- paste("PC1: ", pc1, sep="")
-ylab <- paste("PC2: ", pc2, sep="")
-#biplot(d.pcx, cex=c(0.6,0.4), var.axes=F,scale=1, xlab=xlab, ylab=ylab)
-summary(d.pcx)
-str(d.pcx)
-screeplot(d.pcx)
-
-# replot PCA with ggplot2 (showing samples only)
-df_out <- as.data.frame(d.pcx$x)
-theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-sample_data(ps_ra)$Treatment<-factor(sample_data(ps_ra)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-sample_data(ps_ra)$Collection.month<-factor(sample_data(ps_ra)$Collection.month,levels=c("Aug","Oct","Jan"))
 
 
-####### Use phyloseq/vegan to perform PERMANOVA on phyloseq object
-# set metadata as factors
-type<-as.character(samples$Treatment)
-frac<-as.character(samples$Collection.month)
-# permanova between groups using Aitchison distance
-dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2),"data.frame"))
-print(perm)
 ```
-
-
-
-
 
