@@ -1,0 +1,506 @@
+> perm<-adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
+> print(perm)
+
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Condition * Treatment * Collection.month, data = as(sample_data(ps5_BS2), "data.frame"))
+                                      Df SumOfSqs      R2      F Pr(>F)    
+Condition                              2    15127 0.03271 3.5368  0.001 ***
+Treatment                              5    21612 0.04674 2.0212  0.001 ***
+Collection.month                       2    35736 0.07728 8.3553  0.001 ***
+Condition:Treatment                    4     7950 0.01719 0.9293  0.613    
+Condition:Collection.month             4     7389 0.01598 0.8638  0.735    
+Treatment:Collection.month             5     8850 0.01914 0.8277  0.845    
+Condition:Treatment:Collection.month   4     8627 0.01866 1.0085  0.429    
+Residual                             167   357136 0.77231                  
+Total                                193   462427 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
+
+
+
+
+> perm2<-pairwise.adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
+> print(perm2)
+
+$parent_call
+[1] "dist.clr ~ Condition * Treatment * Collection.month , strata = Null , permutations 999"
+
+$HH_vs_DD
+                            Df SumOfSqs      R2      F Pr(>F)    
+Condition                    1     6814 0.02321 2.5997  0.008 ** 
+Treatment                    5    20309 0.06917 1.5497  0.010 ** 
+Collection.month             2    20122 0.06853 3.8386  0.001 ***
+Condition:Collection.month   2     4277 0.01457 0.8159  0.714    
+Treatment:Collection.month   5    11440 0.03896 0.8729  0.716    
+Residual                    88   230654 0.78556                  
+Total                      103   293616 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$HH_vs_HD
+                            Df SumOfSqs      R2      F Pr(>F)    
+Condition                    1     1206 0.00602 0.7633  0.717    
+Treatment                    5    13522 0.06747 1.7117  0.002 ** 
+Collection.month             2    19658 0.09808 6.2207  0.001 ***
+Condition:Collection.month   2     2437 0.01216 0.7713  0.764    
+Treatment:Collection.month   5     7185 0.03585 0.9094  0.642    
+Residual                    99   156420 0.78043                  
+Total                      114   200428 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$DD_vs_HD
+                                      Df SumOfSqs      R2      F Pr(>F)    
+Condition                              1    12351 0.02934 5.5489  0.001 ***
+Treatment                              4    18943 0.04500 2.1277  0.001 ***
+Collection.month                       2    34026 0.08083 7.6433  0.001 ***
+Condition:Treatment                    4     7876 0.01871 0.8846  0.736    
+Condition:Collection.month             2     4203 0.00999 0.9442  0.505    
+Treatment:Collection.month             4     7702 0.01830 0.8651  0.764    
+Condition:Treatment:Collection.month   4     8627 0.02050 0.9690  0.512    
+Residual                             147   327198 0.77733                  
+Total                                168   420927 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+attr(,"class")
+[1] "pwadstrata" "list"      
+
+
+
+
+
+
+
+> perm3<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+> print(perm3)
+
+$parent_call
+[1] "dist.clr ~ Treatment/Collection.month , strata = Collection.month , permutations 999"
+
+$`none_vs_probiotic paste`
+                            Df SumOfSqs      R2      F Pr(>F)
+Treatment                    1     6153 0.02265 2.6988  0.394
+Treatment:Collection.month   3    21538 0.07929 3.1492  0.232
+Residual                   107   243937 0.89805              
+Total                      111   271628 1.00000              
+
+$`none_vs_probiotic bag`
+                            Df SumOfSqs      R2      F Pr(>F)
+Treatment                    1     4968 0.01980 2.2571  0.684
+Treatment:Collection.month   3    21402 0.08531 3.2410  0.443
+Residual                   102   224512 0.89489              
+Total                      106   250882 1.00000              
+
+$`none_vs_control bag`
+                            Df SumOfSqs      R2      F Pr(>F)
+Treatment                    1     6058 0.02185 2.6284  0.409
+Treatment:Collection.month   3    22287 0.08039 3.2235  0.252
+Residual                   108   248906 0.89776              
+Total                      112   277251 1.00000              
+
+$`none_vs_control paste`
+                            Df SumOfSqs      R2      F Pr(>F)
+Treatment                    1     7491 0.02738 3.3532  0.176
+Treatment:Collection.month   3    22643 0.08275 3.3785  0.716
+Residual                   109   243503 0.88988              
+Total                      113   273637 1.00000              
+
+$none_vs_resistant
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     3250 0.01455 1.4721  0.503
+Treatment:Collection.month  3    19166 0.08581 2.8932  0.330
+Residual                   91   200938 0.89964              
+Total                      95   223354 1.00000              
+
+$`probiotic paste_vs_probiotic bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2042 0.02038 0.9696  0.507
+Treatment:Collection.month  2    11794 0.11772 2.7999  0.326
+Residual                   41    86351 0.86190              
+Total                      44   100187 1.00000              
+
+$`probiotic paste_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2062 0.01643 0.8750  0.610
+Treatment:Collection.month  2    12680 0.10104 2.6906  0.105
+Residual                   47   110745 0.88253              
+Total                      50   125486 1.00000              
+
+$`probiotic paste_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2462 0.02038 1.1220  0.256
+Treatment:Collection.month  2    13035 0.10787 2.9697  0.236
+Residual                   48   105342 0.87175              
+Total                      51   120839 1.00000              
+
+$`probiotic paste_vs_resistant`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     1846 0.02489 0.8824  0.571
+Treatment:Collection.month  2     9558 0.12885 2.2838  0.402
+Residual                   30    62777 0.84626              
+Total                      33    74181 1.00000              
+
+$`probiotic bag_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2189 0.02064 1.0069  0.407
+Treatment:Collection.month  2    12543 0.11827 2.8843  0.308
+Residual                   42    91320 0.86109              
+Total                      45   106052 1.00000              
+
+$`probiotic bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2190 0.02168 1.0959  0.451
+Treatment:Collection.month  2    12898 0.12770 3.2277  0.375
+Residual                   43    85916 0.85062              
+Total                      46   101004 1.00000              
+
+$`probiotic bag_vs_resistant`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     1520 0.02801 0.8768  0.574
+Treatment:Collection.month  2     9421 0.17353 2.7165  0.579
+Residual                   25    43351 0.79847              
+Total                      28    54293 1.00000              
+
+$`control bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     1893 0.01503 0.8410  0.644
+Treatment:Collection.month  2    13784 0.10941 3.0614  0.890
+Residual                   49   110311 0.87557              
+Total                      52   125988 1.00000              
+
+$`control bag_vs_resistant`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     1412 0.01777 0.6463  0.884
+Treatment:Collection.month  2    10307 0.12970 2.3582  0.819
+Residual                   31    67746 0.85252              
+Total                      34    79465 1.00000              
+
+$`control paste_vs_resistant`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     1104 0.01490 0.5668  0.998
+Treatment:Collection.month  2    10662 0.14387 2.7364  0.825
+Residual                   32    62343 0.84123              
+Total                      35    74109 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list"      
+
+
+
+
+
+
+> perm4<-pairwise.adonis2(dist.clr~Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+> print(perm4)
+$parent_call
+[1] "dist.clr ~ Condition/Collection.month , strata = Collection.month , permutations 999"
+
+$HH_vs_DD
+                            Df SumOfSqs      R2      F Pr(>F)  
+Condition                    1     6814 0.02321 2.6694  0.017 *
+Condition:Collection.month   4    36642 0.12480 3.5887  0.027 *
+Residual                    98   250160 0.85200                
+Total                      103   293616 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$HH_vs_HD
+                            Df SumOfSqs      R2      F Pr(>F)  
+Condition                    1     1206 0.00602 0.7691  0.982  
+Condition:Collection.month   4    28292 0.14116 4.5103  0.073 .
+Residual                   109   170930 0.85283                
+Total                      114   200428 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$DD_vs_HD
+                            Df SumOfSqs      R2      F Pr(>F)    
+Condition                    1    12351 0.02934 5.6338  0.001 ***
+Condition:Collection.month   4    51229 0.12171 5.8419  0.012 *  
+Residual                   163   357347 0.84895                  
+Total                      168   420927 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+attr(,"class")
+[1] "pwadstrata" "list"
+
+
+
+
+
+perm5<-pairwise.adonis2(dist.clr~Treatment*Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+print(perm5)
+
+
+$parent_call
+[1] "dist.clr ~ Treatment * Condition/Collection.month , strata = Collection.month , permutations 999"
+
+$`none_vs_probiotic paste`
+                                      Df SumOfSqs      R2      F Pr(>F)    
+Treatment                              1     6153 0.02265 2.8289  0.195    
+Condition                              2    16097 0.05926 3.7005  0.001 ***
+Treatment:Condition                    1     2227 0.00820 1.0241  0.228    
+Treatment:Condition:Collection.month   8    31827 0.11717 1.8292  0.103    
+Residual                              99   215324 0.79272                  
+Total                                111   271628 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`none_vs_probiotic bag`
+                                      Df SumOfSqs      R2      F Pr(>F)   
+Treatment                              1     4968 0.01980 2.3183  0.547   
+Condition                              2    12550 0.05003 2.9282  0.002 **
+Treatment:Condition                    1     3351 0.01336 1.5638  0.055 . 
+Treatment:Condition:Collection.month   8    28569 0.11387 1.6664  0.395   
+Residual                              94   201443 0.80294                 
+Total                                106   250882 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`none_vs_control bag`
+                                      Df SumOfSqs      R2      F Pr(>F)   
+Treatment                              1     6058 0.02185 2.7150  0.328   
+Condition                              2    14717 0.05308 3.2982  0.003 **
+Treatment:Condition                    1     2333 0.00841 1.0455  0.266   
+Treatment:Condition:Collection.month   8    31028 0.11191 1.7384  0.305   
+Residual                             100   223115 0.80474                 
+Total                                112   277251 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`none_vs_control paste`
+                                      Df SumOfSqs      R2      F Pr(>F)   
+Treatment                              1     7491 0.02738 3.4579  0.125   
+Condition                              2    13678 0.04999 3.1570  0.002 **
+Treatment:Condition                    1     2550 0.00932 1.1769  0.124   
+Treatment:Condition:Collection.month   8    31124 0.11374 1.7959  0.421   
+Residual                             101   218794 0.79958                 
+Total                                113   273637 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$none_vs_resistant
+                                     Df SumOfSqs      R2      F Pr(>F)    
+Treatment                             1     3250 0.01455 1.5318  0.355    
+Condition                             2    13766 0.06163 3.2438  0.001 ***
+Treatment:Condition:Collection.month  7    25973 0.11628 1.7486  0.109    
+Residual                             85   180365 0.80753                  
+Total                                95   223354 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_probiotic bag`
+                                     Df SumOfSqs      R2      F Pr(>F)  
+Treatment                             1     2042 0.02038 0.9966  0.474  
+Condition                             1     3786 0.03779 1.8479  0.051 .
+Treatment:Condition                   1     2907 0.02902 1.4189  0.163  
+Treatment:Condition:Collection.month  4    15636 0.15607 1.9078  0.454  
+Residual                             37    75814 0.75673                
+Total                                44   100187 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_control bag`
+                                     Df SumOfSqs      R2      F Pr(>F)   
+Treatment                             1     2062 0.01643 0.9094  0.555   
+Condition                             1     5641 0.04495 2.4882  0.007 **
+Treatment:Condition                   1     2201 0.01754 0.9709  0.476   
+Treatment:Condition:Collection.month  4    18096 0.14421 1.9955  0.079 . 
+Residual                             43    97487 0.77687                 
+Total                                50   125486 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_control paste`
+                                     Df SumOfSqs      R2      F Pr(>F)   
+Treatment                             1     2462 0.02038 1.1630  0.248   
+Condition                             1     4980 0.04122 2.3521  0.005 **
+Treatment:Condition                   1     2039 0.01688 0.9631  0.452   
+Treatment:Condition:Collection.month  4    18191 0.15054 2.1478  0.097 . 
+Residual                             44    93166 0.77099                 
+Total                                51   120839 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_resistant`
+                                     Df SumOfSqs      R2      F Pr(>F)   
+Treatment                             1     1846 0.02489 0.9445  0.442   
+Condition                             1     4558 0.06145 2.3318  0.005 **
+Treatment:Condition:Collection.month  3    13040 0.17579 2.2235  0.046 * 
+Residual                             28    54736 0.73787                 
+Total                                33    74181 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic bag_vs_control bag`
+                                     Df SumOfSqs      R2      F Pr(>F)
+Treatment                             1     2189 0.02064 0.9951  0.413
+Condition                             1     3443 0.03247 1.5650  0.223
+Treatment:Condition                   1     1976 0.01863 0.8982  0.511
+Treatment:Condition:Collection.month  4    14838 0.13991 1.6860  0.727
+Residual                             38    83606 0.78835              
+Total                                45   106052 1.00000              
+
+$`probiotic bag_vs_control paste`
+                                     Df SumOfSqs      R2      F Pr(>F)
+Treatment                             1     2190 0.02168 1.0771  0.433
+Condition                             1     2725 0.02698 1.3407  0.317
+Treatment:Condition                   1     1871 0.01853 0.9205  0.575
+Treatment:Condition:Collection.month  4    14933 0.14785 1.8364  0.741
+Residual                             39    79285 0.78496              
+Total                                46   101004 1.00000              
+
+$`probiotic bag_vs_resistant`
+                                     Df SumOfSqs      R2      F Pr(>F)
+Treatment                             1     1520 0.02801 0.8560  0.598
+Condition                             1     2135 0.03933 1.2022  0.474
+Treatment:Condition:Collection.month  3     9782 0.18017 1.8356  0.729
+Residual                             23    40855 0.75250              
+Total                                28    54293 1.00000              
+
+$`control bag_vs_control paste`
+                                     Df SumOfSqs      R2      F Pr(>F)  
+Treatment                             1     1893 0.01503 0.8439  0.643  
+Condition                             1     4018 0.03189 1.7909  0.060 .
+Treatment:Condition                   1     1727 0.01371 0.7699  0.668  
+Treatment:Condition:Collection.month  4    17393 0.13805 1.9381  0.824  
+Residual                             45   100957 0.80132                
+Total                                52   125988 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`control bag_vs_resistant`
+                                     Df SumOfSqs      R2      F Pr(>F)
+Treatment                             1     1412 0.01777 0.6551  0.876
+Condition                             1     3284 0.04132 1.5230  0.132
+Treatment:Condition:Collection.month  3    12241 0.15405 1.8925  0.648
+Residual                             29    62528 0.78686              
+Total                                34    79465 1.00000              
+
+$`control paste_vs_resistant`
+                                     Df SumOfSqs      R2      F Pr(>F)
+Treatment                             1     1104 0.01490 0.5691  0.995
+Condition                             1     2461 0.03321 1.2686  0.225
+Treatment:Condition:Collection.month  3    12337 0.16647 2.1195  0.773
+Residual                             30    58207 0.78542              
+Total                                35    74109 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list"      
+
+
+
+
+
+
+##### Diseased samples only
+perm6<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+print(perm6)
+
+phyloseq-class experiment-level object
+otu_table()   OTU Table:         [ 756 taxa and 79 samples ]
+sample_data() Sample Data:       [ 79 samples by 13 sample variables ]
+tax_table()   Taxonomy Table:    [ 756 taxa by 6 taxonomic ranks ]
+No. adjusted imputations:  25046 
+$parent_call
+[1] "dist.clr2 ~ Treatment/Collection.month , strata = Collection.month , permutations 999"
+
+$`none_vs_probiotic paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     6107 0.04156 2.0340  0.615
+Treatment:Collection.month  3    17734 0.12069 1.9689  0.950
+Residual                   41   123093 0.83775              
+Total                      45   146933 1.00000              
+
+$`none_vs_probiotic bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     5649 0.04468 1.8970  0.558
+Treatment:Collection.month  3    13573 0.10735 1.5191  0.471
+Residual                   36   107214 0.84797              
+Total                      40   126436 1.00000              
+
+$`none_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     5377 0.03517 1.6458  0.736
+Treatment:Collection.month  3    16832 0.11009 1.7174  0.528
+Residual                   40   130677 0.85474              
+Total                      44   152886 1.00000              
+
+$`none_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     6827 0.04642 2.2425  0.491
+Treatment:Collection.month  3    15410 0.10479 1.6872  0.840
+Residual                   41   124820 0.84879              
+Total                      45   147057 1.00000              
+
+$`probiotic paste_vs_probiotic bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2741 0.04979 1.0817  0.553
+Treatment:Collection.month  2     9235 0.16773 1.8220  0.624
+Residual                   17    43086 0.78249              
+Total                      20    55063 1.00000              
+
+$`probiotic paste_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)  
+Treatment                   1     2168 0.02669 0.6841  0.935  
+Treatment:Collection.month  2    12495 0.15385 1.9714  0.063 .
+Residual                   21    66549 0.81945                
+Total                      24    81212 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)  
+Treatment                   1     2362 0.03186 0.8562  0.698  
+Treatment:Collection.month  2    11073 0.14937 2.0068  0.083 .
+Residual                   22    60693 0.81876                
+Total                      25    74127 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic bag_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2581 0.04191 0.8150  0.579
+Treatment:Collection.month  2     8333 0.13531 1.3157  0.875
+Residual                   16    50670 0.82277              
+Total                      19    61585 1.00000              
+
+$`probiotic bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2286 0.04233 0.8672  0.733
+Treatment:Collection.month  2     6911 0.12796 1.3109  0.854
+Residual                   17    44813 0.82971              
+Total                      20    54011 1.00000              
+
+$`control bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2649 0.03266 0.8147  0.637
+Treatment:Collection.month  2    10171 0.12541 1.5641  0.863
+Residual                   21    68277 0.84192              
+Total                      24    81096 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list"      
+
+
+
+
+
+
+
+
+
+
+
+
+

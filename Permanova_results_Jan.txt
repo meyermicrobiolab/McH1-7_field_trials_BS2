@@ -1,0 +1,54 @@
+> perm<-adonis2(dist.clr~Condition*Treatment,as(sample_data(ps5_BS2_jan),"data.frame"))
+> print(perm)
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr ~ Condition * Treatment, data = as(sample_data(ps5_BS2_jan), "data.frame"))
+                    Df SumOfSqs      R2      F Pr(>F)  
+Condition            2     7651 0.04727 1.4687  0.081 .
+Treatment            5    11983 0.07403 0.9200  0.617  
+Condition:Treatment  4     9393 0.05803 0.9015  0.632  
+Residual            51   132847 0.82068                
+Total               62   161874 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
+
+
+
+ perm2<-pairwise.adonis2(dist.clr~Condition*Treatment,as(sample_data(ps5_BS2_jan),"data.frame"))
+> print(perm2)
+$parent_call
+[1] "dist.clr ~ Condition * Treatment , strata = Null , permutations 999"
+
+$DD_vs_HD
+                    Df SumOfSqs      R2      F Pr(>F)   
+Condition            1     6002 0.03933 2.2810  0.006 **
+Treatment            4    10890 0.07136 1.0345  0.385   
+Condition:Treatment  4     9393 0.06156 0.8924  0.649   
+Residual            48   126314 0.82775                 
+Total               57   152600 1.00000                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$DD_vs_HH
+          Df SumOfSqs      R2      F Pr(>F)
+Condition  1     2590 0.03155 0.7762  0.761
+Treatment  5    12776 0.15562 0.7658  0.921
+Residual  20    66732 0.81284              
+Total     26    82098 1.00000              
+
+$HD_vs_HH
+          Df SumOfSqs      R2      F Pr(>F)
+Condition  1     1560 0.01859 0.7301  0.691
+Treatment  5     9694 0.11554 0.9074  0.627
+Residual  34    72647 0.86587              
+Total     40    83901 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list" 
