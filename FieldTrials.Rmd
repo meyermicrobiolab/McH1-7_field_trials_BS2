@@ -915,13 +915,13 @@ write.table(otu_20,"silva_nochloronomito_otu_table_ps20.txt",sep="\t",col.names=
 write.table(taxon_20,"silva_nochloronomito_taxa_table_ps20.txt",sep="\t",col.names=NA)
 write.table(metadata_20,"metadata_ps20.txt",sep="\t",col.names=NA)
 
-# read in otu table with graph-appropriate ASV names
-asv <- read.table("silva_nochloronomito_otu_table_ps20_v3.txt",sep="\t",header=TRUE, row.names=1)
+# read in otu table with graph-appropriate ASV names, sorted ASVs in excel by taxonomic Class (top to bottom on graph = right to left columns)
+asv <- read.table("silva_nochloronomito_otu_table_ps20_v4.txt",sep="\t",header=TRUE, row.names=1)
 # make sample names a column
 asv <- tibble::rownames_to_column(asv, "sample")
 asv_long<-melt(asv, id.vars=c("sample"))
 names(asv_long)[names(asv_long)=="variable"] <- "ASV"
-names(asv_long)[names(asv_long)=="value"] <- "relative abundance"
+names(asv_long)[names(asv_long)=="value"] <- "relative_abundance"
 
 meta<-read.table("metadata_ps20.txt",sep="\t",header=T,row.names=1)
 # make sample names a column
@@ -929,19 +929,38 @@ meta <- tibble::rownames_to_column(meta, "sample")
 
 #merge asv table and metadata
 asv_meta <- merge(asv_long,meta, "sample")
+write.table(asv_meta,"asv_meta.txt",sep="\t",col.names=NA)
 
-#adjust settings for plotting
-asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
-asv_meta$Condition<-factor(asv_meta$Condition,levels=c("HD","DD"))
-# color palatte for bactrial class
-# sort ASVs by taxonomy
 
-#make bubble plot with facte grid: horizontal=time, vertical=treatment
-bubble <- ggplot(asv_meta, aes(sample,ASV))+
-  geom_point(aes(size="relative abundance"),alpha=0.8)+ # the alpha value is the opacity of the bubble
-  scale_size(range = c(0,40), name="relative abundance")+ #adjust the two numbers here to change bubble sizes
+#### read in data for plot
+asv_meta<-read.table("asv_meta.txt",sep="\t",header=T,row.names=1) 
+
+###use dplyr to group by sample date, then arrange by treatment using my custom orders
+asv_meta2<- asv_meta %>% group_by(sampled) %>% arrange(factor(Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none")), .by_group = TRUE)
+
+
+###set the order of values that I want within multiple columns; remember that the y-axis has to be listed bottom to top
+myorder1<-c("Before treatment","Two weeks after treatment","Two months after treatment")
+myorder2<-c("probiotic bag","probiotic paste","control bag","control paste","none")
+myorder3<-c("Other","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1")
+
+#set the plot aesthetics
+cols<-c("none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+asv_meta2$sampled<-factor(asv_meta2$sampled,levels=c("Before treatment","Two weeks after treatment","Two months after treatment"))
+asv_meta2$Treatment<-factor(asv_meta2$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+asv_meta2$ASV<-factor(asv_meta2$ASV,levels=c("Other","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
+
+#this factor not reflected in plot
+#asv_meta2$Condition<-factor(asv_meta2$Condition,levels=c("HD","DD"))
+
+#make bubble plot
+bubble <- ggplot(asv_meta2, aes(x=sample,y=ASV,size=relative_abundance,color=Treatment))+
+  geom_point(alpha=0.8)+ # the alpha value is the opacity of the bubble
+  scale_size(range = c(0,10), name="Relative abundance")+ #adjust the two numbers here to change bubble sizes
+  facet_grid(. ~ sampled, scales="free")+
   theme_bw()+
-  theme(axis.text.x=element_text(size=10,angle=90,hjust=1,vjust=0))+
+  scale_color_manual(values=cols)+
+  theme(axis.text.x=element_blank())+  
   theme(axis.text.y=element_text(size=10))+
   theme(axis.title.x=element_blank())+
   theme(axis.title.y=element_blank())+
@@ -952,4 +971,3 @@ bubble
 
 
 ```
-
