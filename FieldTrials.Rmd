@@ -941,14 +941,11 @@ asv_meta$sampled<-factor(asv_meta$sampled,levels=c("Before treatment","Two weeks
 asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 asv_meta$ASV<-factor(asv_meta$ASV,levels=c("Other","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
 
-#this factor not reflected in plot
-#asv_meta$Condition<-factor(asv_meta$Condition,levels=c("HD","DD"))
-
 #make bubble plot
 bubble <- ggplot(asv_meta, aes(x=sample,y=ASV,size=relative_abundance,color=Treatment))+
   geom_point(alpha=0.8)+ # the alpha value is the opacity of the bubble
   scale_size(range = c(0,10), name="Relative abundance")+ #adjust the two numbers here to change bubble sizes
-  facet_grid(. ~ sampled, scales="free")+
+  facet_grid(Condition ~ sampled, scales="free")+
   theme_bw()+
   scale_color_manual(values=cols)+
   theme(axis.text.x=element_blank())+  
@@ -960,31 +957,10 @@ bubble
 
 #I like this plot, but I just want it to arrange the samples on the x-axis by treatment type.
 
-
-
 ###use dplyr to group by sample date, then arrange by treatment using my custom orders
 asv_meta2 <- asv_meta %>% group_by(sampled) %>% arrange(factor(Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none")), .by_group = TRUE)
 # the order in the table is correct, but it doesn't change what ggplot does
-
-bubble <- ggplot(asv_meta2, aes(x=sample,y=ASV,size=relative_abundance,color=Treatment))+
-  geom_point(alpha=0.8)+ # the alpha value is the opacity of the bubble
-  scale_size(range = c(0,10), name="Relative abundance")+ #adjust the two numbers here to change bubble sizes
-  facet_grid(. ~ sampled, scales="free")+
-  theme_bw()+
-  scale_color_manual(values=cols)+
-  theme(axis.text.x=element_blank())+  
-  theme(axis.text.y=element_text(size=10))+
-  theme(axis.title.x=element_blank())+
-  theme(axis.title.y=element_blank())+
-  theme(legend.text = element_text(size=10))
-bubble  
-
-
-
-###set the order of values that I want within multiple columns; remember that the y-axis has to be listed bottom to top
-#myorder1<-c("Before treatment","Two weeks after treatment","Two months after treatment")
-#myorder2<-c("probiotic bag","probiotic paste","control bag","control paste","none")
-#myorder3<-c("Other","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1")
+# I think because there are so many different factors here that I need to create subplots and stitch back together with cowplot
 
 
 

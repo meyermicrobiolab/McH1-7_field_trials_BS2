@@ -16,7 +16,7 @@ BS2-2048-HD-A	2048	yes	45.3	100	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS
 BS2-2076-DD-A	2076	yes	0.7	71.8	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
 BS2-2076-HD-A	2076	yes	0.7	71.8	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
 BS2-2078-DD-A	2078	yes	11.7	25.2	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
-BS2-2078-HH-A	2078	yes	11.7	25.2	none	BS2	MCAV	HH	NO	Aug	2020	Before treatment	NS2107
+BS2-2078-HH-A	2078	yes	11.7	25.2	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
 BS2-2079-DD-A	2079	yes	24.7	100	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
 BS2-2079-HD-A	2079	yes	24.7	100	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
 BS2-2091-DD-A	2091	yes	4	1.8	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
