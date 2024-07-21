@@ -973,8 +973,8 @@ asv_meta2 <- asv_meta %>% group_by(sampled) %>% arrange(factor(Treatment,levels=
 
 
 ```{r, echo=FALSE}
-# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, added ASV numbers to taxa table
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
+# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan corncob.txt",sep="\t",header=TRUE, row.names=1)
 taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
 samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
 OTU = otu_table(otu, taxa_are_rows=FALSE)
@@ -1020,7 +1020,7 @@ sig.taxonomy.tissueJan <- as.data.frame(tax_table(ps5_BS2_jan)[tissueJan.da$sign
 
 # Move the data from a list to a dataframe and add taxonomy info
 tissueJan.da.models.df <- ldply(tissueJan.da.models, data.frame) %>% 
-  left_join(sig.taxonomy.tissueJan, by = c(".id" = "ASV")) %>%
+  left_join(sig.taxonomy.tissueJan, by = c(".id" = "Species")) %>%
   mutate(genusasv = paste0(Genus, "_(", .id,")"))
 
 ### Save these data so you don't have to re-run the model ###
