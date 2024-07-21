@@ -20,9 +20,11 @@ library(pairwiseAdonis)
 library(knitr)
 library(CoDaSeq)
 library(dplyr)
+library(plyr)
 library(cowplot)
 library(randomcoloR)
 library(reshape2)
+library(corncob)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
 
@@ -961,6 +963,70 @@ bubble
 asv_meta2 <- asv_meta %>% group_by(sampled) %>% arrange(factor(Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none")), .by_group = TRUE)
 # the order in the table is correct, but it doesn't change what ggplot does
 # I think because there are so many different factors here that I need to create subplots and stitch back together with cowplot
+
+
+```
+
+
+
+### Use corncob to look for differential abundant taxa by the continuous variable of total tissue loss
+
+
+```{r, echo=FALSE}
+# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, added ASV numbers to taxa table
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2_jan  #756 taxa and 63 samples
+
+
+# What microorganisms are significantly changing with changes in tissue loss? Use Jan samples only; total tissue loss in January
+
+set.seed(1)
+tissueJan.da <- differentialTest(formula = ~ Proportion_TissueLost_Jan21, 
+                             phi.formula = ~ Proportion_TissueLost_Jan21,
+                             formula_null = ~ 1,
+                             phi.formula_null = ~ Proportion_TissueLost_Jan21,
+                             test = "LRT", boot = FALSE,
+                             data = ps5_BS2_jan,
+                             fdr_cutoff = 0.05)
+
+#quick look at results with corncob's plotting feature
+plot(tissueJan.da, level="Genus")
+
+# create a function that will return the values of interest
+# This one is for when there is only one comparison
+extractmods <- function(model) {
+  result <- data.frame("Estimate" = model$coefficients[2, 1], 
+                        "Std.Error" = model$coefficients[2, 2], 
+                        "p" = model$coefficients[2, 4])
+  return(result)
+}
+
+# save the tissueJan.da output and add asv, p.adj values to it, and ultimately taxonomny info
+tissueJan.da.models <- lapply(tissueJan.da$significant_models, extractmods)
+names(tissueJan.da.models) <- tissueJan.da$significant_taxa
+
+# Add ASVs to the taxonomy table and save the significant asvs
+tax_table(ps5_BS2_jan)[,7] <- rownames(tax_table(ps5_BS2_jan))
+sig.taxonomy.tissueJan <- as.data.frame(tax_table(ps5_BS2_jan)[tissueJan.da$significant_taxa,]) 
+
+# Move the data from a list to a dataframe and add taxonomy info
+tissueJan.da.models.df <- ldply(tissueJan.da.models, data.frame) %>% 
+  left_join(sig.taxonomy.tissueJan, by = c(".id" = "ASV")) %>%
+  mutate(genusasv = paste0(Genus, "_(", .id,")"))
+
+### Save these data so you don't have to re-run the model ###
+write.table(tissueJan.da.models.df, "DA_tissueJan.txt", sep="\t",row.names = FALSE)
+
+
 
 
 
