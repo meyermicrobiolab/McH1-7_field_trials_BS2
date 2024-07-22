@@ -1026,9 +1026,4 @@ tissueJan.da.models.df <- ldply(tissueJan.da.models, data.frame) %>%
 ### Save these data so you don't have to re-run the model ###
 write.table(tissueJan.da.models.df, "DA_tissueJan.txt", sep="\t",row.names = FALSE)
 
-
-
-
-
-
 ```
