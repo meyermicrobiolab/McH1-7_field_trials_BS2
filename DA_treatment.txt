@@ -1,0 +1,2 @@
+".id"	"Estimate"	"Std.Error"	"p"	"Kingdom"	"Phylum"	"Class"	"Order"	"Family"	"Genus"	"genusasv"
+"ASV329"	2.89603017368093	2.28081324304845	0.209941986630519	"Bacteria"	"Firmicutes"	"Clostridia"	"Peptostreptococcales-Tissierellales"	"Fusibacteraceae"	"Fusibacter"	"Fusibacter_(ASV329)"

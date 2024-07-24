@@ -51,20 +51,6 @@ dev.off()
 
 ```
 
-## Compare ddPCR results for korormicin to relative abundance of Pseudoalteromonas ASV1, which is an exact match to McH1-7 over the V4 region.
-
-```{r, echo=FALSE}
-
-ddpcr_vs_asv <- read.table("KORddPCR_vs_PseudoaltASV1.txt",sep="\t",header=TRUE)
-pdf("compareKORddPCR_PseudoaltASV1.pdf")
-p3<-ggplot(ddpcr_vs_asv, aes(Copies_kor,ASV1))+
-  geom_point(shape=1)+
-  geom_smooth(method=lm)+
-  theme_bw()
-p3
-dev.off()
-
-```
 
 
 Plotting vibriolysin (vcpA) ddPCR results
@@ -99,7 +85,7 @@ p2<-ggplot(vcpA,aes(Treatment,Copies_vcpA))+
   theme(axis.title.x=element_blank())+
   theme_bw()+
   theme(text=element_text(size=14,face="bold"))+
-  ylab("copies of vibriolysin per ng DNA")+
+  ylab("copies of vcpA per ng DNA")+
   scale_color_manual(values=palette)
 p2
 dev.off()

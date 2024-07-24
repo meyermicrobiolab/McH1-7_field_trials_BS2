@@ -1,4 +1,0 @@
-.id	Estimate	Std.Error	p	Kingdom	Phylum	Class	Order	Family	Genus	genusasv
-ASV10	-0.082974508	1.953416668	0.96878774	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Thalassobius	Thalassobius_(ASV10)
-ASV13	-1.103475109	1.807532983	0.584678757	Bacteria	Proteobacteria	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Nautella	Nautella_(ASV13)
-ASV45	-0.428447864	2.110513385	0.852118893	Bacteria	Proteobacteria	Gammaproteobacteria	Burkholderiales	Comamonadaceae	Pelomonas	Pelomonas_(ASV45)
