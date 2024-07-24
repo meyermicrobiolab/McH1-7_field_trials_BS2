@@ -1,0 +1,137 @@
+#############################################  KORORMICIN  ############################
+
+
+               Df Sum Sq Mean Sq F value  Pr(>F)   
+kor$Treatment   4  231.6   57.89   4.258 0.00251 **
+Residuals     197 2678.3   13.60                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = kor$Copies_kor ~ kor$Treatment)
+
+$`kor$Treatment`
+                                    diff        lwr      upr     p adj
+control bag-none               2.0239167 -0.1849838 4.232817 0.0897605
+control paste-none             1.5906612 -0.5300838 3.711406 0.2395353
+probiotic bag-none             0.3832331 -2.1635936 2.930060 0.9937836
+probiotic paste-none           2.7552416  0.6067509 4.903732 0.0046452
+control paste-control bag     -0.4332556 -3.1262037 2.259693 0.9919695
+probiotic bag-control bag     -1.6406836 -4.6805417 1.399174 0.5728164
+probiotic paste-control bag    0.7313249 -1.9835274 3.446177 0.9464028
+probiotic bag-control paste   -1.2074281 -4.1838444 1.768988 0.7975011
+probiotic paste-control paste  1.1645805 -1.4790421 3.808203 0.7439383
+probiotic paste-probiotic bag  2.3720085 -0.6242404 5.368257 0.1917666
+
+
+
+
+
+
+
+             Df Sum Sq Mean Sq F value   Pr(>F)    
+kor$Month     2  320.5  160.27   12.32 9.05e-06 ***
+Residuals   199 2589.3   13.01                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = kor$Copies_kor ~ kor$Month)
+
+$`kor$Month`
+                     diff       lwr      upr     p adj
+October-August  0.2644404 -1.282325 1.811206 0.9141276
+January-August  2.8410395  1.210038 4.472041 0.0001682
+January-October 2.5765991  1.198878 3.954320 0.0000488
+
+
+
+
+
+
+
+
+
+Df Sum Sq Mean Sq F value Pr(>F)
+kor$HealthState   2   47.9   23.93   1.664  0.192
+Residuals       199 2862.0   14.38               
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = kor$Copies_kor ~ kor$HealthState)
+
+$`kor$HealthState`
+            diff        lwr       upr     p adj
+HD-DD  0.6645355 -0.6886552 2.0177262 0.4787355
+HH-DD -0.7672316 -2.7827733 1.2483102 0.6416470
+HH-HD -1.4317671 -3.4160954 0.5525613 0.2062776
+
+
+
+
+#############################################  vcpA  ############################
+
+
+                Df Sum Sq Mean Sq F value Pr(>F)
+vcpA$Treatment   4    1.2  0.2967   0.148  0.964
+Residuals      195  391.6  2.0082               
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = vcpA$Copies_vcpA ~ vcpA$Treatment)
+
+$`vcpA$Treatment`
+                                     diff        lwr       upr     p adj
+control bag-none               0.05413322 -0.7968456 0.9051120 0.9997877
+control paste-none            -0.08551123 -0.9026863 0.7316638 0.9984834
+probiotic bag-none             0.12028526 -0.8603248 1.1008953 0.9971783
+probiotic paste-none           0.16522900 -0.6625846 0.9930426 0.9818850
+control paste-control bag     -0.13964444 -1.1747328 0.8954439 0.9959174
+probiotic bag-control bag      0.06615205 -1.1022781 1.2345822 0.9998664
+probiotic paste-control bag    0.11109579 -0.9324119 1.1546035 0.9983773
+probiotic bag-control paste    0.20579649 -0.9382486 1.3498415 0.9877291
+probiotic paste-control paste  0.25074023 -0.7653889 1.2668693 0.9606883
+probiotic paste-probiotic bag  0.04494374 -1.1067243 1.1966118 0.9999697
+
+
+
+
+
+ Df Sum Sq Mean Sq F value Pr(>F)
+vcpA$Month    2    2.6   1.285   0.649  0.524
+Residuals   197  390.2   1.981               
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = vcpA$Copies_vcpA ~ vcpA$Month)
+
+$`vcpA$Month`
+                      diff        lwr       upr     p adj
+October-August  -0.2895251 -0.8954308 0.3163805 0.4977204
+January-August  -0.1567005 -0.7931158 0.4797148 0.8301899
+January-October  0.1328246 -0.4074083 0.6730575 0.8306385
+
+
+
+
+
+Df Sum Sq Mean Sq F value Pr(>F)
+vcpA$HealthState   2    2.6   1.290   0.651  0.523
+Residuals        197  390.2   1.981               
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = vcpA$Copies_vcpA ~ vcpA$HealthState)
+
+$`vcpA$HealthState`
+             diff        lwr       upr     p adj
+HD-DD  0.06867897 -0.4364509 0.5738088 0.9447727
+HH-DD -0.28733989 -1.0365008 0.4618210 0.6373002
+HH-HD -0.35601886 -1.0933418 0.3813041 0.4904921
+
+
+
+
+

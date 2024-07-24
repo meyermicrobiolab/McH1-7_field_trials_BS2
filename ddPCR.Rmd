@@ -1,0 +1,108 @@
+---
+title: "probiotics_insitu_KOR_VCOR"
+author: "J. Meyer"
+date: "4/20/2021"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Plotting korormicin ddPCR results
+
+```{r, echo=FALSE}
+
+library(ggplot2)
+kor <- read.table("kor.txt",sep="\t",header=TRUE)
+
+palette <- c("DD"="#000000","HD"="#999999","HH"="#E69F00")
+kor$Month <- factor(kor$Month, levels=c("August","October","January"))
+#label from the bottom up
+kor$Treatment <- factor(kor$Treatment, levels=c("none","control bag","control paste","probiotic bag","probiotic paste"))
+
+#one-way anova
+model1<- aov(kor$Copies_kor~kor$Treatment)
+summary(model1)
+TukeyHSD(model1)
+
+model2<- aov(kor$Copies_kor~kor$Month)
+summary(model2)
+TukeyHSD(model2)
+
+model3<- aov(kor$Copies_kor~kor$HealthState)
+summary(model3)
+TukeyHSD(model3)
+
+
+pdf("kor.pdf", width=8,height=6)
+p1<-ggplot(kor,aes(Treatment,Copies_kor))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(aes(color=HealthState))+
+  facet_grid(Month~.,space="free")+
+  theme(axis.title.x=element_blank())+
+  theme_bw()+
+  theme(text=element_text(size=14,face="bold"))+
+  ylab("copies of korormicin per ng DNA")+
+  scale_color_manual(values=palette)
+p1
+dev.off()
+
+```
+
+## Compare ddPCR results for korormicin to relative abundance of Pseudoalteromonas ASV1, which is an exact match to McH1-7 over the V4 region.
+
+```{r, echo=FALSE}
+
+ddpcr_vs_asv <- read.table("KORddPCR_vs_PseudoaltASV1.txt",sep="\t",header=TRUE)
+pdf("compareKORddPCR_PseudoaltASV1.pdf")
+p3<-ggplot(ddpcr_vs_asv, aes(Copies_kor,ASV1))+
+  geom_point(shape=1)+
+  geom_smooth(method=lm)+
+  theme_bw()
+p3
+dev.off()
+
+```
+
+
+Plotting vibriolysin (vcpA) ddPCR results
+
+```{r}
+library(ggplot2)
+vcpA <- read.table("vcpA.txt",sep="\t",header=TRUE)
+
+palette <- c("DD"="#000000","HD"="#999999","HH"="#E69F00")
+vcpA$Month <- factor(vcpA$Month, levels=c("August","October","January"))
+#label from the bottom up
+vcpA$Treatment <- factor(vcpA$Treatment, levels=c("none","control bag","control paste","probiotic bag","probiotic paste"))
+
+#one-way anova
+model1<- aov(vcpA$Copies_vcpA~vcpA$Treatment)
+summary(model1)
+TukeyHSD(model1)
+
+model2<- aov(vcpA$Copies_vcpA~vcpA$Month)
+summary(model2)
+TukeyHSD(model2)
+
+model3<- aov(vcpA$Copies_vcpA~vcpA$HealthState)
+summary(model3)
+TukeyHSD(model3)
+
+pdf("vcpA.pdf",width=8,height=6)
+p2<-ggplot(vcpA,aes(Treatment,Copies_vcpA))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(aes(color=HealthState))+
+  facet_grid(Month~.,space="free")+
+  theme(axis.title.x=element_blank())+
+  theme_bw()+
+  theme(text=element_text(size=14,face="bold"))+
+  ylab("copies of vibriolysin per ng DNA")+
+  scale_color_manual(values=palette)
+p2
+dev.off()
+
+```
+
