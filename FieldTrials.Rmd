@@ -28,6 +28,7 @@ Error: Failed to install 'unknown package' from GitHub:
   
 # Solution: go to your GitHub profile and generate a personal access token (Profile pic -> Settings -> Developer Settings), save your PAT privately and go back to Rstudio console, paste the PAT in between quotes below. Load devtools library, if needed.
 
+>library(devtools)
 >Sys.setenv(GITHUB_PAT = "my_PAT")
 >install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
 
@@ -962,13 +963,24 @@ asv_meta<-read.table("asv_meta.txt",sep="\t",header=T,row.names=1)
 cols<-c("none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
 asv_meta$sampled<-factor(asv_meta$sampled,levels=c("Before treatment","Two weeks after treatment","Two months after treatment"))
 asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
-asv_meta$ASV<-factor(asv_meta$ASV,levels=c("Other","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
+asv_meta$ASV<-factor(asv_meta$ASV,levels=c("Other_n.716","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
+
+# set the order of samples on the x-axis so that they appear in the same order every month, with treatment types grouped in oct and jan; I tried many different ways and the only solution I could come up with was to sort the meta in the order that I wanted using excel so that samples are ordered by collection date and then the treatments in my preferred order within each sample date, and sorted by coral tag number within that. Read in the manually ordered metadata, print out the sample names, and then set that list as a factor to maintain the order in the plot. IT WORKED!!!
+
+# meta<-read.table("metadata_ps20_ordered.txt",sep="\t",header=T,row.names=1)
+# make sample names a column
+# meta <- tibble::rownames_to_column(meta, "sample")
+# print(meta$sample)
+
+asv_meta$sample<-factor(asv_meta$sample,levels=c("BS2-1566-DD-A", "BS2-1566-HD-A", "BS2-1689-DD-A", "BS2-1689-HD-A", "BS2-1842-DD-A","BS2-1842-HD-A", "BS2-1925-DD-A", "BS2-1925-HD-A", "BS2-2006-DD-A", "BS2-2006-HD-A","BS2-2019-DD-A", "BS2-2019-HD-A", "BS2-2048-DD-A", "BS2-2048-HD-A", "BS2-2076-DD-A","BS2-2076-HD-A", "BS2-2078-DD-A", "BS2-2078-HH-A", "BS2-2079-DD-A", "BS2-2079-HD-A","BS2-2091-DD-A", "BS2-2091-HD-A", "BS2-2149-DD-A", "BS2-2149-HD-A", "BS2-2155-DD-A","BS2-2155-HD-A", "BS2-2179-DD-A", "BS2-2179-HD-A", "BS2-2180-DD-A", "BS2-2180-HD-A","BS2-2198-DD-A", "BS2-2198-HD-A", "BS2-2415-DD-A", "BS2-2415-HD-A", "BS2-2433-DD-A","BS2-2433-HD-A", "BS2-2474-DD-A", "BS2-2474-HD-A", "BS2-2482-DD-A", "BS2-2482-HD-A","BS2-2483-HD-A", "BS2-1689-DD-O", "BS2-1689-HD-O", "BS2-1842-DD-O", "BS2-1842-HD-O","BS2-1925-DD-O", "BS2-1925-HD-O", "BS2-2019-DD-O", "BS2-2019-HD-O", "BS2-2415-DD-O","BS2-2415-HD-O", "BS2-1566-DD-O", "BS2-1566-HD-O", "BS2-2006-DD-O", "BS2-2006-HD-O","BS2-2079-DD-O", "BS2-2079-HD-O", "BS2-2149-DD-O", "BS2-2149-HD-O", "BS2-2433-DD-O","BS2-2433-HD-O", "BS2-2048-DD-O", "BS2-2048-HD-O", "BS2-2076-DD-O", "BS2-2076-HD-O","BS2-2180-DD-O", "BS2-2180-HD-O", "BS2-2198-DD-O", "BS2-2198-HD-O", "BS2-2475-DD-O","BS2-2475-HD-O", "BS2-2479-DD-O", "BS2-2479-HD-O", "BS2-2091-DD-O", "BS2-2091-HD-O","BS2-2155-DD-O", "BS2-2155-HD-O", "BS2-2179-DD-O", "BS2-2179-HD-O", "BS2-2500-DD-O","BS2-2500-HD-O", "BS2-2078-DD-O", "BS2-2078-HD-O", "BS2-2474-DD-O", "BS2-2474-HD-O","BS2-2482-DD-O", "BS2-2482-HD-O", "BS2-2483-DD-O", "BS2-2483-HD-O", "BS2-1689-DD-D","BS2-1689-HD-D", "BS2-1842-HD-D", "BS2-1925-HD-D", "BS2-2019-HD-D", "BS2-2415-HD-D","BS2-1566-DD-D", "BS2-1566-HD-D", "BS2-2006-DD-D", "BS2-2006-HD-D", "BS2-2079-DD-D","BS2-2079-HD-D", "BS2-2149-HD-D", "BS2-2433-HD-D", "BS2-2433-DD-D", "BS2-2048-DD-D","BS2-2048-HD-D", "BS2-2076-HD-D", "BS2-2180-DD-D", "BS2-2180-HD-D", "BS2-2475-DD-D","BS2-2475-HD-D", "BS2-2479-DD-D", "BS2-2479-HD-D", "BS2-2091-DD-D", "BS2-2091-HD-D","BS2-2155-DD-D", "BS2-2155-HD-D", "BS2-2179-HD-D", "BS2-2500-DD-D", "BS2-2500-HD-D","BS2-2078-HD-D", "BS2-2474-DD-D", "BS2-2474-HD-D", "BS2-2483-DD-D", "BS2-2483-HD-D"))
+
 
 #make bubble plot
+pdf("bubble_all.pdf",bg ="white",width=11)
 bubble <- ggplot(asv_meta, aes(x=sample,y=ASV,size=relative_abundance,color=Treatment))+
-  geom_point(alpha=0.8)+ # the alpha value is the opacity of the bubble
-  scale_size(range = c(0,10), name="Relative abundance")+ #adjust the two numbers here to change bubble sizes
-  facet_grid(Condition ~ sampled, scales="free")+
+  geom_point(alpha=0.8)+ 
+  scale_size(range = c(0,10), name="Relative abundance")+ 
+  facet_grid(Condition ~ sampled, scales="free", space="free")+
   theme_bw()+
   scale_color_manual(values=cols)+
   theme(axis.text.x=element_blank())+  
@@ -977,13 +989,7 @@ bubble <- ggplot(asv_meta, aes(x=sample,y=ASV,size=relative_abundance,color=Trea
   theme(axis.title.y=element_blank())+
   theme(legend.text = element_text(size=10))
 bubble  
-
-#I like this plot, but I just want it to arrange the samples on the x-axis by treatment type.
-
-###use dplyr to group by sample date, then arrange by treatment using my custom orders
-#asv_meta2 <- asv_meta %>% group_by(sampled) %>% arrange(factor(Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none")), .by_group = TRUE)
-# the order in the table is correct, but it doesn't change what ggplot does
-# I think because there are so many different factors here that I need to create subplots and stitch back together with cowplot
+dev.off()
 
 
 ```
