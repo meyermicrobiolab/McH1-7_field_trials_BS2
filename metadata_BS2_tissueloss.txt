@@ -195,4 +195,3 @@ BS2-2694-HH-D	2694	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after t
 BS2-2694-HH-O	2694	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2172
 BLANK1-A	blank	blank	blank	blank	blank	blank	blank	blank	blank	Aug	2020	blank	NS2107
 BLANK2-A	blank	blank	blank	blank	blank	blank	blank	blank	blank	Aug	2020	blank	NS2107
-BS2-Blank-1-O	blank	blank	blank	blank	blank	blank	blank	blank	blank	Oct	2020	blank	NS2172
