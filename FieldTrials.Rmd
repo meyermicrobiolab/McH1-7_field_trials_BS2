@@ -380,6 +380,15 @@ psnb = subset_samples(ps, Coral.tag != "blank")
 psnb #20164 taxa and 194 samples
 psnb <- prune_taxa(taxa_sums(psnb) > 1, psnb) 
 psnb #20082 taxa and 194 samples, 82 taxa only in blanks
+# export ASVs in blanks
+ps_blanks = subset_samples(ps, Coral.tag == "blank")
+ps_blanks <- prune_taxa(taxa_sums(ps_blanks) > 1, ps_blanks)
+ps_blanks
+otu_ps_blanks = as(otu_table(ps_blanks), "matrix")
+taxon_ps_blanks = as(tax_table(ps_blanks), "matrix")
+write.table(otu_ps_blanks,"silva_nochloronomito_otu_table_BS2_blanks.txt",sep="\t",col.names=NA)
+write.table(taxon_ps_blanks,"silva_nochloronomito_taxa_table_BS2_blanks.txt",sep="\t",col.names=NA)
+
 
 # export tables for BS2
 otu_psnb = as(otu_table(psnb), "matrix")
