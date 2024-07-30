@@ -558,7 +558,7 @@ xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.aug <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
@@ -596,6 +596,8 @@ Subset BS2 by month to examine treatments within time points
 # permanova within time points
 ps5_BS2_oct = subset_samples(ps5_BS2, Collection.month == "Oct")
 ps5_BS2_oct #755 taxa and 71 samples
+ps5_BS2_oct = subset_samples(ps5_BS2_oct, Treatment != "resistant")
+ps5_BS2_oct  #756 taxa and 66 samples
 otu_oct = as(otu_table(ps5_BS2_oct), "matrix")
 taxon_oct = as(tax_table(ps5_BS2_oct), "matrix")
 metadata_oct = as(sample_data(ps5_BS2_oct), "matrix")
@@ -614,7 +616,8 @@ sampledata = sample_data(samples)
 ps5_BS2_oct <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5_BS2_oct  #756 taxa and 71 samples
+ps5_BS2_oct  #756 taxa and 66 samples
+
 
 d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -626,7 +629,7 @@ xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.oct <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
@@ -663,7 +666,9 @@ Subset BS2 by month to examine treatments within time points
 ```{r, echo=FALSE}
 # permanova within time points
 ps5_BS2_jan = subset_samples(ps5_BS2, Collection.month == "Jan")
-ps5_BS2_jan #755 taxa and 63 samples
+ps5_BS2_jan #756 taxa and 63 samples
+ps5_BS2_jan = subset_samples(ps5_BS2_jan, Treatment != "resistant")
+ps5_BS2_jan #756 taxa and 59 samples
 otu_jan = as(otu_table(ps5_BS2_jan), "matrix")
 taxon_jan = as(tax_table(ps5_BS2_jan), "matrix")
 metadata_jan = as(sample_data(ps5_BS2_jan), "matrix")
@@ -682,7 +687,7 @@ sampledata = sample_data(samples)
 ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5_BS2_jan  #756 taxa and 63 samples
+ps5_BS2_jan  #756 taxa and 59 samples
 
 d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -694,7 +699,7 @@ xlab <- paste("PC1: ", pc1, sep="")
 ylab <- paste("PC2: ", pc2, sep="")
 df_out.jan <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
@@ -730,7 +735,7 @@ print(perm2)
 
 #clear data and read in just what is needed for plotting
 
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 
 
 ### AUGUST
@@ -969,8 +974,8 @@ write.table(asv_meta,"asv_meta.txt",sep="\t",col.names=NA)
 asv_meta<-read.table("asv_meta.txt",sep="\t",header=T,row.names=1) 
 
 #set the plot aesthetics
-cols<-c("none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-asv_meta$sampled<-factor(asv_meta$sampled,levels=c("Before treatment","Two weeks after treatment","Two months after treatment"))
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+asv_meta$sampled<-factor(asv_meta$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
 asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 asv_meta$ASV<-factor(asv_meta$ASV,levels=c("Other_n.716","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
 
