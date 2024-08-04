@@ -248,9 +248,6 @@ head(track)
 write.table(track, "dada_read_stats_NS2408_BS2.txt",sep="\t",col.names=NA)
 saveRDS(seqtab, "~/Documents/McH1-7_field_trials_BS2andBS3/cutadapt_NS2408_BS2/seqtab.rds")
 
-##### Run NS2408 had six samples (all from October collection) with fewer than 1,000 tabled reads. Remove these samples and rerun dada2.
-# samples removed: BS-2080-HD-O, BS2-2460-HD-O, BS2-2478-HD-O, BS2-2077-DD-O, BS2-2077-HD-O, BS2-2065-HH-O 
-# don't forget to remove the names from the metadata file too
 ```
 
 
@@ -514,8 +511,6 @@ dist.clr2 <- dist(E.clr2)
 
 perm6<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
 print(perm6)
-
-
 
 ```
 
@@ -840,72 +835,6 @@ dev.off()
 
 
 
-Stacked bar charts - won't use for manuscript
-
-```{r, echo=FALSE}
-# load in data and create phyloseq object
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
-OTU = otu_table(otu, taxa_are_rows=FALSE)
-taxon<-as.matrix(taxon)
-TAX = tax_table(taxon)
-sampledata = sample_data(samples)
-ps <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
-               sample_data(samples), 
-               tax_table(taxon))
-ps #756 taxa and 194 samples
-
-ps_ra<-transform_sample_counts(ps, function(OTU) OTU/sum(OTU))
-ps_ra #756 taxa and 194 samples
-get_taxa_unique(ps_ra, "Class") #46
-get_taxa_unique(ps_ra, "Order") #102
-get_taxa_unique(ps_ra, "Family") #183
-get_taxa_unique(ps_ra, "Genus") #323
-
-n <- 46
-# after plotting, you can re-run the next line to create a different selection of colors
-palette <- distinctColorPalette(n)
-
-sample_data(ps_ra)$Treatment<-factor(sample_data(ps_ra)$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
-sample_data(ps_ra)$Collection.month<-factor(sample_data(ps_ra)$Collection.month,levels=c("Aug","Oct","Jan"))
-sample_data(ps_ra)$sampled<-factor(sample_data(ps_ra)$sampled,levels=c("Before","Two weeks after","Two months after"))
-
-
-pdf("barchart_Class.pdf",bg ="white",width=11)
-p1=plot_bar(ps_ra ,fill="Class")+
-  facet_grid(Condition~sampled,scales="free",space="free")+
-  geom_bar(aes(fill=Class), stat="identity",position="stack")+
-  theme_bw()+
-  theme(strip.text=element_text(face="bold", size=12))+
-  theme(axis.text.x=element_text(size=12))+
-  theme(axis.text.y=element_text(size=12))+
-  scale_fill_manual(values=palette)+
-  #theme(axis.title.x = element_blank())+
-  theme(legend.position = "bottom")
-p1
-dev.off()
-
-
-#take out untreated corals
-ps2 = subset_samples(ps_ra, Condition != "HH")
-pdf("barchart_Class_2.pdf",bg ="white",width=11)
-p1=plot_bar(ps2 ,fill="Class")+
-  facet_grid(Condition~sampled,scales="free",space="free")+
-  geom_bar(aes(fill=Class), stat="identity",position="stack")+
-  theme_bw()+
-  theme(strip.text=element_text(face="bold", size=12))+
-  theme(axis.text.x=element_blank())+
-  theme(axis.text.y=element_text(size=12))+
-  scale_fill_manual(values=palette)+
-  #theme(axis.title.x = element_blank())+
-  theme(legend.position = "bottom")
-p1
-dev.off()
-
-
-```
-
 ### Create bubble plot to show common taxa across time
 
 Subset data for the 24 colonies that have complete or near complete sets of samples (all three time points, paired HD and DD samples)
@@ -979,7 +908,7 @@ asv_meta$sampled<-factor(asv_meta$sampled,levels=c("Before treatment","Two weeks
 asv_meta$Treatment<-factor(asv_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 asv_meta$ASV<-factor(asv_meta$ASV,levels=c("Other_n.716","Roseibacillus_ASV1","Enhydrobacter_ASV1","Halomonas_ASV2","Halomonas_ASV1","Endozoicomonas_ASV3","Endozoicomonas_ASV2","Endozoicomonas_ASV1","Vibrio_ASV4","Vibrio_ASV3","Vibrio_ASV2","Vibrio_ASV1","Photobacterium_ASV1","Psychrobium_ASV1","Pseudoalteromonas_ASV2","Pseudoalteromonas_ASV1","Thalassobius_ASV1","Ruegeria_ASV1","Nautella_ASV1","Halodesulfovibrio_ASV1","Renibacterium_ASV1"))
 
-# set the order of samples on the x-axis so that they appear in the same order every month, with treatment types grouped in oct and jan; I tried many different ways and the only solution I could come up with was to sort the meta in the order that I wanted using excel so that samples are ordered by collection date and then the treatments in my preferred order within each sample date, and sorted by coral tag number within that. Read in the manually ordered metadata, print out the sample names, and then set that list as a factor to maintain the order in the plot. IT WORKED!!!
+# set the order of samples on the x-axis so that they appear in the same order every month, with treatment types grouped in oct and jan; I tried many different ways and the only solution I could come up with was to sort the metadata in the order that I wanted using excel so that samples are ordered by collection date and then the treatments in my preferred order within each sample date, and sorted by coral tag number within that. Read in the manually ordered metadata, print out the sample names, and then set that list as a factor to maintain the order in the plot. IT WORKED!!!
 
 # meta<-read.table("metadata_ps20_ordered.txt",sep="\t",header=T,row.names=1)
 # make sample names a column
@@ -1005,113 +934,7 @@ bubble <- ggplot(asv_meta, aes(x=sample,y=ASV,size=relative_abundance,color=Trea
 bubble  
 dev.off()
 
-
 ```
 
 
 
-### Use corncob to look for differentially abundant taxa by the continuous variable of total tissue loss
-
-
-```{r, echo=FALSE}
-# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan corncob.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
-OTU = otu_table(otu, taxa_are_rows=FALSE)
-taxon<-as.matrix(taxon)
-TAX = tax_table(taxon)
-sampledata = sample_data(samples)
-ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
-               sample_data(samples), 
-               tax_table(taxon))
-ps5_BS2_jan  #756 taxa and 63 samples
-
-ps_corn = subset_samples(ps5_BS2_jan, Proportion_TissueLost_Jan21 != "nd")
-ps_corn #756 taxa and 54 samples
-ps_corn <- prune_taxa(taxa_sums(ps_corn) > 1, ps_corn) #remove taxa not found in remaining samples
-ps_corn #651 taxa and 54 samples, removed 105 taxa only found in samples without tissue loss data
-
-
-
-# What microorganisms are significantly changing with changes in tissue loss? Use Jan samples only; total tissue loss in January
-
-set.seed(1)
-tissueJan.da <- differentialTest(formula = ~ Proportion_TissueLost_Jan21, 
-                             phi.formula = ~ Proportion_TissueLost_Jan21,
-                             formula_null = ~ 1,
-                             phi.formula_null = ~ Proportion_TissueLost_Jan21,
-                             test = "LRT", boot = FALSE,
-                             data = ps_corn,
-                             fdr_cutoff = 0.05)
-
-# model overspecified - too many taxa compared to samples
-
-
-```
-
-
-### Use corncob to look for differentially abundant taxa by category: treatment type
-
-
-```{r, echo=FALSE}
-# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
-otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan corncob.txt",sep="\t",header=TRUE, row.names=1)
-taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
-samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
-OTU = otu_table(otu, taxa_are_rows=FALSE)
-taxon<-as.matrix(taxon)
-TAX = tax_table(taxon)
-sampledata = sample_data(samples)
-ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
-               sample_data(samples), 
-               tax_table(taxon))
-ps5_BS2_jan  #756 taxa and 63 samples
-
-
-# What microorganisms are significantly different by treatment type? Use Jan samples only first since the files are already formatted
-
-# DA determined relative to first reference level, so set this manually to the "none" treatment
-sample_data(ps5_BS2_jan)$Treatment<-factor(sample_data(ps5_BS2_jan)$Treatment,levels=c("none","probiotic bag","probiotic paste","control bag","control paste","resistant"))
-
-
-set.seed(1)
-treatment.da <- differentialTest(formula = ~ Treatment, 
-                             phi.formula = ~ Treatment,
-                             formula_null = ~ 1,
-                             phi.formula_null = ~ Treatment,
-                             test = "Wald", boot = FALSE,
-                             data = ps5_BS2_jan,
-                             fdr_cutoff = 0.05)
-
-
-#quick look at results with corncob's plotting feature
-plot(treatment.da)
-plot(treatment.da, level="Genus")
-
-# create a function that will return the values of interest
-# This one is for when there is only one comparison
-extractmods <- function(model) {
-  result <- data.frame("Estimate" = model$coefficients[2, 1], 
-                        "Std.Error" = model$coefficients[2, 2], 
-                        "p" = model$coefficients[2, 4])
-  return(result)
-}
-
-# save the treatment.da output and add asv, p.adj values to it, and ultimately taxonomny info
-treatment.da.models <- lapply(treatment.da$significant_models, extractmods)
-names(treatment.da.models) <- treatment.da$significant_taxa
-
-# Add ASVs to the taxonomy table and save the significant asvs
-tax_table(ps5_BS2_jan)[,7] <- rownames(tax_table(ps5_BS2_jan))
-sig.taxonomy.treatment <- as.data.frame(tax_table(ps5_BS2_jan)[treatment.da$significant_taxa,]) 
-
-# Move the data from a list to a dataframe and add taxonomy info
-treatment.da.models.df <- ldply(treatment.da.models, data.frame) %>% 
-  left_join(sig.taxonomy.treatment, by = c(".id" = "Species")) %>%
-  mutate(genusasv = paste0(Genus, "_(", .id,")"))
-
-### Save these data so you don't have to re-run the model ###
-write.table(treatment.da.models.df, "DA_treatment.txt", sep="\t",row.names = FALSE)
-
-```
