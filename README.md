@@ -4,4 +4,6 @@ This project is part of a collaboration led by Dr. Valerie Paul at the Smithsoni
 
 Microbiome composition was assessed by amplicon libraries of the V4 region of the 16S rRNA gene. In addition, droplet digital PCR (ddPCR) was used to quantify gene copies of two biomarkers: one for McH1-7 and one for the putative coral pathogen <i>Vibrio coralliilyticus</i>.
 
+Raw sequencing reads are publicly available in NCBI under Bioproject [PRJNA1143377](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1143377).
+
 
