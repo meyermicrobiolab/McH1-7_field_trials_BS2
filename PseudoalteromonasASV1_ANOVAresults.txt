@@ -1,0 +1,262 @@
+
+
+
+
+2-WAY ANOVA RESULTS TESTING THE RELATIVE ABUNDANCE OF PSEUDOALTEROMONAS ASV1 ACROSS TIME AND TREATMENT TYPE
+
+
+anova <- aov(rank(relative_abundance) ~ sampled + Treatment + sampled:Treatment, asv1_short) 
+
+
+
+
+                   Df Sum Sq Mean Sq F value   Pr(>F)    
+sampled             2  61367   30684  46.653 1.57e-15 ***
+Treatment           4   3252     813   1.236    0.300    
+sampled:Treatment   4   2321     580   0.882    0.477    
+Residuals         114  74977     658                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
+
+
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = rank(relative_abundance) ~ sampled + Treatment + sampled:Treatment, data = asv1_short)
+
+$sampled
+                                                           diff       lwr      upr     p adj
+Three months after treatment-Before treatment          21.60163  7.691656 35.51160 0.0010079
+Two weeks after treatment-Before treatment             52.20579 39.254698 65.15689 0.0000000
+Two weeks after treatment-Three months after treatment 30.60417 17.176771 44.03156 0.0000010
+
+$Treatment
+                                      diff        lwr       upr     p adj
+control paste-control bag      -0.22460317 -24.256585 23.807379 0.9999999
+none-control bag               -2.89065256 -21.172401 15.391096 0.9922410
+probiotic bag-control bag     -16.14248512 -39.732317  7.447346 0.3249673
+probiotic paste-control bag    -0.17825815 -22.686272 22.329755 0.9999999
+none-control paste             -2.66604938 -23.414021 18.081923 0.9965089
+probiotic bag-control paste   -15.91788194 -41.466584  9.630820 0.4216728
+probiotic paste-control paste   0.04634503 -24.506999 24.599689 1.0000000
+probiotic bag-none            -13.25183256 -33.486020  6.982355 0.3698473
+probiotic paste-none            2.71239441 -16.249484 21.674273 0.9947157
+probiotic paste-probiotic bag  15.96422697  -8.156525 40.084979 0.3590043
+
+$`sampled:Treatment`
+                                                                                              diff         lwr        upr
+Three months after treatment:control bag-Before treatment:control bag                           NA          NA         NA
+Two weeks after treatment:control bag-Before treatment:control bag                              NA          NA         NA
+Before treatment:control paste-Before treatment:control bag                                     NA          NA         NA
+Three months after treatment:control paste-Before treatment:control bag                         NA          NA         NA
+Two weeks after treatment:control paste-Before treatment:control bag                            NA          NA         NA
+Before treatment:none-Before treatment:control bag                                              NA          NA         NA
+Three months after treatment:none-Before treatment:control bag                                  NA          NA         NA
+Two weeks after treatment:none-Before treatment:control bag                                     NA          NA         NA
+Before treatment:probiotic bag-Before treatment:control bag                                     NA          NA         NA
+Three months after treatment:probiotic bag-Before treatment:control bag                         NA          NA         NA
+Two weeks after treatment:probiotic bag-Before treatment:control bag                            NA          NA         NA
+Before treatment:probiotic paste-Before treatment:control bag                                   NA          NA         NA
+Three months after treatment:probiotic paste-Before treatment:control bag                       NA          NA         NA
+Two weeks after treatment:probiotic paste-Before treatment:control bag                          NA          NA         NA
+Two weeks after treatment:control bag-Three months after treatment:control bag           27.750000  -11.458712  66.958712
+Before treatment:control paste-Three months after treatment:control bag                         NA          NA         NA
+Three months after treatment:control paste-Three months after treatment:control bag       7.523810  -37.286148  52.333767
+Two weeks after treatment:control paste-Three months after treatment:control bag         20.541667  -22.664230  63.747563
+Before treatment:none-Three months after treatment:control bag                          -26.601626  -59.332427   6.129175
+Three months after treatment:none-Three months after treatment:control bag              -13.333333  -62.928868  36.262201
+Two weeks after treatment:none-Three months after treatment:control bag                  34.041667   -9.164230  77.247563
+Before treatment:probiotic bag-Three months after treatment:control bag                         NA          NA         NA
+Three months after treatment:probiotic bag-Three months after treatment:control bag     -22.666667  -69.530042  24.196708
+Two weeks after treatment:probiotic bag-Three months after treatment:control bag         15.766667  -25.087876  56.621210
+Before treatment:probiotic paste-Three months after treatment:control bag                       NA          NA         NA
+Three months after treatment:probiotic paste-Three months after treatment:control bag    -3.333333  -45.249210  38.582543
+Two weeks after treatment:probiotic paste-Three months after treatment:control bag       30.166667  -10.687876  71.021210
+Before treatment:control paste-Two weeks after treatment:control bag                            NA          NA         NA
+Three months after treatment:control paste-Two weeks after treatment:control bag        -20.226190  -62.514660  22.062279
+Two weeks after treatment:control paste-Two weeks after treatment:control bag            -7.208333  -47.793206  33.376540
+Before treatment:none-Two weeks after treatment:control bag                             -54.351626  -83.535315 -25.167937
+Three months after treatment:none-Two weeks after treatment:control bag                 -41.083333  -88.413022   6.246355
+Two weeks after treatment:none-Two weeks after treatment:control bag                      6.291667  -34.293206  46.876540
+Before treatment:probiotic bag-Two weeks after treatment:control bag                            NA          NA         NA
+Three months after treatment:probiotic bag-Two weeks after treatment:control bag        -50.416667  -94.875168  -5.958166
+Two weeks after treatment:probiotic bag-Two weeks after treatment:control bag           -11.983333  -50.055319  26.088652
+Before treatment:probiotic paste-Two weeks after treatment:control bag                          NA          NA         NA
+Three months after treatment:probiotic paste-Two weeks after treatment:control bag      -31.083333  -70.292046   8.125379
+Two weeks after treatment:probiotic paste-Two weeks after treatment:control bag           2.416667  -35.655319  40.488652
+Three months after treatment:control paste-Before treatment:control paste                       NA          NA         NA
+Two weeks after treatment:control paste-Before treatment:control paste                          NA          NA         NA
+Before treatment:none-Before treatment:control paste                                            NA          NA         NA
+Three months after treatment:none-Before treatment:control paste                                NA          NA         NA
+Two weeks after treatment:none-Before treatment:control paste                                   NA          NA         NA
+Before treatment:probiotic bag-Before treatment:control paste                                   NA          NA         NA
+Three months after treatment:probiotic bag-Before treatment:control paste                       NA          NA         NA
+Two weeks after treatment:probiotic bag-Before treatment:control paste                          NA          NA         NA
+Before treatment:probiotic paste-Before treatment:control paste                                 NA          NA         NA
+Three months after treatment:probiotic paste-Before treatment:control paste                     NA          NA         NA
+Two weeks after treatment:probiotic paste-Before treatment:control paste                        NA          NA         NA
+Two weeks after treatment:control paste-Three months after treatment:control paste       13.017857  -33.001063  59.036778
+Before treatment:none-Three months after treatment:control paste                        -34.125436  -70.488835   2.237964
+Three months after treatment:none-Three months after treatment:control paste            -20.857143  -72.921608  31.207322
+Two weeks after treatment:none-Three months after treatment:control paste                26.517857  -19.501063  72.536778
+Before treatment:probiotic bag-Three months after treatment:control paste                       NA          NA         NA
+Three months after treatment:probiotic bag-Three months after treatment:control paste   -30.190476  -79.659329  19.278377
+Two weeks after treatment:probiotic bag-Three months after treatment:control paste        8.242857  -35.575920  52.061634
+Before treatment:probiotic paste-Three months after treatment:control paste                     NA          NA         NA
+Three months after treatment:probiotic paste-Three months after treatment:control paste -10.857143  -55.667100  33.952814
+Two weeks after treatment:probiotic paste-Three months after treatment:control paste     22.642857  -21.175920  66.461634
+Before treatment:none-Two weeks after treatment:control paste                           -47.143293  -81.510633 -12.775952
+Three months after treatment:none-Two weeks after treatment:control paste               -33.875000  -84.565490  16.815490
+Two weeks after treatment:none-Two weeks after treatment:control paste                   13.500000  -30.958501  57.958501
+Before treatment:probiotic bag-Two weeks after treatment:control paste                          NA          NA         NA
+Three months after treatment:probiotic bag-Two weeks after treatment:control paste      -43.208333  -91.229003   4.812336
+Two weeks after treatment:probiotic bag-Two weeks after treatment:control paste          -4.775000  -46.952037  37.402037
+Before treatment:probiotic paste-Two weeks after treatment:control paste                        NA          NA         NA
+Three months after treatment:probiotic paste-Two weeks after treatment:control paste    -23.875000  -67.080897  19.330897
+Two weeks after treatment:probiotic paste-Two weeks after treatment:control paste         9.625000  -32.552037  51.802037
+Three months after treatment:none-Before treatment:none                                  13.268293  -28.851555  55.388141
+Two weeks after treatment:none-Before treatment:none                                     60.643293   26.275952  95.010633
+Before treatment:probiotic bag-Before treatment:none                                            NA          NA         NA
+Three months after treatment:probiotic bag-Before treatment:none                          3.934959  -34.930713  42.800632
+Two weeks after treatment:probiotic bag-Before treatment:none                            42.368293   11.008154  73.728431
+Before treatment:probiotic paste-Before treatment:none                                          NA          NA         NA
+Three months after treatment:probiotic paste-Before treatment:none                       23.268293   -9.462508  55.999093
+Two weeks after treatment:probiotic paste-Before treatment:none                          56.768293   25.408154  88.128431
+Two weeks after treatment:none-Three months after treatment:none                         47.375000   -3.315490  98.065490
+Before treatment:probiotic bag-Three months after treatment:none                                NA          NA         NA
+Three months after treatment:probiotic bag-Three months after treatment:none             -9.333333  -63.175252  44.508585
+Two weeks after treatment:probiotic bag-Three months after treatment:none                29.100000  -19.601848  77.801848
+Before treatment:probiotic paste-Three months after treatment:none                              NA          NA         NA
+Three months after treatment:probiotic paste-Three months after treatment:none           10.000000  -39.595534  59.595534
+Two weeks after treatment:probiotic paste-Three months after treatment:none              43.500000   -5.201848  92.201848
+Before treatment:probiotic bag-Two weeks after treatment:none                                   NA          NA         NA
+Three months after treatment:probiotic bag-Two weeks after treatment:none               -56.708333 -104.729003  -8.687664
+Two weeks after treatment:probiotic bag-Two weeks after treatment:none                  -18.275000  -60.452037  23.902037
+Before treatment:probiotic paste-Two weeks after treatment:none                                 NA          NA         NA
+Three months after treatment:probiotic paste-Two weeks after treatment:none             -37.375000  -80.580897   5.830897
+Two weeks after treatment:probiotic paste-Two weeks after treatment:none                 -3.875000  -46.052037  38.302037
+Three months after treatment:probiotic bag-Before treatment:probiotic bag                       NA          NA         NA
+Two weeks after treatment:probiotic bag-Before treatment:probiotic bag                          NA          NA         NA
+Before treatment:probiotic paste-Before treatment:probiotic bag                                 NA          NA         NA
+Three months after treatment:probiotic paste-Before treatment:probiotic bag                     NA          NA         NA
+Two weeks after treatment:probiotic paste-Before treatment:probiotic bag                        NA          NA         NA
+Two weeks after treatment:probiotic bag-Three months after treatment:probiotic bag       38.433333   -7.483209  84.349876
+Before treatment:probiotic paste-Three months after treatment:probiotic bag                     NA          NA         NA
+Three months after treatment:probiotic paste-Three months after treatment:probiotic bag  19.333333  -27.530042  66.196708
+Two weeks after treatment:probiotic paste-Three months after treatment:probiotic bag     52.833333    6.916791  98.749876
+Before treatment:probiotic paste-Two weeks after treatment:probiotic bag                        NA          NA         NA
+Three months after treatment:probiotic paste-Two weeks after treatment:probiotic bag    -19.100000  -59.954543  21.754543
+Two weeks after treatment:probiotic paste-Two weeks after treatment:probiotic bag        14.400000  -25.364892  54.164892
+Three months after treatment:probiotic paste-Before treatment:probiotic paste                   NA          NA         NA
+Two weeks after treatment:probiotic paste-Before treatment:probiotic paste                      NA          NA         NA
+Two weeks after treatment:probiotic paste-Three months after treatment:probiotic paste   33.500000   -7.354543  74.354543
+                                                                                            p adj
+Three months after treatment:control bag-Before treatment:control bag                          NA
+Two weeks after treatment:control bag-Before treatment:control bag                             NA
+Before treatment:control paste-Before treatment:control bag                                    NA
+Three months after treatment:control paste-Before treatment:control bag                        NA
+Two weeks after treatment:control paste-Before treatment:control bag                           NA
+Before treatment:none-Before treatment:control bag                                             NA
+Three months after treatment:none-Before treatment:control bag                                 NA
+Two weeks after treatment:none-Before treatment:control bag                                    NA
+Before treatment:probiotic bag-Before treatment:control bag                                    NA
+Three months after treatment:probiotic bag-Before treatment:control bag                        NA
+Two weeks after treatment:probiotic bag-Before treatment:control bag                           NA
+Before treatment:probiotic paste-Before treatment:control bag                                  NA
+Three months after treatment:probiotic paste-Before treatment:control bag                      NA
+Two weeks after treatment:probiotic paste-Before treatment:control bag                         NA
+Two weeks after treatment:control bag-Three months after treatment:control bag          0.4814677
+Before treatment:control paste-Three months after treatment:control bag                        NA
+Three months after treatment:control paste-Three months after treatment:control bag     0.9999994
+Two weeks after treatment:control paste-Three months after treatment:control bag        0.9436189
+Before treatment:none-Three months after treatment:control bag                          0.2527491
+Three months after treatment:none-Three months after treatment:control bag              0.9998019
+Two weeks after treatment:none-Three months after treatment:control bag                 0.2999589
+Before treatment:probiotic bag-Three months after treatment:control bag                        NA
+Three months after treatment:probiotic bag-Three months after treatment:control bag     0.9357490
+Two weeks after treatment:probiotic bag-Three months after treatment:control bag        0.9906750
+Before treatment:probiotic paste-Three months after treatment:control bag                      NA
+Three months after treatment:probiotic paste-Three months after treatment:control bag   1.0000000
+Two weeks after treatment:probiotic paste-Three months after treatment:control bag      0.4077107
+Before treatment:control paste-Two weeks after treatment:control bag                           NA
+Three months after treatment:control paste-Two weeks after treatment:control bag        0.9409738
+Two weeks after treatment:control paste-Two weeks after treatment:control bag           0.9999988
+Before treatment:none-Two weeks after treatment:control bag                             0.0000003
+Three months after treatment:none-Two weeks after treatment:control bag                 0.1660424
+Two weeks after treatment:none-Two weeks after treatment:control bag                    0.9999998
+Before treatment:probiotic bag-Two weeks after treatment:control bag                           NA
+Three months after treatment:probiotic bag-Two weeks after treatment:control bag        0.0116086
+Two weeks after treatment:probiotic bag-Two weeks after treatment:control bag           0.9988331
+Before treatment:probiotic paste-Two weeks after treatment:control bag                         NA
+Three months after treatment:probiotic paste-Two weeks after treatment:control bag      0.2903111
+Two weeks after treatment:probiotic paste-Two weeks after treatment:control bag         1.0000000
+Three months after treatment:control paste-Before treatment:control paste                      NA
+Two weeks after treatment:control paste-Before treatment:control paste                         NA
+Before treatment:none-Before treatment:control paste                                           NA
+Three months after treatment:none-Before treatment:control paste                               NA
+Two weeks after treatment:none-Before treatment:control paste                                  NA
+Before treatment:probiotic bag-Before treatment:control paste                                  NA
+Three months after treatment:probiotic bag-Before treatment:control paste                      NA
+Two weeks after treatment:probiotic bag-Before treatment:control paste                         NA
+Before treatment:probiotic paste-Before treatment:control paste                                NA
+Three months after treatment:probiotic paste-Before treatment:control paste                    NA
+Two weeks after treatment:probiotic paste-Before treatment:control paste                       NA
+Two weeks after treatment:control paste-Three months after treatment:control paste      0.9996441
+Before treatment:none-Three months after treatment:control paste                        0.0903919
+Three months after treatment:none-Three months after treatment:control paste            0.9867810
+Two weeks after treatment:none-Three months after treatment:control paste               0.7952719
+Before treatment:probiotic bag-Three months after treatment:control paste                      NA
+Three months after treatment:probiotic bag-Three months after treatment:control paste   0.7215484
+Two weeks after treatment:probiotic bag-Three months after treatment:control paste      0.9999975
+Before treatment:probiotic paste-Three months after treatment:control paste                    NA
+Three months after treatment:probiotic paste-Three months after treatment:control paste 0.9999421
+Two weeks after treatment:probiotic paste-Three months after treatment:control paste    0.8966403
+Before treatment:none-Two weeks after treatment:control paste                           0.0005471
+Three months after treatment:none-Two weeks after treatment:control paste               0.5803378
+Two weeks after treatment:none-Two weeks after treatment:control paste                  0.9992120
+Before treatment:probiotic bag-Two weeks after treatment:control paste                         NA
+Three months after treatment:probiotic bag-Two weeks after treatment:control paste      0.1274457
+Two weeks after treatment:probiotic bag-Two weeks after treatment:control paste         1.0000000
+Before treatment:probiotic paste-Two weeks after treatment:control paste                       NA
+Three months after treatment:probiotic paste-Two weeks after treatment:control paste    0.8401803
+Two weeks after treatment:probiotic paste-Two weeks after treatment:control paste       0.9999720
+Three months after treatment:none-Before treatment:none                                 0.9988227
+Two weeks after treatment:none-Before treatment:none                                    0.0000014
+Before treatment:probiotic bag-Before treatment:none                                           NA
+Three months after treatment:probiotic bag-Before treatment:none                        1.0000000
+Two weeks after treatment:probiotic bag-Before treatment:none                           0.0007283
+Before treatment:probiotic paste-Before treatment:none                                         NA
+Three months after treatment:probiotic paste-Before treatment:none                      0.4737159
+Two weeks after treatment:probiotic paste-Before treatment:none                         0.0000007
+Two weeks after treatment:none-Three months after treatment:none                        0.0936429
+Before treatment:probiotic bag-Three months after treatment:none                               NA
+Three months after treatment:probiotic bag-Three months after treatment:none            0.9999991
+Two weeks after treatment:probiotic bag-Three months after treatment:none               0.7503167
+Before treatment:probiotic paste-Three months after treatment:none                             NA
+Three months after treatment:probiotic paste-Three months after treatment:none          0.9999940
+Two weeks after treatment:probiotic paste-Three months after treatment:none             0.1348239
+Before treatment:probiotic bag-Two weeks after treatment:none                                  NA
+Three months after treatment:probiotic bag-Two weeks after treatment:none               0.0066322
+Two weeks after treatment:probiotic bag-Two weeks after treatment:none                  0.9734752
+Before treatment:probiotic paste-Two weeks after treatment:none                                NA
+Three months after treatment:probiotic paste-Two weeks after treatment:none             0.1700723
+Two weeks after treatment:probiotic paste-Two weeks after treatment:none                1.0000000
+Three months after treatment:probiotic bag-Before treatment:probiotic bag                      NA
+Two weeks after treatment:probiotic bag-Before treatment:probiotic bag                         NA
+Before treatment:probiotic paste-Before treatment:probiotic bag                                NA
+Three months after treatment:probiotic paste-Before treatment:probiotic bag                    NA
+Two weeks after treatment:probiotic paste-Before treatment:probiotic bag                       NA
+Two weeks after treatment:probiotic bag-Three months after treatment:probiotic bag      0.2115218
+Before treatment:probiotic paste-Three months after treatment:probiotic bag                    NA
+Three months after treatment:probiotic paste-Three months after treatment:probiotic bag 0.9827381
+Two weeks after treatment:probiotic paste-Three months after treatment:probiotic bag    0.0095450
+Before treatment:probiotic paste-Two weeks after treatment:probiotic bag                       NA
+Three months after treatment:probiotic paste-Two weeks after treatment:probiotic bag    0.9505214
+Two weeks after treatment:probiotic paste-Two weeks after treatment:probiotic bag       0.9949782
+Three months after treatment:probiotic paste-Before treatment:probiotic paste                  NA
+Two weeks after treatment:probiotic paste-Before treatment:probiotic paste                     NA
+Two weeks after treatment:probiotic paste-Three months after treatment:probiotic paste  0.2399389
