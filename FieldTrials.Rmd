@@ -47,6 +47,7 @@ library(cowplot)
 library(randomcoloR)
 library(reshape2)
 library(corncob)
+library(tibble)
 writeLines(capture.output(sessionInfo()), "sessionInfo.txt")
 ```
 
@@ -937,4 +938,47 @@ dev.off()
 ```
 
 
+
+
+
+### Create streamgraph to show changes in Pseudoalteromonas ASV1 across time and treatment type
+
+
+
+```{r, echo=FALSE}
+# read in merged table with most abundant ASVs and metadata from previous code block
+asv_meta <- read.table("asv_meta.txt",sep="\t",header=TRUE, row.names=1)
+
+#subset for only Pseudoalteromonas_ASV1
+asv1 <- asv_meta[which(asv_meta$ASV=='Pseudoalteromonas_ASV1'),]
+
+#remove columns that are not needed 
+asv1_short <- asv1[,c("sample","relative_abundance","Treatment","sampled")]
+
+#calculate mean relative abundance
+asv1_sum <- asv1_short %>% group_by(Treatment,sampled) %>% reframe(sum=sum(relative_abundance))
+#add rows for each treatment in before timepoint using tibble
+asv1_tib <- as_tibble(asv1_sum)
+asv1_plot <- asv1_tib %>% add_row(Treatment="probiotic bag",sampled="Before treatment",sum=0) %>% add_row(Treatment="probiotic paste",sampled="Before treatment",sum=0) %>% add_row(Treatment="control bag",sampled="Before treatment",sum=0) %>% add_row(Treatment="control paste",sampled="Before treatment",sum=0)
+# values for x-axis must be numerical so changes timepoints to # days
+asv1_plot$sampled[asv1_plot$sampled == "Before treatment"] <- -13
+asv1_plot$sampled[asv1_plot$sampled == "Two weeks after treatment"] <- 16
+asv1_plot$sampled[asv1_plot$sampled == "Three months after treatment"] <- 93
+
+
+#set the plot aesthetics
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+#asv1_plot$sampled<-factor(asv1_plot$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
+asv1_plot$Treatment<-factor(asv1_plot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+
+#make stacked area graph
+#pdf("Pseudoalteromonas_ASV1.pdf",bg ="white",width=11)
+area <- ggplot(asv1_plot, aes(x=sampled,y=sum,fill=Treatment))+
+  geom_area()
+area
+#dev.off()
+
+
+```
 
