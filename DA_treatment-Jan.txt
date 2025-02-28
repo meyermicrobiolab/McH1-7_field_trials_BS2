@@ -1,0 +1,2 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"	"Genus"	"asvtaxa"
+2.89603017503377	2.28081324307531	"1.26973577684464"	"0.210175928926126"	"ASV329"	"Clostridia"	"Peptostreptococcales-Tissierellales"	"Fusibacteraceae"	"Fusibacter"	"Fusibacter (ASV329)"

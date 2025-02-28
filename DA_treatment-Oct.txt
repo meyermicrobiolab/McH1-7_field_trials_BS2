@@ -1,0 +1,2 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"	"Genus"	"asvtaxa"
+3.28416890419832	2.10332846356326	"1.56141513847752"	"0.124059878635983"	"ASV67"	"Gammaproteobacteria"	"Burkholderiales"	"Comamonadaceae"	"Ottowia"	"Ottowia (ASV67)"
