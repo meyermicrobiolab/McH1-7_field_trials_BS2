@@ -7,6 +7,7 @@ library(dplyr)
 library(reshape2)
 library(tibble)
 library(ggplot2)
+library(ggbreak)
 
 
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
@@ -83,7 +84,7 @@ treatment.da$significant_taxa #differentially abundant taxa
 #quick look at results with corncob's plotting feature
 plot(treatment.da, c("Family", "Genus"))
 # Positive values mean that taxon is enriched in the treatment in the header relative to no treatment
-# Only Fusibacter ASV329 was detected as DA: it was enriched in treatments relative to no treatment
+# Only Fusibacter ASV329 was detected as DA: it was enriched in most treatments (control bag, control paste, probiotic paste) relative to no treatment
 
 # create a function that will return the values of interest
 sigtaxto_df <- function(treatment.da, ps5_BS2_jan) {
@@ -114,7 +115,7 @@ write.table(df, "DA_treatment-Jan.txt", sep="\t",row.names = FALSE)
 # retrieve relative abundances of significant taxa for plotting
 ps5_BS2_jan #756 taxa and 59 samples
 ps5_BS2_jan_ra<-transform_sample_counts(ps5_BS2_jan, function(OTU) OTU/sum(OTU))
-ps5_BS2_jan_ra #756 families and 59 samples
+ps5_BS2_jan_ra #756 taxa and 59 samples
 otu_da = as(otu_table(ps5_BS2_jan_ra), "matrix")
 taxon_da = as(tax_table(ps5_BS2_jan_ra), "matrix")
 da<-t(otu_da)
@@ -122,18 +123,32 @@ da <- as.data.frame(da)
 da <- tibble::rownames_to_column(da, "ASV")
 taxon_da <- as.data.frame(taxon_da)
 taxon_da <- tibble::rownames_to_column(taxon_da, "ASV")
-da_tax <- merge(da, taxon_da, by="ASV", all=FALSE)
-da_tax$Species<-NULL
+taxon_da$Species<-NULL
+da_tax <- merge(taxon_da, da, by="ASV", all=FALSE)
+
 # now to retrieve only the taxa that I want to plot
 DA1 <- da_tax %>% filter(ASV =='ASV329')
-
 
 # Merge with metadata for plotting aesthetics
 samples <- as.data.frame(samples)
 samples <- tibble::rownames_to_column(samples, "sample")
-DA_long<-melt(DA1,value.name="proportion",variable.name="sample",id.vars=c("Kingdom","Phylum","Class","Order","Family"))
-DA_long <- DA_long[-1,]
+DA_long<-melt(DA1,value.name="proportion",variable.name="sample",id.vars=c("ASV","Kingdom","Phylum","Class","Order","Family","Genus"))
+
 DAplot <- merge(DA_long,samples,by="sample", all=TRUE)
+# reduce decimal places in proporation column
+DAplot$proportion<-round(DAplot$proportion,3)
+
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+pdf("DA1.pdf",bg ="white",width = 8.5)
+p1<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
+  geom_boxplot()+
+  geom_point()+
+  theme_bw()+
+  scale_color_manual(values=cols)
+p1
+dev.off()
 
 
 
@@ -204,6 +219,44 @@ df <- sigtaxto_df(treatment.da, ps5_BS2_oct) #make a df of the corncob output an
 write.table(df, "DA_treatment-Oct.txt", sep="\t",row.names = FALSE)
 
 
+# retrieve relative abundances of significant taxa for plotting
+ps5_BS2_oct #756 taxa and 66 samples
+ps5_BS2_oct_ra<-transform_sample_counts(ps5_BS2_oct, function(OTU) OTU/sum(OTU))
+ps5_BS2_oct_ra #756 taxa and 66 samples
+otu_da = as(otu_table(ps5_BS2_oct_ra), "matrix")
+taxon_da = as(tax_table(ps5_BS2_oct_ra), "matrix")
+da<-t(otu_da)
+da <- as.data.frame(da)
+da <- tibble::rownames_to_column(da, "ASV")
+taxon_da <- as.data.frame(taxon_da)
+taxon_da <- tibble::rownames_to_column(taxon_da, "ASV")
+taxon_da$Species<-NULL
+da_tax <- merge(taxon_da, da, by="ASV", all=FALSE)
+
+# now to retrieve only the taxa that I want to plot
+DA2 <- da_tax %>% filter(ASV =='ASV67')
+
+# Merge with metadata for plotting aesthetics
+samples <- as.data.frame(samples)
+samples <- tibble::rownames_to_column(samples, "sample")
+DA_long<-melt(DA2,value.name="proportion",variable.name="sample",id.vars=c("ASV","Kingdom","Phylum","Class","Order","Family","Genus"))
+
+DAplot <- merge(DA_long,samples,by="sample", all=TRUE)
+# reduce decimal places in proporation column
+DAplot$proportion<-round(DAplot$proportion,3)
+
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+pdf("DA2.pdf",bg ="white",width = 8.5)
+p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
+  geom_boxplot()+
+  geom_point()+
+  theme_bw()+
+  scale_color_manual(values=cols)+
+  scale_y_break(c(0.03, 0.35),scales="free")
+p2
+dev.off()
 
 
 
