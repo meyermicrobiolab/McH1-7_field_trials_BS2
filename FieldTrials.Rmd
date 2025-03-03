@@ -461,13 +461,13 @@ screeplot(d.pcx)
 # replot PCA with ggplot2 (showing samples only)
 df_out <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
-cols<-c("resistant"="#000000","none"="#999999","probiotic paste"="#D55E00","probiotic bag"="#E69F00","control paste"="#0072B2","control bag"="#56B4E9")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples$Collection.month<-factor(samples$Collection.month,levels=c("Aug","Oct","Jan"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
 #not using this plot for manuscript
-pdf("PCA.pdf",bg ="white",width = 8.5)
+pdf("PCA_nofacets.pdf",bg ="white",width = 8.5)
 p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
 p<-p+geom_point(size=2)+
   theme(axis.title = element_text(size=14))+
@@ -477,26 +477,35 @@ p<-p+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  facet_grid(~samples$Collection.month)
-p + labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)
+p + labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
 dev.off()
 
 ####### Perform permanova using Aitchison distance
+# vegan v.2.6.8 need to add "by=terms" for full output
 dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
+perm<-adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"),by = "terms")
 print(perm)
 
-perm2<-pairwise.adonis2(dist.clr~Condition*Treatment*Collection.month,as(sample_data(ps5_BS2),"data.frame"))
+perm2<-pairwise.adonis2(dist.clr~Condition,as(sample_data(ps5_BS2),"data.frame"),by = "terms")
 print(perm2)
 
-perm3<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+perm3<-pairwise.adonis2(dist.clr~Treatment,as(sample_data(ps5_BS2),"data.frame"),by = "terms")
 print(perm3)
 
-perm4<-pairwise.adonis2(dist.clr~Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+perm4<-pairwise.adonis2(dist.clr~Collection.month,as(sample_data(ps5_BS2),"data.frame"),by = "terms")
 print(perm4)
 
-perm5<-pairwise.adonis2(dist.clr~Treatment*Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+perm5<-pairwise.adonis2(dist.clr~Condition/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
 print(perm5)
+
+perm6<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_BS2),"data.frame"), strata='Collection.month')
+print(perm6)
+
+
+
 
 #Look at diseased samples only
 ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
@@ -552,7 +561,7 @@ ylab <- paste("PC2: ", pc2, sep="")
 df_out.aug <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
 
