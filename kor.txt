@@ -1,203 +1,203 @@
 Sample	HealthState	Treatment	Month	Copies_kor
-BS2_1566_DD_A	DD	none	August	0
-BS2_1566_HD_A	HD	none	August	0.0403
-BS2_1689_DD_A	DD	none	August	0
-BS2_1689_HD_A	HD	none	August	0.1529
-BS2_1842_DD_A	DD	none	August	0.1425
-BS2_1842_HD_A	HD	none	August	0.8333
-BS2_1894_HH_A	HH	none	August	0
-BS2_1925_DD_A	DD	none	August	0.4444
-BS2_1925_HD_A	HD	none	August	0.0909
-BS2_2006_DD_A	DD	none	August	0.1736
-BS2_2006_HD_A	HD	none	August	0.0427
-BS2_2015_HD_A	DD	none	August	0
-BS2_2019_DD_A	HD	none	August	0
-BS2_2019_HD_A	DD	none	August	0
-BS2_2048_DD_A	HD	none	August	0
-BS2_2048_HD_A	HH	none	August	0
-BS2_2065_HH_A	DD	none	August	0.7937
-BS2_2076_DD_A	HD	none	August	0.8547
-BS2_2076_HD_A	DD	none	August	0
-BS2_2077_DD_A	HD	none	August	2.7778
-BS2_2077_HD_A	DD	none	August	0.1475
-BS2_2078_DD_A	HD	none	August	0.1094
-BS2_2078_HH_A	DD	none	August	2.2667
-BS2_2079_DD_A	HD	none	August	0
-BS2_2079_HD_A	DD	none	August	0
-BS2_2080_DD_A	HD	none	August	0.5
-BS2_2080_HD_A	DD	none	August	0
-BS2_2091_DD_A	HD	none	August	0
-BS2_2091_HD_A	DD	none	August	0
-BS2_2149_DD_A	HD	none	August	0.0472
-BS2_2149_HD_A	HH	none	August	0.0947
-BS2_2150_HH_A	DD	none	August	0.211
-BS2_2155_DD_A	HD	none	August	0.1852
-BS2_2155_HD_A	DD	none	August	0.0606
-BS2_2161_DD_A	DD	none	August	0
-BS2_2179_DD_A	HD	none	August	0
-BS2_2179_HD_A	DD	none	August	0
-BS2_2180_DD_A	HD	none	August	0.2887
-BS2_2180_HD_A	DD	none	August	0.06
-BS2_2198_DD_A	HD	none	August	0
-BS2_2198_HD_A	DD	none	August	0.119
-BS2_2415_DD_A	HD	none	August	0.463
-BS2_2432_DD_A	DD	none	August	0.1263
-BS2_2432_HD_A	HD	none	August	0
-BS2_2433_DD_A	DD	none	August	0
-BS2_2433_HD_A	HD	none	August	0
-BS2_1566_DD_J	DD	probiotic paste	January	0.2785
-BS2_1566_HD_J	HD	probiotic paste	January	2.8464
-BS2_1689_DD_J	DD	probiotic bag	January	5.1572
-BS2_1689_HD_J	HD	probiotic bag	January	0.381
-BS2_1842_HD_J	HD	probiotic bag	January	0.3054
-BS2_1925_HD_J	HD	probiotic bag	January	1.0829
-BS2_2006_DD_J	DD	probiotic paste	January	0.8023
-BS2_2006_HD_J	HD	probiotic paste	January	0.2095
-BS2_2019_HD_J	HD	probiotic bag	January	0.7658
-BS2_2047_HD_J	DD	control bag	January	11.4667
-BS2_2048_DD_J	HD	control bag	January	0.1804
-BS2_2048_HD_J	DD	none	January	0.7941
-BS2_2065_DD_J	HD	none	January	0.7692
-BS2_2065_HD_J	HD	control bag	January	23.3333
-BS2_2076_HD_J	DD	probiotic paste	January	2.809
-BS2_2077_DD_J	DD	probiotic paste	January	14.2424
-BS2_2078_DD_J	HD	none	January	1.6556
-BS2_2078_HD_J	DD	probiotic paste	January	2.0405
-BS2_2079_DD_J	HD	probiotic paste	January	0.2879
-BS2_2079_HD_J	DD	control paste	January	0.2466
-BS2_2091_DD_J	HD	control paste	January	0.3419
-BS2_2091_HD_J	DD	probiotic paste	January	2.8788
-BS2_2149_DD_J	HD	probiotic paste	January	23.3333
-BS2_2149_HD_J	HD	none	January	0.236
-BS2_2150_HD_J	DD	control paste	January	1.4815
-BS2_2155_DD_J	HD	control paste	January	9.7701
-BS2_2155_HD_J	DD	control paste	January	1.3308
-BS2_2179_DD_J	HD	control paste	January	3.1177
-BS2_2179_HD_J	DD	control bag	January	0.1975
-BS2_2180_DD_J	HD	control bag	January	4.5977
-BS2_2180_HD_J	HD	control bag	January	0.7275
-BS2_2198_HD_J	HD	probiotic bag	January	0.362
-BS2_2415_HD_J	HD	none	January	0.1422
-BS2_2432_HD_J	DD	probiotic paste	January	0.2897
-BS2_2433_DD_J	HD	probiotic paste	January	25.6522
-BS2_2433_HD_J	HD	probiotic bag	January	2.1389
-BS2_2453_HD_J	HD	control bag	January	1.3671
-BS2_2460_HD_J	DD	probiotic paste	January	1.5385
-BS2_2464_DD_J	DD	none	January	0.2161
-BS2_2474_DD_J	HD	none	January	1.1473
-BS2_2474_HD_J	DD	control bag	January	0.3598
-BS2_2475_DD_J	HD	control bag	January	5.8559
-BS2_2475_HD_J	DD	control paste	January	0.5113
-BS2_2478_DD_J	HD	control paste	January	0.1855
-BS2_2478_HD_J	DD	control bag	January	0.2324
-BS2_2479_DD_J	HD	control bag	January	0.7819
-BS2_2479_HD_J	DD	control paste	January	0.995
-BS2_2480_DD_J	HD	control paste	January	2.0984
-BS2_2480_HD_J	DD	none	January	0.7642
-BS2_2483_DD_J	HD	none	January	0.8377
-BS2_2483_HD_J	HD	control paste	January	0.8189
-BS2_2499_HD_J	DD	control paste	January	0.2778
-BS2_2500_DD_J	HD	control paste	January	0.3042
-BS2_2500_HD_J	DD	probiotic paste	January	1.0611
-BS2_2652_DD_J	HD	probiotic paste	January	3.677
-BS2_2652_HD_J	DD	none	January	0.5997
-BS2_2661_DD_J	HD	none	January	1.8391
-BS2_2661_HD_J	HH	none	January	1.4146
-BS2_2662_HH_J	HH	none	January	0.7213
-BS2_2672_HH_J	HH	none	January	1.1392
-BS2_2673_HH_J	DD	control paste	January	0.6213
-BS2_2674_DD_J	HD	control paste	January	27.619
-BS2_2674_HD_J	HD	none	January	0.3126
-BS2_2675_HD_J	HH	none	January	1.3054
-BS2_2683_HH_J	HD	none	January	0.4284
-BS2_2685_HD_J	HD	none	January	0.7709
-BS2_2693_HD_J	HH	none	January	0.3553
-BS2_2694_HH_J	HH	none	October	0.6245
-BS2_1_HH_O	HH	none	October	0.0913
-BS2_10_HH_O	HH	none	October	0
-BS2_1566_DD_O	DD	probiotic paste	October	0
-BS2_1566_HD_O	HD	probiotic paste	October	0.1312
-BS2_1689_DD_O	DD	probiotic bag	October	0.0238
-BS2_1689_HD_O	HD	probiotic bag	October	0
-BS2_1842_DD_O	DD	probiotic bag	October	0.2809
-BS2_1842_HD_O	HD	probiotic bag	October	0.2551
-BS2_1925_DD_O	DD	probiotic bag	October	0
-BS2_1925_HD_O	HD	probiotic bag	October	0
-BS2_2006_DD_O	DD	probiotic paste	October	0.8333
-BS2_2006_HD_O	HD	probiotic paste	October	0
-BS2_2019_DD_O	DD	probiotic bag	October	0.2353
-BS2_2019_HD_O	HD	probiotic bag	October	0.0669
-BS2_2048_DD_O	DD	control bag	October	0.6944
-BS2_2048_HD_O	HD	control bag	October	0.1312
-BS2_2065_HH_O	HH	none	October	0
-BS2_2076_DD_O	DD	control bag	October	0.0633
-BS2_2076_HD_O	HD	control bag	October	0.011
-BS2_2077_DD_O	DD	probiotic paste	October	5.2381
-BS2_2077_HD_O	HD	probiotic paste	October	1
-BS2_2078_DD_O	DD	none	October	2.7778
-BS2_2078_HD_O	HD	none	October	0.6296
-BS2_2079_DD_O	DD	probiotic paste	October	0
-BS2_2079_HD_O	HD	probiotic paste	October	0.0682
-BS2_2080_DD_O	DD	control paste	October	2.381
-BS2_2080_HD_O	HD	control paste	October	0
-BS2_2091_DD_O	DD	control paste	October	0.0939
-BS2_2091_HD_O	HD	control paste	October	0
-BS2_2149_DD_O	DD	probiotic paste	October	0
-BS2_2149_HD_O	HD	probiotic paste	October	0.0524
-BS2_2150_HH_O	HH	none	October	0
-BS2_2155_DD_O	DD	control paste	October	0
-BS2_2155_HD_O	HD	control paste	October	0
-BS2_2179_DD_O	DD	control paste	October	0
-BS2_2179_HD_O	HD	control paste	October	0
-BS2_2180_DD_O	DD	control bag	October	2.1053
-BS2_2180_HD_O	HD	control bag	October	0.1667
-BS2_2198_DD_O	DD	control bag	October	3.0769
-BS2_2198_HD_O	HD	control bag	October	0.5263
-BS2_2407_DD_O	DD	control bag	October	5.6667
-BS2_2407_HD_O	HD	control bag	October	0.4348
-BS2_2415_DD_O	DD	probiotic bag	October	0
-BS2_2415_HD_O	HD	probiotic bag	October	0.202
-BS2_2432_HH_O	HH	none	October	0.5037
-BS2_2433_DD_O	DD	probiotic paste	October	0.3472
-BS2_2433_HD_O	HD	probiotic paste	October	0
-BS2_2453_DD_O	DD	probiotic bag	October	2.7778
-BS2_2453_HD_O	HD	probiotic bag	October	0.0897
-BS2_2460_DD_O	DD	control bag	October	0.8
-BS2_2460_HD_O	HD	control bag	October	0
-BS2_2464_DD_O	DD	probiotic paste	October	0.7143
-BS2_2464_HD_O	HD	probiotic paste	October	0.0152
-BS2_2474_DD_O	DD	none	October	0.0152
-BS2_2474_DD_O	DD	none	October	0
-BS2_2474_HD_O	HD	none	October	0
-BS2_2474_HD_O	HD	none	October	0.03255
-BS2_2475_DD_O	DD	control bag	October	0.1616
-BS2_2475_HD_O	HD	control bag	October	0.2555
-BS2_2478_DD_O	DD	control paste	October	0
-BS2_2478_HD_O	HD	control paste	October	0.2469
-BS2_2479_DD_O	DD	control bag	October	0
-BS2_2479_HD_O	HD	control bag	October	1.1765
-BS2_2480_HD_O	HD	control paste	October	1.1429
-BS2_2482_DD_O	DD	none	October	0
-BS2_2482_HD_O	HD	none	October	0.1118
-BS2_2483_DD_O	DD	none	October	0.39685
-BS2_2483_HD_O	HD	none	October	0.1606
-BS2_2499_DD_O	DD	control paste	October	0.7692
-BS2_2499_HD_O	HD	control paste	October	0.2462
-BS2_2500_DD_O	DD	control paste	October	3.7879
-BS2_2500_HD_O	HD	control paste	October	0.137
-BS2_2662_HH_O	HH	none	October	0.1003
-BS2_2672_HH_O	HH	none	October	0.3472
-BS2_2673_HH_O	HH	none	October	0.2217
-BS2_2675_DD_O	DD	none	October	0.241
-BS2_2675_HD_O	HD	none	October	0.3774
-BS2_2683_HH_O	HH	none	October	0.4918
-BS2_2685_DD_O	DD	none	October	0
-BS2_2685_HD_O	HD	none	October	0.4082
-BS2_2694_HH_O	HH	none	October	0.1961
-BS2_3_HH_O	HH	none	October	0.404
-BS2_4_HH_O	HH	none	October	0
-BS2_5_HH_O	HH	none	October	0.0896
-BS2_6_HH_O	HH	none	October	0.0892
-BS2_7_HH_O	HH	none	October	0.0554
-BS2_8_HH_O	HH	none	October	0.0252
-BS2_9_HH_O	HH	none	October	0.0707
+BS2_1566_DD_A	DD	none	Aug	0
+BS2_1566_HD_A	HD	none	Aug	0.0403
+BS2_1689_DD_A	DD	none	Aug	0
+BS2_1689_HD_A	HD	none	Aug	0.1529
+BS2_1842_DD_A	DD	none	Aug	0.1425
+BS2_1842_HD_A	HD	none	Aug	0.8333
+BS2_1894_HH_A	HH	none	Aug	0
+BS2_1925_DD_A	DD	none	Aug	0.4444
+BS2_1925_HD_A	HD	none	Aug	0.0909
+BS2_2006_DD_A	DD	none	Aug	0.1736
+BS2_2006_HD_A	HD	none	Aug	0.0427
+BS2_2015_HD_A	DD	none	Aug	0
+BS2_2019_DD_A	HD	none	Aug	0
+BS2_2019_HD_A	DD	none	Aug	0
+BS2_2048_DD_A	HD	none	Aug	0
+BS2_2048_HD_A	HH	none	Aug	0
+BS2_2065_HH_A	DD	none	Aug	0.7937
+BS2_2076_DD_A	HD	none	Aug	0.8547
+BS2_2076_HD_A	DD	none	Aug	0
+BS2_2077_DD_A	HD	none	Aug	2.7778
+BS2_2077_HD_A	DD	none	Aug	0.1475
+BS2_2078_DD_A	HD	none	Aug	0.1094
+BS2_2078_HH_A	DD	none	Aug	2.2667
+BS2_2079_DD_A	HD	none	Aug	0
+BS2_2079_HD_A	DD	none	Aug	0
+BS2_2080_DD_A	HD	none	Aug	0.5
+BS2_2080_HD_A	DD	none	Aug	0
+BS2_2091_DD_A	HD	none	Aug	0
+BS2_2091_HD_A	DD	none	Aug	0
+BS2_2149_DD_A	HD	none	Aug	0.0472
+BS2_2149_HD_A	HH	none	Aug	0.0947
+BS2_2150_HH_A	DD	none	Aug	0.211
+BS2_2155_DD_A	HD	none	Aug	0.1852
+BS2_2155_HD_A	DD	none	Aug	0.0606
+BS2_2161_DD_A	DD	none	Aug	0
+BS2_2179_DD_A	HD	none	Aug	0
+BS2_2179_HD_A	DD	none	Aug	0
+BS2_2180_DD_A	HD	none	Aug	0.2887
+BS2_2180_HD_A	DD	none	Aug	0.06
+BS2_2198_DD_A	HD	none	Aug	0
+BS2_2198_HD_A	DD	none	Aug	0.119
+BS2_2415_DD_A	HD	none	Aug	0.463
+BS2_2432_DD_A	DD	none	Aug	0.1263
+BS2_2432_HD_A	HD	none	Aug	0
+BS2_2433_DD_A	DD	none	Aug	0
+BS2_2433_HD_A	HD	none	Aug	0
+BS2_1566_DD_J	DD	probiotic paste	Jan	0.2785
+BS2_1566_HD_J	HD	probiotic paste	Jan	2.8464
+BS2_1689_DD_J	DD	probiotic bag	Jan	5.1572
+BS2_1689_HD_J	HD	probiotic bag	Jan	0.381
+BS2_1842_HD_J	HD	probiotic bag	Jan	0.3054
+BS2_1925_HD_J	HD	probiotic bag	Jan	1.0829
+BS2_2006_DD_J	DD	probiotic paste	Jan	0.8023
+BS2_2006_HD_J	HD	probiotic paste	Jan	0.2095
+BS2_2019_HD_J	HD	probiotic bag	Jan	0.7658
+BS2_2047_HD_J	DD	control bag	Jan	11.4667
+BS2_2048_DD_J	HD	control bag	Jan	0.1804
+BS2_2048_HD_J	DD	none	Jan	0.7941
+BS2_2065_DD_J	HD	none	Jan	0.7692
+BS2_2065_HD_J	HD	control bag	Jan	23.3333
+BS2_2076_HD_J	DD	probiotic paste	Jan	2.809
+BS2_2077_DD_J	DD	probiotic paste	Jan	14.2424
+BS2_2078_DD_J	HD	none	Jan	1.6556
+BS2_2078_HD_J	DD	probiotic paste	Jan	2.0405
+BS2_2079_DD_J	HD	probiotic paste	Jan	0.2879
+BS2_2079_HD_J	DD	control paste	Jan	0.2466
+BS2_2091_DD_J	HD	control paste	Jan	0.3419
+BS2_2091_HD_J	DD	probiotic paste	Jan	2.8788
+BS2_2149_DD_J	HD	probiotic paste	Jan	23.3333
+BS2_2149_HD_J	HD	none	Jan	0.236
+BS2_2150_HD_J	DD	control paste	Jan	1.4815
+BS2_2155_DD_J	HD	control paste	Jan	9.7701
+BS2_2155_HD_J	DD	control paste	Jan	1.3308
+BS2_2179_DD_J	HD	control paste	Jan	3.1177
+BS2_2179_HD_J	DD	control bag	Jan	0.1975
+BS2_2180_DD_J	HD	control bag	Jan	4.5977
+BS2_2180_HD_J	HD	control bag	Jan	0.7275
+BS2_2198_HD_J	HD	probiotic bag	Jan	0.362
+BS2_2415_HD_J	HD	none	Jan	0.1422
+BS2_2432_HD_J	DD	probiotic paste	Jan	0.2897
+BS2_2433_DD_J	HD	probiotic paste	Jan	25.6522
+BS2_2433_HD_J	HD	probiotic bag	Jan	2.1389
+BS2_2453_HD_J	HD	control bag	Jan	1.3671
+BS2_2460_HD_J	DD	probiotic paste	Jan	1.5385
+BS2_2464_DD_J	DD	none	Jan	0.2161
+BS2_2474_DD_J	HD	none	Jan	1.1473
+BS2_2474_HD_J	DD	control bag	Jan	0.3598
+BS2_2475_DD_J	HD	control bag	Jan	5.8559
+BS2_2475_HD_J	DD	control paste	Jan	0.5113
+BS2_2478_DD_J	HD	control paste	Jan	0.1855
+BS2_2478_HD_J	DD	control bag	Jan	0.2324
+BS2_2479_DD_J	HD	control bag	Jan	0.7819
+BS2_2479_HD_J	DD	control paste	Jan	0.995
+BS2_2480_DD_J	HD	control paste	Jan	2.0984
+BS2_2480_HD_J	DD	none	Jan	0.7642
+BS2_2483_DD_J	HD	none	Jan	0.8377
+BS2_2483_HD_J	HD	control paste	Jan	0.8189
+BS2_2499_HD_J	DD	control paste	Jan	0.2778
+BS2_2500_DD_J	HD	control paste	Jan	0.3042
+BS2_2500_HD_J	DD	probiotic paste	Jan	1.0611
+BS2_2652_DD_J	HD	probiotic paste	Jan	3.677
+BS2_2652_HD_J	DD	none	Jan	0.5997
+BS2_2661_DD_J	HD	none	Jan	1.8391
+BS2_2661_HD_J	HH	none	Jan	1.4146
+BS2_2662_HH_J	HH	none	Jan	0.7213
+BS2_2672_HH_J	HH	none	Jan	1.1392
+BS2_2673_HH_J	DD	control paste	Jan	0.6213
+BS2_2674_DD_J	HD	control paste	Jan	27.619
+BS2_2674_HD_J	HD	none	Jan	0.3126
+BS2_2675_HD_J	HH	none	Jan	1.3054
+BS2_2683_HH_J	HD	none	Jan	0.4284
+BS2_2685_HD_J	HD	none	Jan	0.7709
+BS2_2693_HD_J	HH	none	Jan	0.3553
+BS2_2694_HH_J	HH	none	Oct	0.6245
+BS2_1_HH_O	HH	none	Oct	0.0913
+BS2_10_HH_O	HH	none	Oct	0
+BS2_1566_DD_O	DD	probiotic paste	Oct	0
+BS2_1566_HD_O	HD	probiotic paste	Oct	0.1312
+BS2_1689_DD_O	DD	probiotic bag	Oct	0.0238
+BS2_1689_HD_O	HD	probiotic bag	Oct	0
+BS2_1842_DD_O	DD	probiotic bag	Oct	0.2809
+BS2_1842_HD_O	HD	probiotic bag	Oct	0.2551
+BS2_1925_DD_O	DD	probiotic bag	Oct	0
+BS2_1925_HD_O	HD	probiotic bag	Oct	0
+BS2_2006_DD_O	DD	probiotic paste	Oct	0.8333
+BS2_2006_HD_O	HD	probiotic paste	Oct	0
+BS2_2019_DD_O	DD	probiotic bag	Oct	0.2353
+BS2_2019_HD_O	HD	probiotic bag	Oct	0.0669
+BS2_2048_DD_O	DD	control bag	Oct	0.6944
+BS2_2048_HD_O	HD	control bag	Oct	0.1312
+BS2_2065_HH_O	HH	none	Oct	0
+BS2_2076_DD_O	DD	control bag	Oct	0.0633
+BS2_2076_HD_O	HD	control bag	Oct	0.011
+BS2_2077_DD_O	DD	probiotic paste	Oct	5.2381
+BS2_2077_HD_O	HD	probiotic paste	Oct	1
+BS2_2078_DD_O	DD	none	Oct	2.7778
+BS2_2078_HD_O	HD	none	Oct	0.6296
+BS2_2079_DD_O	DD	probiotic paste	Oct	0
+BS2_2079_HD_O	HD	probiotic paste	Oct	0.0682
+BS2_2080_DD_O	DD	control paste	Oct	2.381
+BS2_2080_HD_O	HD	control paste	Oct	0
+BS2_2091_DD_O	DD	control paste	Oct	0.0939
+BS2_2091_HD_O	HD	control paste	Oct	0
+BS2_2149_DD_O	DD	probiotic paste	Oct	0
+BS2_2149_HD_O	HD	probiotic paste	Oct	0.0524
+BS2_2150_HH_O	HH	none	Oct	0
+BS2_2155_DD_O	DD	control paste	Oct	0
+BS2_2155_HD_O	HD	control paste	Oct	0
+BS2_2179_DD_O	DD	control paste	Oct	0
+BS2_2179_HD_O	HD	control paste	Oct	0
+BS2_2180_DD_O	DD	control bag	Oct	2.1053
+BS2_2180_HD_O	HD	control bag	Oct	0.1667
+BS2_2198_DD_O	DD	control bag	Oct	3.0769
+BS2_2198_HD_O	HD	control bag	Oct	0.5263
+BS2_2407_DD_O	DD	control bag	Oct	5.6667
+BS2_2407_HD_O	HD	control bag	Oct	0.4348
+BS2_2415_DD_O	DD	probiotic bag	Oct	0
+BS2_2415_HD_O	HD	probiotic bag	Oct	0.202
+BS2_2432_HH_O	HH	none	Oct	0.5037
+BS2_2433_DD_O	DD	probiotic paste	Oct	0.3472
+BS2_2433_HD_O	HD	probiotic paste	Oct	0
+BS2_2453_DD_O	DD	probiotic bag	Oct	2.7778
+BS2_2453_HD_O	HD	probiotic bag	Oct	0.0897
+BS2_2460_DD_O	DD	control bag	Oct	0.8
+BS2_2460_HD_O	HD	control bag	Oct	0
+BS2_2464_DD_O	DD	probiotic paste	Oct	0.7143
+BS2_2464_HD_O	HD	probiotic paste	Oct	0.0152
+BS2_2474_DD_O	DD	none	Oct	0.0152
+BS2_2474_DD_O	DD	none	Oct	0
+BS2_2474_HD_O	HD	none	Oct	0
+BS2_2474_HD_O	HD	none	Oct	0.03255
+BS2_2475_DD_O	DD	control bag	Oct	0.1616
+BS2_2475_HD_O	HD	control bag	Oct	0.2555
+BS2_2478_DD_O	DD	control paste	Oct	0
+BS2_2478_HD_O	HD	control paste	Oct	0.2469
+BS2_2479_DD_O	DD	control bag	Oct	0
+BS2_2479_HD_O	HD	control bag	Oct	1.1765
+BS2_2480_HD_O	HD	control paste	Oct	1.1429
+BS2_2482_DD_O	DD	none	Oct	0
+BS2_2482_HD_O	HD	none	Oct	0.1118
+BS2_2483_DD_O	DD	none	Oct	0.39685
+BS2_2483_HD_O	HD	none	Oct	0.1606
+BS2_2499_DD_O	DD	control paste	Oct	0.7692
+BS2_2499_HD_O	HD	control paste	Oct	0.2462
+BS2_2500_DD_O	DD	control paste	Oct	3.7879
+BS2_2500_HD_O	HD	control paste	Oct	0.137
+BS2_2662_HH_O	HH	none	Oct	0.1003
+BS2_2672_HH_O	HH	none	Oct	0.3472
+BS2_2673_HH_O	HH	none	Oct	0.2217
+BS2_2675_DD_O	DD	none	Oct	0.241
+BS2_2675_HD_O	HD	none	Oct	0.3774
+BS2_2683_HH_O	HH	none	Oct	0.4918
+BS2_2685_DD_O	DD	none	Oct	0
+BS2_2685_HD_O	HD	none	Oct	0.4082
+BS2_2694_HH_O	HH	none	Oct	0.1961
+BS2_3_HH_O	HH	none	Oct	0.404
+BS2_4_HH_O	HH	none	Oct	0
+BS2_5_HH_O	HH	none	Oct	0.0896
+BS2_6_HH_O	HH	none	Oct	0.0892
+BS2_7_HH_O	HH	none	Oct	0.0554
+BS2_8_HH_O	HH	none	Oct	0.0252
+BS2_9_HH_O	HH	none	Oct	0.0707

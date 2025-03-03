@@ -1,5 +1,14 @@
+---
+title: "DifferentialAbundance"
+author: "JM"
+date: "2025-03-01"
+output: html_document
+---
+
+
 ### Use corncob to look for differentially abundant taxa by the continuous variable of total tissue loss
 
+```{r, echo=FALSE}
 library(phyloseq)
 library(corncob)
 library(plyr)
@@ -8,9 +17,14 @@ library(reshape2)
 library(tibble)
 library(ggplot2)
 library(ggbreak)
+```
 
+# What microorganisms are significantly changing with changes in tissue loss? Use Jan samples only; total tissue loss in January
 
+Data prep:
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
+
+```{r, echo=FALSE}
 otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE, row.names=1)
 taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
 samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
@@ -28,10 +42,6 @@ ps_corn #756 taxa and 54 samples
 ps_corn <- prune_taxa(taxa_sums(ps_corn) > 1, ps_corn) #remove taxa not found in remaining samples
 ps_corn #651 taxa and 54 samples, removed 105 taxa only found in samples without tissue loss data
 
-
-
-# What microorganisms are significantly changing with changes in tissue loss? Use Jan samples only; total tissue loss in January
-
 set.seed(1)
 tissueJan.da <- differentialTest(formula = ~ Proportion_TissueLost_Jan21, 
                                  phi.formula = ~ Proportion_TissueLost_Jan21,
@@ -43,13 +53,15 @@ tissueJan.da <- differentialTest(formula = ~ Proportion_TissueLost_Jan21,
 
 # All p-values are NA!
 
-
+```
 
 
 ### Use corncob to look for differentially abundant taxa by category: treatment type
 
 ####### JANUARY
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
+
+```{r, echo=FALSE}
 otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE, row.names=1)
 taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_jan_corncob.txt",sep="\t",header=TRUE,row.names=1)
 samples<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
@@ -150,10 +162,15 @@ p1<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
 p1
 dev.off()
 
+```
 
+### Use corncob to look for differentially abundant taxa by category: treatment type
 
 ####### OCTOBER
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks, replaced sequences with ASV numbers in both otu table and taxa table, added a column named "Species" to the taxa table to fill in later with ASV number
+
+
+```{r, echo=FALSE}
 otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_oct_corncob.txt",sep="\t",header=TRUE, row.names=1)
 taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_oct_corncob.txt",sep="\t",header=TRUE,row.names=1)
 samples<-read.table("metadata_ps5_BS2_oct.txt",sep="\t",header=T,row.names=1)
@@ -258,6 +275,8 @@ p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
 p2
 dev.off()
 
+
+```
 
 
 

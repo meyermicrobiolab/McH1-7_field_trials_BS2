@@ -1,13 +1,13 @@
 Sample name	Coral.tag	Complete_sets	Proportion_TissueLost_Jan21	Proportion_TissueLost_End	Treatment	Site	Coral.species	Condition	Probiotic	Collection.month	Collection.year	sampled	Sequencing.Run
-BS2-1-HH-A	1	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-3-HH-A	3	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-4H-A	4	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-5-HH-A	5	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-6H-A	6	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-7H-A	7	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-8H-A	8	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-9H-A	9	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-10H-A	10	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
+BS2-1-HH-A	1	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-3-HH-A	3	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-4H-A	4	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-5-HH-A	5	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-6H-A	6	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-7H-A	7	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-8H-A	8	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-9H-A	9	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-10H-A	10	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
 BS2-1566-DD-A	1566	yes	11.3	100	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
 BS2-1566-DD-D	1566	yes	11.3	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
 BS2-1566-DD-O	1566	yes	11.3	100	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after treatment	NS2172

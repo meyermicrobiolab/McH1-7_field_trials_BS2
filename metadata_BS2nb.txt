@@ -1,6 +1,13 @@
 	Coral.tag	Complete_sets	Proportion_TissueLost_Jan21	Proportion_TissueLost_End	Treatment	Site	Coral.species	Condition	Probiotic	Collection.month	Collection.year	sampled	Sequencing.Run
-BS2-1-HH-A	1	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-10H-A	10	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
+BS2-1-HH-A	1	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-3-HH-A	3	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-4H-A	4	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-5-HH-A	5	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-6H-A	6	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-7H-A	7	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-8H-A	8	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-9H-A	9	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
+BS2-10H-A	10	no	nd	nd	none	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2107
 BS2-1566-DD-A	1566	yes	11.3	100	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
 BS2-1566-HD-A	1566	yes	11.3	100	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
 BS2-1689-DD-A	1689	yes	15.6	53.2	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
@@ -52,13 +59,69 @@ BS2-2474-HD-A	2474	yes	7.9	30.6	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS
 BS2-2482-DD-A	2482	yes	100	100	none	BS2	MCAV	DD	NO	Aug	2020	Before treatment	NS2107
 BS2-2482-HD-A	2482	yes	100	100	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
 BS2-2483-HD-A	2483	yes	91.5	100	none	BS2	MCAV	HD	NO	Aug	2020	Before treatment	NS2107
-BS2-3-HH-A	3	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-4H-A	4	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-5-HH-A	5	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-6H-A	6	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-7H-A	7	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-8H-A	8	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
-BS2-9H-A	9	no	nd	nd	none	BS2	MCAV	HH	NO	Aug	2020	Two weeks after treatment	NS2107
+BS2-1566-DD-D	1566	yes	11.3	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-1566-HD-D	1566	yes	11.3	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-1689-DD-D	1689	yes	15.6	53.2	probiotic bag	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-1689-HD-D	1689	yes	15.6	53.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-1842-HD-D	1842	yes	84.3	94.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-1925-HD-D	1925	yes	8.6	10.9	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2006-DD-D	2006	yes	10	40.7	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2006-HD-D	2006	yes	10	40.7	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2019-HD-D	2019	yes	0.2	0.1	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2048-DD-D	2048	yes	45.3	100	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2048-HD-D	2048	yes	45.3	100	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
+BS2-2065-DD-D	2065	no	nd	nd	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2065-HD-D	2065	no	nd	nd	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2076-HD-D	2076	yes	0.7	71.8	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2077-DD-D	2077	no	93.9	93.7	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2078-HD-D	2078	yes	11.7	25.2	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2079-DD-D	2079	yes	24.7	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2079-HD-D	2079	yes	24.7	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2091-DD-D	2091	yes	4	1.8	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2091-HD-D	2091	yes	4	1.8	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2149-HD-D	2149	yes	34.7	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2155-DD-D	2155	yes	4.5	45.2	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2155-HD-D	2155	yes	4.5	45.2	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2179-HD-D	2179	yes	5.9	4.5	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
+BS2-2180-DD-D	2180	yes	18.1	100	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2180-HD-D	2180	yes	18.1	100	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2407-HD-D	2407	no	nd	nd	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2415-HD-D	2415	yes	7.8	9.7	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2432-HD-D	2432	no	nd	nd	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2433-HD-D	2433	yes	-1.8	25.8	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2433-DD-D	2433	yes	-1.8	25.8	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2408
+BS2-2453-HD-D	2453	no	0.7	10.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2460-HD-D	2460	no	3.4	39.7	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2464-DD-D	2464	no	96.7	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2474-DD-D	2474	yes	7.9	30.6	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2474-HD-D	2474	yes	7.9	30.6	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2475-DD-D	2475	yes	8.5	19.5	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2475-HD-D	2475	yes	8.5	19.5	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2478-HD-D	2478	no	4.9	91.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2478-DD-D	2478	no	4.9	91.7	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2408
+BS2-2479-DD-D	2479	yes	3	12.7	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2479-HD-D	2479	yes	3	12.7	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2480-DD-D	2480	no	1.5	39.7	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2480-HD-D	2480	no	1.5	39.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2483-DD-D	2483	yes	91.5	100	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2483-HD-D	2483	yes	91.5	100	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
+BS2-2499-HD-D	2499	no	1.2	12.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2500-DD-D	2500	yes	14.2	32.9	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2500-HD-D	2500	yes	14.2	32.9	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2652-DD-D	2652	no	0	36.8	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2652-HD-D	2652	no	0	36.8	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
+BS2-2661-DD-D	2661	no	0	39.1	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2661-HD-D	2661	no	0	39.1	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2662-HH-D	2662	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2672-HH-D	2672	no	nd	nd	none	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2408
+BS2-2673-HH-D	2673	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2674-DD-D	2674	no	0	39.2	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2674-HD-D	2674	no	0	39.2	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2675-HD-D	2675	no	0	-3.9	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2683-HH-D	2683	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2685-HD-D	2685	no	0	-0.3	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2693-HD-D	2693	no	0	28.9	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
+BS2-2694-HH-D	2694	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
 BS2-1566-DD-O	1566	yes	11.3	100	probiotic paste	BS2	MCAV	DD	YES	Oct	2020	Two weeks after treatment	NS2172
 BS2-1566-HD-O	1566	yes	11.3	100	probiotic paste	BS2	MCAV	HD	YES	Oct	2020	Two weeks after treatment	NS2172
 BS2-1689-DD-O	1689	yes	15.6	53.2	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after treatment	NS2172
@@ -92,6 +155,7 @@ BS2-2179-HD-O	2179	yes	5.9	4.5	control paste	BS2	MCAV	HD	NO	Oct	2020	Two weeks a
 BS2-2180-DD-O	2180	yes	18.1	100	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2180-HD-O	2180	yes	18.1	100	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2198-DD-O	2198	yes	2.2	9.2	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after treatment	NS2172
+BS2-2198-HD-O	2198	yes	2.2	9.2	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2408
 BS2-2407-DD-O	2407	no	nd	nd	control bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2407-HD-O	2407	no	nd	nd	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2415-DD-O	2415	yes	7.8	9.7	probiotic bag	BS2	MCAV	DD	YES	Oct	2020	Two weeks after treatment	NS2172
@@ -124,72 +188,8 @@ BS2-2662-HH-O	2662	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after tr
 BS2-2672-HH-O	2672	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2673-HH-O	2673	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2675-DD-O	2675	no	0	-3.9	none	BS2	MCAV	DD	NO	Oct	2020	Two weeks after treatment	NS2172
+BS2-2675-HD-O	2675	no	0	-3.9	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2408
+BS2-2683-HH-O	2683	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2408
 BS2-2685-DD-O	2685	no	0	-0.3	probiotic bag	BS2	MCAV	DD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2685-HD-O	2685	no	0	-0.3	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2172
 BS2-2694-HH-O	2694	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2172
-BS2-1566-DD-D	1566	yes	11.3	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-1566-HD-D	1566	yes	11.3	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-1689-DD-D	1689	yes	15.6	53.2	probiotic bag	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-1689-HD-D	1689	yes	15.6	53.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-1842-HD-D	1842	yes	84.3	94.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-1925-HD-D	1925	yes	8.6	10.9	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2006-DD-D	2006	yes	10	40.7	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2006-HD-D	2006	yes	10	40.7	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2019-HD-D	2019	yes	0.2	0.1	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2048-DD-D	2048	yes	45.3	100	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2065-DD-D	2065	no	nd	nd	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2065-HD-D	2065	no	nd	nd	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2076-HD-D	2076	yes	0.7	71.8	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2077-DD-D	2077	no	93.9	93.7	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2078-HD-D	2078	yes	11.7	25.2	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2079-DD-D	2079	yes	24.7	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2079-HD-D	2079	yes	24.7	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2091-DD-D	2091	yes	4	1.8	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2091-HD-D	2091	yes	4	1.8	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2149-HD-D	2149	yes	34.7	100	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2155-DD-D	2155	yes	4.5	45.2	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2155-HD-D	2155	yes	4.5	45.2	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2180-DD-D	2180	yes	18.1	100	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2180-HD-D	2180	yes	18.1	100	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2407-HD-D	2407	no	nd	nd	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2415-HD-D	2415	yes	7.8	9.7	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2432-HD-D	2432	no	nd	nd	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2433-HD-D	2433	yes	-1.8	25.8	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2453-HD-D	2453	no	0.7	10.2	probiotic bag	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2460-HD-D	2460	no	3.4	39.7	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2464-DD-D	2464	no	96.7	100	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2474-DD-D	2474	yes	7.9	30.6	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2474-HD-D	2474	yes	7.9	30.6	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2475-DD-D	2475	yes	8.5	19.5	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2475-HD-D	2475	yes	8.5	19.5	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2478-HD-D	2478	no	4.9	91.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2479-DD-D	2479	yes	3	12.7	control bag	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2479-HD-D	2479	yes	3	12.7	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2480-DD-D	2480	no	1.5	39.7	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2480-HD-D	2480	no	1.5	39.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2483-DD-D	2483	yes	91.5	100	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2499-HD-D	2499	no	1.2	12.7	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2500-DD-D	2500	yes	14.2	32.9	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2500-HD-D	2500	yes	14.2	32.9	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2652-DD-D	2652	no	0	36.8	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2652-HD-D	2652	no	0	36.8	probiotic paste	BS2	MCAV	HD	YES	Jan	2021	Two months after treatment	NS2211
-BS2-2661-DD-D	2661	no	0	39.1	none	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2661-HD-D	2661	no	0	39.1	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2662-HH-D	2662	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2673-HH-D	2673	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2674-DD-D	2674	no	0	39.2	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2674-HD-D	2674	no	0	39.2	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2675-HD-D	2675	no	0	-3.9	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2683-HH-D	2683	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2685-HD-D	2685	no	0	-0.3	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2693-HD-D	2693	no	0	28.9	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2694-HH-D	2694	no	nd	nd	resistant	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2211
-BS2-2048-HD-D	2048	yes	45.3	100	control bag	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
-BS2-2179-HD-D	2179	yes	5.9	4.5	control paste	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
-BS2-2198-HD-O	2198	yes	2.2	9.2	control bag	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2408
-BS2-2433-DD-D	2433	yes	-1.8	25.8	probiotic paste	BS2	MCAV	DD	YES	Jan	2021	Two months after treatment	NS2408
-BS2-2478-DD-D	2478	no	4.9	91.7	control paste	BS2	MCAV	DD	NO	Jan	2021	Two months after treatment	NS2408
-BS2-2483-HD-D	2483	yes	91.5	100	none	BS2	MCAV	HD	NO	Jan	2021	Two months after treatment	NS2408
-BS2-2672-HH-D	2672	no	nd	nd	none	BS2	MCAV	HH	NO	Jan	2021	Two months after treatment	NS2408
-BS2-2675-HD-O	2675	no	0	-3.9	none	BS2	MCAV	HD	NO	Oct	2020	Two weeks after treatment	NS2408
-BS2-2683-HH-O	2683	no	nd	nd	resistant	BS2	MCAV	HH	NO	Oct	2020	Two weeks after treatment	NS2408

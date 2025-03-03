@@ -6,10 +6,6 @@ output:
   html_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Plotting korormicin ddPCR results
 
 ```{r, echo=FALSE}
@@ -18,7 +14,7 @@ library(ggplot2)
 kor <- read.table("kor.txt",sep="\t",header=TRUE)
 
 palette <- c("DD"="#000000","HD"="#999999","HH"="#E69F00")
-kor$Month <- factor(kor$Month, levels=c("August","October","January"))
+kor$Month <- factor(kor$Month, levels=c("Aug","Oct","Jan"))
 #label from the bottom up
 kor$Treatment <- factor(kor$Treatment, levels=c("none","control bag","control paste","probiotic bag","probiotic paste"))
 
@@ -40,7 +36,7 @@ pdf("kor.pdf", width=8,height=6)
 p1<-ggplot(kor,aes(Treatment,Copies_kor))+
   geom_boxplot(outlier.shape=NA)+
   geom_jitter(aes(color=HealthState))+
-  facet_grid(Month~.,space="free")+
+  facet_grid(Month~.,space="free",scales="free")+
   theme(axis.title.x=element_blank())+
   theme_bw()+
   theme(text=element_text(size=14,face="bold"))+
@@ -60,7 +56,7 @@ library(ggplot2)
 vcpA <- read.table("vcpA.txt",sep="\t",header=TRUE)
 
 palette <- c("DD"="#000000","HD"="#999999","HH"="#E69F00")
-vcpA$Month <- factor(vcpA$Month, levels=c("August","October","January"))
+vcpA$Month <- factor(vcpA$Month, levels=c("Aug","Oct","Jan"))
 #label from the bottom up
 vcpA$Treatment <- factor(vcpA$Treatment, levels=c("none","control bag","control paste","probiotic bag","probiotic paste"))
 
@@ -81,7 +77,7 @@ pdf("vcpA.pdf",width=8,height=6)
 p2<-ggplot(vcpA,aes(Treatment,Copies_vcpA))+
   geom_boxplot(outlier.shape=NA)+
   geom_jitter(aes(color=HealthState))+
-  facet_grid(Month~.,space="free")+
+  facet_grid(Month~.,space="free",scales="free")+
   theme(axis.title.x=element_blank())+
   theme_bw()+
   theme(text=element_text(size=14,face="bold"))+
