@@ -1,0 +1,4 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"
+-2.09437184401944	2.48347884826048	"-0.843321796554222"	"0.401921061795132"	"ASV25"	"Clostridia"	"Peptostreptococcales-Tissierellales"	"Fusibacteraceae"
+-3.09298860079439	1.111905724856	"-2.78170040107937"	"0.00694352158361143"	"ASV131"	"Verrucomicrobiae"	"Verrucomicrobiales"	"Rubritaleaceae"
+-0.855399049690921	1.45448143741743	"-0.588112730547982"	"0.558349342102986"	"ASV192"	"Actinobacteria"	"Corynebacteriales"	"Corynebacteriaceae"

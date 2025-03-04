@@ -1,2 +1,3 @@
 "Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"	"Genus"	"asvtaxa"
-3.28416890419832	2.10332846356326	"1.56141513847752"	"0.124059878635983"	"ASV67"	"Gammaproteobacteria"	"Burkholderiales"	"Comamonadaceae"	"Ottowia"	"Ottowia (ASV67)"
+3.87059263222955	1.9197243737383	"2.01622310222186"	"0.0476154967785607"	"ASV67"	"Gammaproteobacteria"	"Burkholderiales"	"Comamonadaceae"	"Ottowia"	"Ottowia (ASV67)"
+-2.35845151125056	2.40352418573316	"-0.981247255696387"	"0.329850147608805"	"ASV76"	"Actinobacteria"	"Corynebacteriales"	"Corynebacteriaceae"	"Corynebacterium"	"Corynebacterium (ASV76)"

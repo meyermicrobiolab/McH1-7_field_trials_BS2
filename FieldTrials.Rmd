@@ -250,7 +250,7 @@ saveRDS(seqtab, "~/Documents/McH1-7_field_trials_BS2andBS3/cutadapt_NS2408_BS2/s
 
 
 
-Merge sequence tables from multiple runs
+## Merge sequence tables from multiple runs
 
 ```{r, echo=FALSE}
 st1 <- readRDS("~/Documents/GitHub/McH1-7_field_trials_BS2andBS3/cutadapt_NS2107_BS2/seqtab.rds")
@@ -294,7 +294,7 @@ write.table(seqtab.nochim, "silva_otu_table.txt",sep="\t",col.names=NA)
 ```
 
 
-Load data into phyloseq
+## Load data into phyloseq
 
 ```{r, echo=FALSE}
 # Create phyloseq object from otu and taxonomy tables from dada2, along with the sample metadata.
@@ -312,7 +312,7 @@ ps
 # 21163 taxa and 196 samples 
 ```
 
-Remove chloroplasts, mitochondria, and eukaryotes
+## Remove chloroplasts, mitochondria, and eukaryotes
 
 ```{r, echo=FALSE}
 # remove chloroplasts and mitochondria and Eukaryota
@@ -330,7 +330,7 @@ ps
 # 20164 taxa and 196 samples
 ```
 
-Export tables for future reference
+## Export tables for future reference
 
 ```{r, echo=FALSE}
 # Now export cleaned otu and taxa tables from phyloseq for future reference
@@ -341,7 +341,7 @@ write.table(otu,"silva_nochloronomito_otu_table.txt",sep="\t",col.names=NA)
 write.table(taxon,"silva_nochloronomito_taxa_table.txt",sep="\t",col.names=NA)
 ```
 
-Export ASV table with relative abundances
+## Export ASV table with relative abundances
 
 ```{r, echo=FALSE}
 # export ASV table as relative abundance
@@ -374,7 +374,7 @@ ps #20164 taxa and 196 samples
 psnb = subset_samples(ps, Coral.tag != "blank")
 psnb #20164 taxa and 194 samples
 psnb <- prune_taxa(taxa_sums(psnb) > 1, psnb) 
-psnb #20082 taxa and 194 samples, 82 taxa only in blanks
+psnb #20082 taxa and 194 samples, 82 taxa removed
 # export ASVs in blanks
 ps_blanks = subset_samples(ps, Coral.tag == "blank")
 ps_blanks <- prune_taxa(taxa_sums(ps_blanks) > 1, ps_blanks)
@@ -404,8 +404,11 @@ get_taxa_unique(psnb, "Class") #183
 
 ps5_BS2<-filter_taxa(psnb, function(x) mean(x) >5, TRUE)
 ntaxa(ps5_BS2) #756
+ps5_BS2 <- prune_taxa(taxa_sums(ps5_BS2) > 1, ps5_BS2)
+ps5_BS2 #756 taxa and 194 samples
 get_taxa_unique(ps5_BS2, "Order") #102
 get_taxa_unique(ps5_BS2, "Class") #46
+
 
 # Export files with low abundance taxa removed
 otu_ps5_BS2 = as(otu_table(ps5_BS2), "matrix")
@@ -1016,34 +1019,71 @@ ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE),
                tax_table(taxon))
 ps5_BS2 #756 taxa and 194 samples
 
+# make sure there are no taxa with all zeros
+ps5_BS2 <- prune_taxa(taxa_sums(ps5_BS2) > 1, ps5_BS2) 
+ps5_BS2 #756 taxa and 194 samples
+
 ps_ra<-transform_sample_counts(ps5_BS2, function(OTU) OTU/sum(OTU))
-ps_ra
-ps_ra <- prune_taxa(taxa_sums(ps_ra) > 1, ps_ra) 
-ps_ra
+ps_ra #756 taxa and 194 samples
 
 get_taxa_unique(ps_ra, "Class") #46
 get_taxa_unique(ps_ra, "Order") #102
 get_taxa_unique(ps_ra, "Family") #183
 get_taxa_unique(ps_ra, "Genus") #323
 
-n <- 46
-# after plotting, you can re-run the next line to create a different selection of colors
-palette <- distinctColorPalette(n)
+ps_ra_c = tax_glom(ps_ra, "Class")
+ps_ra_c # 46 taxa and 194 samples
+otu_c = as(otu_table(ps_ra_c), "matrix")
+taxon_c = as(tax_table(ps_ra_c), "matrix")
+cla<-t(otu_c)
+cla <- as.data.frame(cla)
+cla <- tibble::rownames_to_column(cla, "ASV")
+taxon_c <- as.data.frame(taxon_c)
+taxon_c <- tibble::rownames_to_column(taxon_c, "ASV")
+cla_tax <- merge(taxon_c,cla, by="ASV", all=FALSE)
+cla_tax$Order<-NULL
+cla_tax$Family<-NULL
+cla_tax$Genus<-NULL
+cla_tax$ASV<-NULL
+# sort by total abundance
+cla_tax <- cla_tax %>% mutate("total" = rowSums((cla_tax[,4:197]), na.rm = TRUE))  
+cla_tax <- cla_tax[order(cla_tax$total, decreasing = TRUE),]
+# keep only 25 most abundant classes out of 46
+cla25 <- cla_tax[1:25,]
+cla25$total<-NULL
+class_long<-melt(cla25,value.name="proportion",variable.name="sample",id.vars=c("Kingdom","Phylum","Class"))
 
-pdf("barchart_Class.pdf",width=11)
-p1=plot_bar(ps_ra,fill="Class")+
-  facet_grid(.~samples$Collection.month,scales="free",space="free")+
-  geom_bar(aes(fill=Class), stat="identity",position="stack")+
-  theme_bw()+
-  theme(strip.text=element_text(face="bold", size=12))+
-  theme(axis.text.x=element_text(size=12))+
-  theme(axis.text.y=element_text(size=12))+
-  scale_fill_manual(values=palette)+
-  #theme(axis.title.x = element_blank())+
-  theme(legend.position = "bottom")
-p1
-dev.off()
+# Merge with metadata for plotting aesthetics
+samples <- as.data.frame(samples)
+samples <- tibble::rownames_to_column(samples, "sample")
+classplot <- merge(class_long,samples,by="sample", all=TRUE)
 
+# set order of families on y-axis based on sorted total abundance, list order: first in list = bottom of y-axis
+classplot$Class<-factor(classplot$Class,levels=c("Fusobacteriia","OM190","Desulfobacteria","KD4-96","Bacteria","Phycisphaerae","Anaerolineae","Oligoflexia","Blastocatellia","Chloroflexia","Vampirivibrionia","Desulfobulbia","Polyangia","Campylobacteria","Desulfovibrionia","Acidimicrobiia","Planctomycetes","Bacilli","Verrucomicrobiae","Clostridia","Cyanobacteriia","Bacteroidia","Actinobacteria","Alphaproteobacteria","Gammaproteobacteria"))
+classplot$sampled<-factor(classplot$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
+classplot$Treatment<-factor(classplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+classplot$Condition<-factor(classplot$Condition,levels=c("HH","HD","DD"))
+classplot$Collection.month<-factor(classplot$Collection.month,levels=c("Aug","Oct","Jan"))
+
+
+p <- ggplot(classplot, aes(sample, Class, fill= proportion)) + geom_tile()+
+  facet_grid(.~sampled,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  #theme(axis.text.y=element_text(face="italic"))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p
+
+
+p <- ggplot(classplot, aes(sample, Class, fill= proportion)) + geom_tile()+
+  facet_grid(.~Condition,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  #theme(axis.text.y=element_text(face="italic"))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p
 
 ```
 
