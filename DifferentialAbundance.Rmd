@@ -93,6 +93,103 @@ treatment.da
 treatment.da$significant_taxa 
 # No differentially abundant taxa
 
+
+#### See if there are any DA families
+# collapse ASVs into higher taxonomic groups for DA analysis
+jan_family <- ps5_BS2_jan %>% phyloseq::tax_glom("Family")
+jan_family # 183 taxa (families) and 63 samples
+
+
+# DA determined relative to first reference level, so set this manually to the "none" treatment
+sample_data(jan_family)$Treatment<-factor(sample_data(jan_family)$Treatment,levels=c("none","probiotic bag","probiotic paste","control bag","control paste"))
+
+set.seed(1)
+treatment.da <- differentialTest(formula = ~ Treatment, 
+                                 phi.formula = ~ Treatment,
+                                 formula_null = ~ 1,
+                                 phi.formula_null = ~ Treatment,
+                                 test = "Wald", boot = FALSE,
+                                 data = jan_family,
+                                 fdr_cutoff = 0.05)
+
+summary(treatment.da)
+treatment.da
+treatment.da$significant_taxa # 2 differentially abundant families
+
+#quick look at results with corncob's plotting feature
+plot(treatment.da, c("Family"))
+# Positive values mean that taxon is enriched in the treatment in the header relative to no treatment
+# DA families: Comamonadaceae, Micrococcaceae
+
+# create a function that will return the values of interest
+
+sigtaxto_df <- function(treatment.da, jan_family) {
+  df.out <- c()
+  for (i in 1:length(treatment.da$significant_models)) { #from 1 to the number of significant taxa
+    df.out = rbind(df.out, treatment.da$significant_models[[i]]$coefficients[2, 1:4]) #bind the significant taxa with coefficient, std. error, t value, Pr. coefficients[2,] is the DA model output.
+  }
+  asv = as.vector(treatment.da$significant_taxa) #get significant families
+  Class = as.vector(otu_to_taxonomy(data = jan_family, treatment.da$significant_taxa, level = c("Class")))
+  Order = as.vector(otu_to_taxonomy(data = jan_family, treatment.da$significant_taxa, level = c("Order")))
+  Family = as.vector(otu_to_taxonomy(data = jan_family, treatment.da$significant_taxa, level = c("Family")))
+  
+  df.bind <- as.data.frame(cbind(df.out, asv, Class, Order, Family))
+  colnames(df.bind) <- c("Estimate", "StdError", "tvalue", "Pr", "asv", "Class", "Order", "Family")
+  df.bind$Estimate = as.numeric(as.character(df.bind$Estimate)) #estimate column should be numeric 
+  df.bind$StdError = as.numeric(as.character(df.bind$StdError)) #stderror column should be numeric 
+  
+  return(df.bind)
+}
+
+df <- sigtaxto_df(treatment.da, jan_family) #make a df of the corncob output and the taxonomy
+
+### Save these data so you don't have to re-run the model ###
+write.table(df, "DA-Families_treatment-Jan.txt", sep="\t",row.names = FALSE)
+
+
+# retrieve relative abundances of significant taxa for plotting
+jan_family #183 taxa and 80 samples
+jan_family_ra<-transform_sample_counts(jan_family, function(OTU) OTU/sum(OTU))
+jan_family_ra #183 taxa and 80 samples
+otu_da = as(otu_table(jan_family_ra), "matrix")
+taxon_da = as(tax_table(jan_family_ra), "matrix")
+da<-t(otu_da)
+da <- as.data.frame(da)
+da <- tibble::rownames_to_column(da, "ASV")
+taxon_da <- as.data.frame(taxon_da)
+taxon_da <- tibble::rownames_to_column(taxon_da, "ASV")
+taxon_da$Species<-NULL
+taxon_da$Genus<-NULL
+da_tax <- merge(taxon_da, da, by="ASV", all=FALSE)
+
+# now to retrieve only the taxa that I want to plot
+DA1 <- da_tax %>% filter(Family =='Comamonadaceae')
+DA2 <- da_tax %>% filter(Family =='Micrococcaceae')
+DA_jan <-rbind(DA1,DA2)
+
+# Merge with metadata for plotting aesthetics
+samples <- as.data.frame(samples)
+samples <- tibble::rownames_to_column(samples, "sample")
+DA_long<-melt(DA_jan,value.name="proportion",variable.name="sample",id.vars=c("ASV","Kingdom","Phylum","Class","Order","Family"))
+
+DAplot <- merge(DA_long,samples,by="sample", all=TRUE)
+# reduce decimal places in proporation column
+DAplot$proportion<-round(DAplot$proportion,3)
+
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+pdf("DA-Families_Jan.pdf",bg ="white",width=8)
+p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
+  geom_boxplot()+
+  geom_point()+
+  facet_grid(Family~.)+
+  theme_bw()+
+  scale_color_manual(values=cols)
+p2
+dev.off()
+
+
 ```
 
 ### Use corncob to look for differentially abundant taxa by category: treatment type
@@ -197,7 +294,7 @@ DAplot$proportion<-round(DAplot$proportion,3)
 cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 
-pdf("DA_Oct.pdf",bg ="white",width=8,height=4)
+pdf("DA_Oct.pdf",bg ="white",width=8)
 p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   geom_boxplot()+
   geom_point()+
@@ -328,7 +425,6 @@ p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   scale_color_manual(values=cols)
 p2
 dev.off()
-
 
 
 ```

@@ -1,0 +1,3 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"
+-0.171282828952648	0.593667373601779	"-0.288516493526459"	"0.774076812775667"	"ASV45"	"Gammaproteobacteria"	"Burkholderiales"	"Comamonadaceae"
+-0.815211611089426	2.5187133588352	"-0.323661923747618"	"0.747467737384875"	"ASV113"	"Actinobacteria"	"Micrococcales"	"Micrococcaceae"
