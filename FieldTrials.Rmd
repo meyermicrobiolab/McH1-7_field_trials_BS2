@@ -483,6 +483,27 @@ p<-p+geom_point(size=2)+
 p + labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
 dev.off()
 
+#not using this plot for manuscript
+pdf("PCA_facets.pdf",bg ="white",width = 8.5)
+p<-ggplot(df_out,aes(x=PC1,y=PC2,color=samples$Treatment,shape=samples$Condition))
+p<-p+geom_point(size=2)+
+  theme(axis.title = element_text(size=14))+
+  theme(axis.text=element_text(size=12))+
+  theme(legend.title = element_text(size=14))+
+  theme(legend.text = element_text(size=12))+
+  theme(strip.text.x = element_text(size=12))+
+  scale_color_manual(values=cols)+
+  guides(fill = guide_legend(override.aes=list(shape=21)))+
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)+
+  facet_grid(.~samples$Collection.month)
+p + labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
+dev.off()
+
+
+
+
 ####### Perform permanova using Aitchison distance
 # vegan v.2.6.8 need to add "by=terms" for full output
 dist.clr <- dist(E.clr)
@@ -505,8 +526,6 @@ perm6<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_B
 print(perm6)
 
 
-
-
 #Look at diseased samples only
 ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
 ps5_BS2_DD #756 taxa and 79 samples
@@ -516,8 +535,8 @@ d.clr2 <- codaSeq.clr(d.czm2)
 E.clr2 <- t(d.clr2)
 dist.clr2 <- dist(E.clr2)
 
-perm6<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
-print(perm6)
+perm7<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+print(perm7)
 
 ```
 
@@ -575,16 +594,19 @@ p1<-p1+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)+
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
 p1
 dev.off()
 
 # Perform permanova using Aitchison distance
 dist.clr <- dist(E.clr)
-perm<-adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"))
+perm<-adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"),by = "terms")
 print(perm)
 
-perm2<-pairwise.adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"))
+perm2<-pairwise.adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"),by = "terms")
 print(perm2)
 
 ```
@@ -598,9 +620,7 @@ Subset BS2 by month to examine treatments within time points
 ```{r, echo=FALSE}
 # permanova within time points
 ps5_BS2_oct = subset_samples(ps5_BS2, Collection.month == "Oct")
-ps5_BS2_oct #755 taxa and 71 samples
-ps5_BS2_oct = subset_samples(ps5_BS2_oct, Treatment != "resistant")
-ps5_BS2_oct  #756 taxa and 66 samples
+ps5_BS2_oct #756 taxa and 80 samples
 otu_oct = as(otu_table(ps5_BS2_oct), "matrix")
 taxon_oct = as(tax_table(ps5_BS2_oct), "matrix")
 metadata_oct = as(sample_data(ps5_BS2_oct), "matrix")
@@ -619,7 +639,7 @@ sampledata = sample_data(samples)
 ps5_BS2_oct <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5_BS2_oct  #756 taxa and 66 samples
+ps5_BS2_oct  #756 taxa and 80 samples
 
 
 d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
@@ -633,7 +653,7 @@ ylab <- paste("PC2: ", pc2, sep="")
 df_out.oct <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
 pdf("PCA_Oct.pdf",bg ="white",width = 8.5)
@@ -646,7 +666,10 @@ p2<-p2+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)+
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
 p2
 dev.off()
 
@@ -670,8 +693,6 @@ Subset BS2 by month to examine treatments within time points
 # permanova within time points
 ps5_BS2_jan = subset_samples(ps5_BS2, Collection.month == "Jan")
 ps5_BS2_jan #756 taxa and 63 samples
-ps5_BS2_jan = subset_samples(ps5_BS2_jan, Treatment != "resistant")
-ps5_BS2_jan #756 taxa and 59 samples
 otu_jan = as(otu_table(ps5_BS2_jan), "matrix")
 taxon_jan = as(tax_table(ps5_BS2_jan), "matrix")
 metadata_jan = as(sample_data(ps5_BS2_jan), "matrix")
@@ -690,7 +711,7 @@ sampledata = sample_data(samples)
 ps5_BS2_jan <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
                sample_data(samples), 
                tax_table(taxon))
-ps5_BS2_jan  #756 taxa and 59 samples
+ps5_BS2_jan  #756 taxa and 63 samples
 
 d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -703,7 +724,7 @@ ylab <- paste("PC2: ", pc2, sep="")
 df_out.jan <- as.data.frame(d.pcx$x)
 theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
 cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
-samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples$Treatment<-factor(samples$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples$Condition<-factor(samples$Condition,levels=c("HH","HD","DD"))
 
 pdf("PCA_Jan.pdf",bg ="white",width = 8.5)
@@ -716,7 +737,10 @@ p3<-p3+geom_point(size=2)+
   theme(strip.text.x = element_text(size=12))+
   scale_color_manual(values=cols)+
   guides(fill = guide_legend(override.aes=list(shape=21)))+
-  labs(x=xlab, y=ylab, color="Treatment",shape="Condition") +coord_fixed()
+  ylim(-100,100)+
+  xlim(-100,100)+
+  coord_fixed(ratio=1)+
+  labs(x=xlab, y=ylab, color="Treatment",shape="Condition")
 p3
 dev.off()
 
@@ -744,7 +768,7 @@ cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","
 ### AUGUST
 otu.aug <- read.table("silva_nochloronomito_otu_table_ps5_BS2_aug.txt",sep="\t",header=TRUE, row.names=1)
 samples.aug<-read.table("metadata_ps5_BS2_aug.txt",sep="\t",header=T,row.names=1)
-samples.aug$Treatment<-factor(samples.aug$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.aug$Treatment<-factor(samples.aug$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples.aug$Condition<-factor(samples.aug$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.aug), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -772,7 +796,7 @@ p1<-p1+geom_point(size=2)+
 ### OCTOBER
 otu.oct <- read.table("silva_nochloronomito_otu_table_ps5_BS2_oct.txt",sep="\t",header=TRUE, row.names=1)
 samples.oct<-read.table("metadata_ps5_BS2_oct.txt",sep="\t",header=T,row.names=1)
-samples.oct$Treatment<-factor(samples.oct$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.oct$Treatment<-factor(samples.oct$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples.oct$Condition<-factor(samples.oct$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.oct), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -800,7 +824,7 @@ p2<-p2+geom_point(size=2)+
 ### JANUARY
 otu.jan <- read.table("silva_nochloronomito_otu_table_ps5_BS2_jan.txt",sep="\t",header=TRUE, row.names=1)
 samples.jan<-read.table("metadata_ps5_BS2_jan.txt",sep="\t",header=T,row.names=1)
-samples.jan$Treatment<-factor(samples.jan$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none","resistant"))
+samples.jan$Treatment<-factor(samples.jan$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 samples.jan$Condition<-factor(samples.jan$Condition,levels=c("HH","HD","DD"))
 d.czm <- cmultRepl(t(otu.jan), method="CZM", label=0, z.warning=1)
 d.clr <- codaSeq.clr(d.czm)
@@ -966,6 +990,59 @@ shapiro.test(asv1_short$relative_abundance)
 anova <- aov(rank(relative_abundance) ~ sampled + Treatment + sampled:Treatment, asv1_short) 
 summary(anova) # only timepoint is significant
 TukeyHSD(anova) # all timepoints are different
+
+
+```
+
+
+
+
+
+
+
+## Create stacked bar chart
+
+```{r, echo=FALSE}
+# use an ASV table that has been filtered to remove low-abundance ASVs, no blanks
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2 #756 taxa and 194 samples
+
+ps_ra<-transform_sample_counts(ps5_BS2, function(OTU) OTU/sum(OTU))
+ps_ra
+ps_ra <- prune_taxa(taxa_sums(ps_ra) > 1, ps_ra) 
+ps_ra
+
+get_taxa_unique(ps_ra, "Class") #46
+get_taxa_unique(ps_ra, "Order") #102
+get_taxa_unique(ps_ra, "Family") #183
+get_taxa_unique(ps_ra, "Genus") #323
+
+n <- 46
+# after plotting, you can re-run the next line to create a different selection of colors
+palette <- distinctColorPalette(n)
+
+pdf("barchart_Class.pdf",width=11)
+p1=plot_bar(ps_ra,fill="Class")+
+  facet_grid(.~samples$Collection.month,scales="free",space="free")+
+  geom_bar(aes(fill=Class), stat="identity",position="stack")+
+  theme_bw()+
+  theme(strip.text=element_text(face="bold", size=12))+
+  theme(axis.text.x=element_text(size=12))+
+  theme(axis.text.y=element_text(size=12))+
+  scale_fill_manual(values=palette)+
+  #theme(axis.title.x = element_blank())+
+  theme(legend.position = "bottom")
+p1
+dev.off()
 
 
 ```

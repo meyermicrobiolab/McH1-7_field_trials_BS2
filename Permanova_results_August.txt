@@ -1,15 +1,13 @@
-> perm<-adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"))
-> print(perm)
 Permutation test for adonis under reduced model
 Terms added sequentially (first to last)
 Permutation: free
 Number of permutations: 999
 
-adonis2(formula = dist.clr ~ Condition, data = as(sample_data(ps5_BS2_aug), "data.frame"))
-          Df SumOfSqs      R2      F Pr(>F)    
-Condition  2    17647 0.09826 3.1056  0.001 ***
-Residual  57   161942 0.90174                  
-Total     59   179589 1.00000                  
+adonis2(formula = dist.clr ~ Condition, data = as(sample_data(ps5_BS2_aug), "data.frame"), by = "terms")
+          Df SumOfSqs      R2      F Pr(>F)  
+Condition  2    11714 0.07593 1.9721  0.018 *
+Residual  48   142563 0.92407                
+Total     50   154278 1.00000                
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
@@ -17,34 +15,28 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 
 
-
-
-> perm2<-pairwise.adonis2(dist.clr~Condition,as(sample_data(ps5_BS2_aug),"data.frame"))
-> print(perm2)
 $parent_call
 [1] "dist.clr ~ Condition , strata = Null , permutations 999"
 
-$HH_vs_DD
-          Df SumOfSqs      R2      F Pr(>F)    
-Condition  1    13556 0.11107 4.3731  0.001 ***
-Residual  35   108492 0.88893                  
-Total     36   122048 1.00000                  
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-$HH_vs_HD
-          Df SumOfSqs      R2      F Pr(>F)
-Condition  1     3233 0.03884 1.3738   0.15
-Residual  34    80009 0.96116              
-Total     35    83241 1.00000              
-
 $DD_vs_HD
-          Df SumOfSqs     R2      F Pr(>F)   
-Condition  1     9380 0.0648 3.1179  0.003 **
-Residual  45   135383 0.9352                 
-Total     46   144763 1.0000                 
+          Df SumOfSqs      R2      F Pr(>F)   
+Condition  1     9326 0.06319 3.1028  0.002 **
+Residual  46   138259 0.93681                 
+Total     47   147585 1.00000                 
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$DD_vs_HH
+          Df SumOfSqs      R2    F Pr(>F)
+Condition  1     3212 0.03587 0.93  0.449
+Residual  25    86330 0.96413            
+Total     26    89542 1.00000            
+
+$HD_vs_HH
+          Df SumOfSqs      R2      F Pr(>F)
+Condition  1     2336 0.03716 0.9648  0.431
+Residual  25    60537 0.96284              
+Total     26    62874 1.00000              
 
 attr(,"class")
 [1] "pwadstrata" "list"      
