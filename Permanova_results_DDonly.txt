@@ -1,0 +1,79 @@
+$parent_call
+[1] "dist.clr2 ~ Treatment/Collection.month , strata = Collection.month , permutations 999"
+
+$`none_vs_probiotic paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     6107 0.04156 2.0340  0.642
+Treatment:Collection.month  3    17734 0.12069 1.9689  0.953
+Residual                   41   123093 0.83775              
+Total                      45   146933 1.00000              
+
+$`none_vs_probiotic bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     5649 0.04468 1.8970  0.567
+Treatment:Collection.month  3    13573 0.10735 1.5191  0.460
+Residual                   36   107214 0.84797              
+Total                      40   126436 1.00000              
+
+$`none_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     5377 0.03517 1.6458  0.745
+Treatment:Collection.month  3    16832 0.11009 1.7174  0.519
+Residual                   40   130677 0.85474              
+Total                      44   152886 1.00000              
+
+$`none_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     6827 0.04642 2.2425  0.523
+Treatment:Collection.month  3    15410 0.10479 1.6872  0.817
+Residual                   41   124820 0.84879              
+Total                      45   147057 1.00000              
+
+$`probiotic paste_vs_probiotic bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2741 0.04979 1.0817  0.545
+Treatment:Collection.month  2     9235 0.16773 1.8220  0.612
+Residual                   17    43086 0.78249              
+Total                      20    55063 1.00000              
+
+$`probiotic paste_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)  
+Treatment                   1     2168 0.02669 0.6841  0.926  
+Treatment:Collection.month  2    12495 0.15385 1.9714  0.076 .
+Residual                   21    66549 0.81945                
+Total                      24    81212 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic paste_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)  
+Treatment                   1     2362 0.03186 0.8562  0.691  
+Treatment:Collection.month  2    11073 0.14937 2.0068  0.074 .
+Residual                   22    60693 0.81876                
+Total                      25    74127 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$`probiotic bag_vs_control bag`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2581 0.04191 0.8150  0.589
+Treatment:Collection.month  2     8333 0.13531 1.3157  0.866
+Residual                   16    50670 0.82277              
+Total                      19    61585 1.00000              
+
+$`probiotic bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2286 0.04233 0.8672  0.764
+Treatment:Collection.month  2     6911 0.12796 1.3109  0.821
+Residual                   17    44813 0.82971              
+Total                      20    54011 1.00000              
+
+$`control bag_vs_control paste`
+                           Df SumOfSqs      R2      F Pr(>F)
+Treatment                   1     2649 0.03266 0.8147  0.645
+Treatment:Collection.month  2    10171 0.12541 1.5641  0.866
+Residual                   21    68277 0.84192              
+Total                      24    81096 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list"      
