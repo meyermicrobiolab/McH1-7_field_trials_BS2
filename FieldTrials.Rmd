@@ -538,8 +538,11 @@ d.clr2 <- codaSeq.clr(d.czm2)
 E.clr2 <- t(d.clr2)
 dist.clr2 <- dist(E.clr2)
 
-perm7<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+perm7<-adonis2(dist.clr2~Treatment*Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"),by = "terms")
 print(perm7)
+
+perm8<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
+print(perm8)
 
 ```
 
