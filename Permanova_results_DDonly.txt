@@ -1,68 +1,118 @@
-$parent_call
-[1] "dist.clr2 ~ Treatment/Collection.month , strata = Collection.month , permutations 999"
+Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = dist.clr2 ~ Treatment * Collection.month, data = as(sample_data(ps5_BS2_DD), "data.frame"), by = "terms")
+                           Df SumOfSqs      R2      F Pr(>F)    
+Treatment                   4    17715 0.07127 1.4942  0.013 *  
+Collection.month            2    18351 0.07383 3.0958  0.001 ***
+Treatment:Collection.month  4    10947 0.04404 0.9233  0.600    
+Residual                   68   201550 0.81086                  
+Total                      78   248563 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+
 
 $parent_call
 [1] "dist.clr2 ~ Treatment/Collection.month , strata = Collection.month , permutations 999"
 
 $`none_vs_probiotic paste`
          Df SumOfSqs      R2      F Pr(>F)
-Model     4    23840 0.16225 1.9852  0.994
-Residual 41   123093 0.83775              
-Total    45   146933 1.00000              
+Model     4    23712 0.16342 2.0023  0.995
+Residual 41   121381 0.83658              
+Total    45   145093 1.00000              
 
 $`none_vs_probiotic bag`
          Df SumOfSqs      R2      F Pr(>F)
-Model     4    19222 0.15203 1.6136  0.783
-Residual 36   107214 0.84797              
-Total    40   126436 1.00000              
+Model     4    18226 0.14726 1.5542  0.876
+Residual 36   105544 0.85274              
+Total    40   123770 1.00000              
 
 $`none_vs_control bag`
          Df SumOfSqs      R2      F Pr(>F)
-Model     4    22209 0.14526 1.6995  0.657
-Residual 40   130677 0.85474              
-Total    44   152886 1.00000              
+Model     4    21964 0.14603 1.7101   0.64
+Residual 40   128438 0.85397              
+Total    44   150401 1.00000              
 
 $`none_vs_control paste`
-         Df SumOfSqs      R2     F Pr(>F)
-Model     4    22237 0.15121 1.826  0.937
-Residual 41   124820 0.84879             
-Total    45   147057 1.00000             
+         Df SumOfSqs      R2      F Pr(>F)
+Model     4    22095 0.15238 1.8426  0.917
+Residual 41   122910 0.84762              
+Total    45   145005 1.00000              
 
 $`probiotic paste_vs_probiotic bag`
          Df SumOfSqs      R2      F Pr(>F)
-Model     3    11977 0.21751 1.5752  0.682
-Residual 17    43086 0.78249              
-Total    20    55063 1.00000              
+Model     3    11030 0.20627 1.4726  0.948
+Residual 17    42443 0.79373              
+Total    20    53473 1.00000              
 
 $`probiotic paste_vs_control bag`
          Df SumOfSqs      R2      F Pr(>F)
-Model     3    14663 0.18055 1.5423  0.269
-Residual 21    66549 0.81945              
-Total    24    81212 1.00000              
+Model     3    14500 0.18162 1.5535  0.278
+Residual 21    65337 0.81838              
+Total    24    79837 1.00000              
 
 $`probiotic paste_vs_control paste`
          Df SumOfSqs      R2      F Pr(>F)
-Model     3    13435 0.18124 1.6233  0.211
-Residual 22    60693 0.81876              
-Total    25    74127 1.00000              
+Model     3    13340 0.18237 1.6356  0.209
+Residual 22    59809 0.81763              
+Total    25    73149 1.00000              
 
 $`probiotic bag_vs_control bag`
          Df SumOfSqs      R2      F Pr(>F)
-Model     3    10915 0.17723 1.1488   0.86
-Residual 16    50670 0.82277              
-Total    19    61585 1.00000              
+Model     3     9865 0.16617 1.0629  0.907
+Residual 16    49500 0.83383              
+Total    19    59365 1.00000              
 
 $`probiotic bag_vs_control paste`
-         Df SumOfSqs      R2     F Pr(>F)
-Model     3     9197 0.17029 1.163  0.881
-Residual 17    44813 0.82971             
-Total    20    54011 1.00000             
+         Df SumOfSqs      R2      F Pr(>F)
+Model     3     8305 0.15886 1.0702  0.984
+Residual 17    43972 0.84114              
+Total    20    52277 1.00000              
 
 $`control bag_vs_control paste`
          Df SumOfSqs      R2      F Pr(>F)
-Model     3    12819 0.15808 1.3143  0.838
-Residual 21    68277 0.84192              
-Total    24    81096 1.00000              
+Model     3    12625 0.15882 1.3217  0.803
+Residual 21    66865 0.84118              
+Total    24    79490 1.00000              
+
+attr(,"class")
+[1] "pwadstrata" "list"      
+
+
+
+
+
+$parent_call
+[1] "dist.clr2 ~ Collection.month , strata = Null , permutations 999"
+
+$Aug_vs_Oct
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     1    15364 0.09257 5.6105  0.001 ***
+Residual 55   150611 0.90743                  
+Total    56   165974 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$Aug_vs_Jan
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     1    15436 0.09478 4.6072  0.001 ***
+Residual 44   147417 0.90522                  
+Total    45   162853 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$Oct_vs_Jan
+         Df SumOfSqs     R2      F Pr(>F)    
+Model     1    12045 0.0781 4.4898  0.001 ***
+Residual 53   142181 0.9219                  
+Total    54   154225 1.0000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 attr(,"class")
 [1] "pwadstrata" "list"      

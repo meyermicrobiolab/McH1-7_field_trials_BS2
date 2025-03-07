@@ -1,0 +1,3 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"
+3.0581337872157	1.91063497486046	"1.60058505546777"	"0.116466869469993"	"ASV20"	"Clostridia"	"Peptostreptococcales-Tissierellales"	"Peptostreptococcaceae"
+-3.44701239557619	1.96533841156179	"-1.75390272499531"	"0.08625593753595"	"ASV161"	"Bacteria"	"Bacteria"	"Bacteria"

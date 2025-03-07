@@ -301,6 +301,7 @@ p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   facet_grid(.~Genus)+
   theme_bw()+
   scale_y_break(c(0.03, 0.35),scales="free")+
+  theme(strip.text.x = element_text(face="italic"))+
   scale_color_manual(values=cols)
 p2
 dev.off()
@@ -425,6 +426,251 @@ p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   scale_color_manual(values=cols)
 p2
 dev.off()
+
+
+```
+
+### DISEASE LESION SAMPLES ONLY 
+
+### Use corncob to look for differentially abundant FAMILIES by category: treatment type ONLY IN DISEASE LESION SAMPLES
+
+
+```{r, echo=FALSE}
+
+### Prepare dataset first
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2 #756 taxa and 194 samples
+
+#Look at diseased samples only
+ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
+ps5_BS2_DD #756 taxa and 79 samples
+# also remove August samples (pre-treatment)
+ps5_BS2_DD_after = subset_samples(ps5_BS2_DD, Collection.month != "Aug")
+ps5_BS2_DD_after #756 taxa and 55 samples
+ps5_BS2_DD_after <- prune_taxa(taxa_sums(ps5_BS2_DD_after) > 1, ps5_BS2_DD_after)
+ps5_BS2_DD_after #662 taxa and 55 samples
+
+# export reduced tables and replace ASV sequence with ASV#
+otu_after = as(otu_table(ps5_BS2_DD_after), "matrix")
+taxon_after = as(tax_table(ps5_BS2_DD_after), "matrix")
+metadata_after = as(sample_data(ps5_BS2_DD_after), "matrix")
+write.table(otu_after,"silva_nochloronomito_otu_table_ps5_BS2_DD_after_corncob.txt",sep="\t",col.names=NA)
+write.table(taxon_after,"silva_nochloronomito_taxa_table_ps5_BS2_DD_after_corncob.txt",sep="\t",col.names=NA)
+write.table(metadata_after,"metadata_ps5_BS2_DD_after_corncob.txt",sep="\t",col.names=NA)
+
+
+### Clear the environment and read back in prepped dataset with ASV#s
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2_DD_after_corncob.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2_DD_after_corncob.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2_DD_after_corncob.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2_DD_after <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+                        sample_data(samples), 
+                        tax_table(taxon))
+ps5_BS2_DD_after #662 taxa and 55 samples
+
+
+# What microorganisms are significantly different by treatment type?
+
+# DA determined relative to first reference level, so set this manually to the "none" treatment
+sample_data(ps5_BS2_DD_after)$Treatment<-factor(sample_data(ps5_BS2_DD_after)$Treatment,levels=c("none","probiotic bag","probiotic paste","control bag","control paste"))
+
+set.seed(1)
+treatment.da <- differentialTest(formula = ~ Treatment, 
+                                 phi.formula = ~ Treatment,
+                                 formula_null = ~ 1,
+                                 phi.formula_null = ~ Treatment,
+                                 test = "Wald", boot = FALSE,
+                                 data = ps5_BS2_DD_after,
+                                 fdr_cutoff = 0.05)
+
+summary(treatment.da)
+treatment.da
+treatment.da$significant_taxa # 2 differentially abundant ASVs
+# ASV20, ASV135
+
+#quick look at results with corncob's plotting feature
+plot(treatment.da, c("Family","Genus"))
+# Positive values mean that taxon is enriched in the treatment in the header relative to no treatment
+
+# create a function that will return the values of interest
+sigtaxto_df <- function(treatment.da, ps5_BS2_DD_after) {
+  df.out <- c()
+  for (i in 1:length(treatment.da$significant_models)) { #from 1 to the number of significant taxa
+    df.out = rbind(df.out, treatment.da$significant_models[[i]]$coefficients[2, 1:4]) #bind the significant taxa with coefficient, std. error, t value, Pr. coefficients[2,] is the DA model output.
+  }
+  asv = as.vector(treatment.da$significant_taxa) #get significant ASVs
+  Class = as.vector(otu_to_taxonomy(data = ps5_BS2_DD_after, treatment.da$significant_taxa, level = c("Class")))
+  Order = as.vector(otu_to_taxonomy(data = ps5_BS2_DD_after, treatment.da$significant_taxa, level = c("Order")))
+  Family = as.vector(otu_to_taxonomy(data = ps5_BS2_DD_after, treatment.da$significant_taxa, level = c("Family")))
+  Genus = as.vector(otu_to_taxonomy(data = ps5_BS2_DD_after, treatment.da$significant_taxa, level = c("Genus")))
+  
+  df.bind <- as.data.frame(cbind(df.out, asv, Class, Order, Family, Genus))
+  df.bind$asvgenus <- paste0(df.bind$Genus, " (", df.bind$asv, ")")
+  colnames(df.bind) <- c("Estimate", "StdError", "tvalue", "Pr", "asv", "Class", "Order", "Family", "Genus", "asvtaxa")
+  df.bind$Estimate = as.numeric(as.character(df.bind$Estimate)) #estimate column should be numeric 
+  df.bind$StdError = as.numeric(as.character(df.bind$StdError)) #stderror column should be numeric 
+  
+  return(df.bind)
+}
+
+df <- sigtaxto_df(treatment.da, ps5_BS2_DD_after) #make a df of the corncob output and the taxonomy
+
+### Save these data so you don't have to re-run the model ###
+write.table(df, "DA_treatment-DD_after.txt", sep="\t",row.names = FALSE)
+
+# retrieve relative abundances of significant taxa for plotting
+ps5_BS2_DD_after #662 taxa and 55 samples
+ps5_BS2_DD_after_ra<-transform_sample_counts(ps5_BS2_DD_after, function(OTU) OTU/sum(OTU))
+ps5_BS2_DD_after_ra #662 taxa and 55 samples
+otu_da = as(otu_table(ps5_BS2_DD_after_ra), "matrix")
+taxon_da = as(tax_table(ps5_BS2_DD_after_ra), "matrix")
+da<-t(otu_da)
+da <- as.data.frame(da)
+da <- tibble::rownames_to_column(da, "ASV")
+taxon_da <- as.data.frame(taxon_da)
+taxon_da <- tibble::rownames_to_column(taxon_da, "ASV")
+taxon_da$Species<-NULL
+da_tax <- merge(taxon_da, da, by="ASV", all=FALSE)
+
+# now to retrieve only the taxa that I want to plot
+DA1 <- da_tax %>% filter(ASV =='ASV20')
+DA2 <- da_tax %>% filter(ASV =='ASV135')
+DA_DD_after <-rbind(DA1,DA2)
+
+# Merge with metadata for plotting aesthetics
+samples <- as.data.frame(samples)
+samples <- tibble::rownames_to_column(samples, "sample")
+DA_long<-melt(DA_DD_after,value.name="proportion",variable.name="sample",id.vars=c("ASV","Kingdom","Phylum","Class","Order","Family","Genus"))
+
+DAplot <- merge(DA_long,samples,by="sample", all=TRUE)
+# reduce decimal places in proporation column
+DAplot$proportion<-round(DAplot$proportion,3)
+
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+pdf("DA_DD_after.pdf",bg ="white",width=8)
+p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
+  geom_boxplot()+
+  geom_point()+
+  facet_grid(.~Genus)+
+  theme_bw()+
+  scale_y_break(c(0.01, 0.5),scales="free")+
+  theme(strip.text.x = element_text(face="italic"))+
+  scale_color_manual(values=cols)
+p2
+dev.off()
+
+
+
+###### DA families
+
+# collapse ASVs into higher taxonomic groups for DA analysis
+DD_family <- ps5_BS2_DD_after %>% phyloseq::tax_glom("Family")
+DD_family # 161 taxa (families) and 55 samples
+
+# DA determined relative to first reference level, so set this manually to the "none" treatment
+sample_data(DD_family)$Treatment<-factor(sample_data(DD_family)$Treatment,levels=c("none","probiotic bag","probiotic paste","control bag","control paste"))
+
+set.seed(1)
+treatment.da <- differentialTest(formula = ~ Treatment, 
+                                 phi.formula = ~ Treatment,
+                                 formula_null = ~ 1,
+                                 phi.formula_null = ~ Treatment,
+                                 test = "Wald", boot = FALSE,
+                                 data = DD_family,
+                                 fdr_cutoff = 0.05)
+
+summary(treatment.da)
+treatment.da
+treatment.da$significant_taxa # 2 differentially abundant families
+
+#quick look at results with corncob's plotting feature
+plot(treatment.da, c("Family"))
+# Positive values mean that taxon is enriched in the treatment in the header relative to no treatment
+# DA families: Peptostreptococcaceae, family classified only to "Bacteria"
+
+
+# create a function that will return the values of interest
+sigtaxto_df <- function(treatment.da, DD_family) {
+  df.out <- c()
+  for (i in 1:length(treatment.da$significant_models)) { #from 1 to the number of significant taxa
+    df.out = rbind(df.out, treatment.da$significant_models[[i]]$coefficients[2, 1:4]) #bind the significant taxa with coefficient, std. error, t value, Pr. coefficients[2,] is the DA model output.
+  }
+  asv = as.vector(treatment.da$significant_taxa) #get significant families
+  Class = as.vector(otu_to_taxonomy(data = DD_family, treatment.da$significant_taxa, level = c("Class")))
+  Order = as.vector(otu_to_taxonomy(data = DD_family, treatment.da$significant_taxa, level = c("Order")))
+  Family = as.vector(otu_to_taxonomy(data = DD_family, treatment.da$significant_taxa, level = c("Family")))
+  
+  df.bind <- as.data.frame(cbind(df.out, asv, Class, Order, Family))
+  colnames(df.bind) <- c("Estimate", "StdError", "tvalue", "Pr", "asv", "Class", "Order", "Family")
+  df.bind$Estimate = as.numeric(as.character(df.bind$Estimate)) #estimate column should be numeric 
+  df.bind$StdError = as.numeric(as.character(df.bind$StdError)) #stderror column should be numeric 
+  
+  return(df.bind)
+}
+
+df <- sigtaxto_df(treatment.da, DD_family) #make a df of the corncob output and the taxonomy
+
+### Save these data so you don't have to re-run the model ###
+write.table(df, "DA-Families_treatment-DD_after.txt", sep="\t",row.names = FALSE)
+
+
+# retrieve relative abundances of significant taxa for plotting
+DD_family #161 families and 55 samples
+DD_family_ra<-transform_sample_counts(DD_family, function(OTU) OTU/sum(OTU))
+DD_family_ra #161 families and 55 samples
+otu_da = as(otu_table(DD_family_ra), "matrix")
+taxon_da = as(tax_table(DD_family_ra), "matrix")
+da<-t(otu_da)
+da <- as.data.frame(da)
+da <- tibble::rownames_to_column(da, "ASV")
+taxon_da <- as.data.frame(taxon_da)
+taxon_da <- tibble::rownames_to_column(taxon_da, "ASV")
+taxon_da$Species<-NULL
+taxon_da$Genus<-NULL
+da_tax <- merge(taxon_da, da, by="ASV", all=FALSE)
+
+# now to retrieve only the taxa that I want to plot
+DA1 <- da_tax %>% filter(Family =='Peptostreptococcaceae')
+DA2 <- da_tax %>% filter(Family =='Bacteria')
+DA_DD <-rbind(DA1,DA2)
+
+# Merge with metadata for plotting aesthetics
+samples <- as.data.frame(samples)
+samples <- tibble::rownames_to_column(samples, "sample")
+DA_long<-melt(DA_DD,value.name="proportion",variable.name="sample",id.vars=c("ASV","Kingdom","Phylum","Class","Order","Family"))
+
+DAplot <- merge(DA_long,samples,by="sample", all=TRUE)
+# reduce decimal places in proporation column
+DAplot$proportion<-round(DAplot$proportion,3)
+
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+pdf("DA-Families_Oct.pdf",bg ="white",width=8)
+p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
+  geom_boxplot()+
+  geom_point()+
+  facet_grid(Family~.,scales="free")+
+  theme_bw()+
+  scale_color_manual(values=cols)
+p2
+dev.off()
+
 
 
 ```

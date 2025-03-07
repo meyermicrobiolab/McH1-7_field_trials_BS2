@@ -532,6 +532,8 @@ print(perm6)
 #Look at diseased samples only
 ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
 ps5_BS2_DD #756 taxa and 79 samples
+ps5_BS2_DD <- prune_taxa(taxa_sums(ps5_BS2_DD) > 1, ps5_BS2_DD)
+ps5_BS2_DD #711 taxa and 79 samples
 otu_ps5_BS2_DD = as(otu_table(ps5_BS2_DD), "matrix")
 d.czm2 <- cmultRepl(t(otu_ps5_BS2_DD), method="CZM", label=0, z.warning=1)
 d.clr2 <- codaSeq.clr(d.czm2)
@@ -543,6 +545,9 @@ print(perm7)
 
 perm8<-pairwise.adonis2(dist.clr2~Treatment/Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"), strata='Collection.month')
 print(perm8)
+
+perm9<-pairwise.adonis2(dist.clr2~Collection.month,as(sample_data(ps5_BS2_DD),"data.frame"))
+print(perm9)
 
 ```
 

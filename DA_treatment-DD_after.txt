@@ -1,0 +1,3 @@
+"Estimate"	"StdError"	"tvalue"	"Pr"	"asv"	"Class"	"Order"	"Family"	"Genus"	"asvtaxa"
+3.32995168992488	2.45616672458362	"1.35575148730565"	"0.181943445686703"	"ASV20"	"Clostridia"	"Peptostreptococcales-Tissierellales"	"Peptostreptococcaceae"	"Tepidibacter"	"Tepidibacter (ASV20)"
+-1.59226848860684	1.99918054149712	"-0.79646057749964"	"0.429946384893509"	"ASV135"	"Acidimicrobiia"	"Microtrichales"	"Ilumatobacteraceae"	"Ilumatobacter"	"Ilumatobacter (ASV135)"
