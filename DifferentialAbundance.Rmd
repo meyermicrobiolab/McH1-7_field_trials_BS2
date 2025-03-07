@@ -294,7 +294,7 @@ DAplot$proportion<-round(DAplot$proportion,3)
 cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
 DAplot$Treatment<-factor(DAplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 
-pdf("DA_Oct.pdf",bg ="white",width=8)
+pdf("DA_Oct.pdf",bg ="white",width=11)
 p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   geom_boxplot()+
   geom_point()+
@@ -304,7 +304,7 @@ p2<-ggplot(DAplot,aes(x=Treatment,y=proportion,color=Treatment))+
   scale_color_manual(values=cols)
 p2
 dev.off()
-
+# the pdf that has a plot using the ggbreak feature adds a blank page in front of the figure.
 
 ```
 
