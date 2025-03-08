@@ -1011,7 +1011,7 @@ TukeyHSD(anova) # all timepoints are different
 
 
 
-## Create stacked bar chart
+## Create heatmap
 
 ```{r, echo=FALSE}
 # use an ASV table that has been filtered to remove low-abundance ASVs, no blanks
@@ -1027,71 +1027,110 @@ ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE),
                tax_table(taxon))
 ps5_BS2 #756 taxa and 194 samples
 
-# make sure there are no taxa with all zeros
-ps5_BS2 <- prune_taxa(taxa_sums(ps5_BS2) > 1, ps5_BS2) 
-ps5_BS2 #756 taxa and 194 samples
+#Glom ASVs into orders
+ps5_BS2_o = tax_glom(ps5_BS2, "Order")
+ps5_BS2_o #102 orders and 194 samples
+#convert to relative abundance
+ps5_BS2_ra<-transform_sample_counts(ps5_BS2_o, function(OTU) OTU/sum(OTU))
+ps5_BS2_ra #102 orders and 194 samples
 
-ps_ra<-transform_sample_counts(ps5_BS2, function(OTU) OTU/sum(OTU))
-ps_ra #756 taxa and 194 samples
-
-get_taxa_unique(ps_ra, "Class") #46
-get_taxa_unique(ps_ra, "Order") #102
-get_taxa_unique(ps_ra, "Family") #183
-get_taxa_unique(ps_ra, "Genus") #323
-
-ps_ra_c = tax_glom(ps_ra, "Class")
-ps_ra_c # 46 taxa and 194 samples
-otu_c = as(otu_table(ps_ra_c), "matrix")
-taxon_c = as(tax_table(ps_ra_c), "matrix")
-cla<-t(otu_c)
-cla <- as.data.frame(cla)
-cla <- tibble::rownames_to_column(cla, "ASV")
-taxon_c <- as.data.frame(taxon_c)
-taxon_c <- tibble::rownames_to_column(taxon_c, "ASV")
-cla_tax <- merge(taxon_c,cla, by="ASV", all=FALSE)
-cla_tax$Order<-NULL
-cla_tax$Family<-NULL
-cla_tax$Genus<-NULL
-cla_tax$ASV<-NULL
+# convert phyloseq object back to data frames for merging and plotting
+orders = as(otu_table(ps5_BS2_ra), "matrix")
+taxon = as(tax_table(ps5_BS2_ra), "matrix")
+meta = as(sample_data(ps5_BS2_ra), "matrix")
+orders.t <-t(orders)
+orders.t <- as.data.frame(orders.t)
+orders.t <- tibble::rownames_to_column(orders.t, "ASV")
+taxon <- as.data.frame(taxon)
+taxon <- tibble::rownames_to_column(taxon, "ASV")
+orders_tax <- merge(taxon,orders.t, by="ASV", all=FALSE)
+orders_tax$Family<-NULL
+orders_tax$Genus<-NULL
+orders_tax$ASV<-NULL
 # sort by total abundance
-cla_tax <- cla_tax %>% mutate("total" = rowSums((cla_tax[,4:197]), na.rm = TRUE))  
-cla_tax <- cla_tax[order(cla_tax$total, decreasing = TRUE),]
-# keep only 25 most abundant classes out of 46
-cla25 <- cla_tax[1:25,]
-cla25$total<-NULL
-class_long<-melt(cla25,value.name="proportion",variable.name="sample",id.vars=c("Kingdom","Phylum","Class"))
+orders_tax <- orders_tax %>% mutate("total" = rowSums((orders_tax[,5:28]), na.rm = TRUE))  
+orders_tax <- orders_tax[order(orders_tax$total, decreasing = TRUE),]
+orders_tax25 <- orders_tax[1:25,]
+orders_tax$total<-NULL
+orders_tax25$total<-NULL
+print(orders_tax25$Order) # use printed list to set order in plot aesthics
+
+orders_long<-melt(orders_tax25,value.name="proportion",variable.name="sample",id.vars=c("Kingdom","Phylum","Class","Order"))
 
 # Merge with metadata for plotting aesthetics
-samples <- as.data.frame(samples)
-samples <- tibble::rownames_to_column(samples, "sample")
-classplot <- merge(class_long,samples,by="sample", all=TRUE)
-
-# set order of families on y-axis based on sorted total abundance, list order: first in list = bottom of y-axis
-classplot$Class<-factor(classplot$Class,levels=c("Fusobacteriia","OM190","Desulfobacteria","KD4-96","Bacteria","Phycisphaerae","Anaerolineae","Oligoflexia","Blastocatellia","Chloroflexia","Vampirivibrionia","Desulfobulbia","Polyangia","Campylobacteria","Desulfovibrionia","Acidimicrobiia","Planctomycetes","Bacilli","Verrucomicrobiae","Clostridia","Cyanobacteriia","Bacteroidia","Actinobacteria","Alphaproteobacteria","Gammaproteobacteria"))
-classplot$sampled<-factor(classplot$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
-classplot$Treatment<-factor(classplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
-classplot$Condition<-factor(classplot$Condition,levels=c("HH","HD","DD"))
-classplot$Collection.month<-factor(classplot$Collection.month,levels=c("Aug","Oct","Jan"))
+meta <- as.data.frame(meta)
+meta <- tibble::rownames_to_column(meta, "sample")
+ordersplot <- merge(orders_long,meta,by="sample", all=TRUE)
 
 
-p <- ggplot(classplot, aes(sample, Class, fill= proportion)) + geom_tile()+
-  facet_grid(.~sampled,scales="free",space="free")+
+# set order on y-axis based on sorted total abundance, list order: first in list = bottom of y-axis
+ordersplot$Order<-factor(ordersplot$Order,levels=c("Cytophagales","Chitinophagales","Bacillales","Cyanobacteriales","Rickettsiales","Lactobacillales","Desulfobulbales","Actinomarinales","Microtrichales","Staphylococcales","Blastocatellales","Peptostreptococcales-Tissierellales","Polyangiales","Pirellulales","Rhodospirillales","Rhizobiales","Burkholderiales","Desulfovibrionales","Micrococcales","Synechococcales","Flavobacteriales","Verrucomicrobiales","Rhodobacterales","Pseudomonadales","Enterobacterales"))
+ordersplot$sampled<-factor(ordersplot$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
+ordersplot$Collection.month<-factor(ordersplot$Collection.month,levels=c("Aug","Oct","Jan"))
+ordersplot$Treatment<-factor(ordersplot$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+
+p_all <- ggplot(ordersplot, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Collection.month,scales="free",space="free")+
   theme(axis.text.x=element_text(angle=90))+
-  #theme(axis.text.y=element_text(face="italic"))+
   theme(axis.title.x=element_blank())+
   theme(axis.title.y=element_blank())+
   scale_fill_gradient(low="white", high="#004488")
-p
+p_all
 
+# plot separately by condition
+ordersplot_HH<-ordersplot[which(ordersplot$Condition=='HH'),]
+ordersplot_HD<-ordersplot[which(ordersplot$Condition=='HD'),]
+ordersplot_DD<-ordersplot[which(ordersplot$Condition=='DD'),]
 
-p <- ggplot(classplot, aes(sample, Class, fill= proportion)) + geom_tile()+
-  facet_grid(.~Condition,scales="free",space="free")+
+pdf("heatmap_HH.pdf",bg ="white",width=11)
+p_HH <- ggplot(ordersplot_HH, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Collection.month,scales="free",space="free")+
   theme(axis.text.x=element_text(angle=90))+
-  #theme(axis.text.y=element_text(face="italic"))+
   theme(axis.title.x=element_blank())+
   theme(axis.title.y=element_blank())+
   scale_fill_gradient(low="white", high="#004488")
-p
+p_HH
+dev.off()
+
+pdf("heatmap_HD.pdf",bg ="white",width=11)
+p_HD <- ggplot(ordersplot_HD, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Collection.month,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p_HD
+dev.off()
+
+pdf("heatmap_DD.pdf",bg ="white",width=11)
+p_DD <- ggplot(ordersplot_DD, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Collection.month,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p_DD
+dev.off()
+
+pdf("heatmap_HD_treat.pdf",bg ="white",width=11)
+p_HD <- ggplot(ordersplot_HD, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Treatment,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p_HD
+dev.off()
+
+pdf("heatmap_DD_treat.pdf",bg ="white",width=11)
+p_DD <- ggplot(ordersplot_DD, aes(sample, Order, fill= proportion)) + geom_tile()+
+  facet_grid(.~Treatment,scales="free",space="free")+
+  theme(axis.text.x=element_text(angle=90))+
+  theme(axis.title.x=element_blank())+
+  theme(axis.title.y=element_blank())+
+  scale_fill_gradient(low="white", high="#004488")
+p_DD
+dev.off()
 
 ```
 
