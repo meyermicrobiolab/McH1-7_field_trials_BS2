@@ -492,7 +492,7 @@ simp <- ggplot(alpha_meta,aes(x=Treatment,y=Simpson))+
 simp
 
 # combined plot
-pdf("AlphaDiversity.pdf", bg ="white", width=18,height=8)
+pdf("AlphaDiversity.pdf", bg ="white", width=20,height=10)
 plot_grid(obs,shan,simp, labels=c("A","B","C"), nrow=3)
 dev.off()
 
