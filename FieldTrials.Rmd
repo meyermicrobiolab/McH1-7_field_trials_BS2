@@ -679,6 +679,7 @@ dist.clr <- dist(E.clr)
 # set metadata as factors for anova
 treat<-as.character(samples$Treatment)
 month<-as.character(samples$Collection.month)
+cond<-as.character(samples$Condition)
 #calculate multivariate dispersions based on Treatment
 mod <-betadisper(dist.clr, treat)
 #one way anova
@@ -691,6 +692,11 @@ mod2 <-betadisper(dist.clr, month)
 anova(mod2) # p < 0.001
 plot(mod2)
 boxplot(mod2) # lower mean distance to centroid in Oct
+
+mod3 <-betadisper(dist.clr, cond)
+anova(mod3) # p < 0.001
+plot(mod3)
+boxplot(mod3) # higher mean distance to centroid in DD
 
 ## Compute mean distance to centroid by treatment
 #this just prints values on the console
@@ -724,16 +730,17 @@ cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","
 dis.treat$Treatment<-factor(dis.treat$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
 dis.treat$Collection.month<-factor(dis.treat$Collection.month,levels=c("Aug","Oct","Jan"))
 dis.treat$Condition<-factor(dis.treat$Condition,levels=c("HH","HD","DD"))
+cols2<-c("HH"="#009E73","HD"="#999999","DD"="#000000")
 
 
-pdf("DistanceToCentroid.pdf",width=8.5,height=11)
+pdf("DistanceToCentroid_month_treatment_condition.pdf",width=8)
 p1<-ggplot(dis.treat,aes(x=Collection.month,y=distance))+
   geom_boxplot()+
   facet_grid(.~Treatment)+
-  geom_jitter(position=position_jitter(width=.1, height=0),aes(color=Treatment),size=3)+
-  scale_color_manual(values=cols)+
+  geom_jitter(position=position_jitter(width=.1, height=0),aes(color=Condition),size=3)+
+  scale_color_manual(values=cols2)+
   theme(axis.title.x=element_blank())+
-  theme(legend.position="none")+
+  #theme(legend.position="none")+
   theme(text=element_text(size=14))+
   theme(strip.text.y=element_text(face="italic",size=14))+
   ylab("Distance to Centroid")
