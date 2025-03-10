@@ -421,6 +421,104 @@ write.table(metadata_ps5_BS2,"metadata_ps5_BS2.txt",sep="\t",col.names=NA)
 ps5_BS2_ra<-transform_sample_counts(ps5_BS2, function(OTU) OTU/sum(OTU))
 otu_ps5_BS2_ra = as(otu_table(ps5_BS2_ra), "matrix")
 write.table(otu_ps5_BS2_ra,"silva_nochloronomito_otu_table_ps5_BS2_RA.txt",sep="\t",col.names=NA)
+```
+
+### ALPHA DIVERSITY
+Plot alpha diversity measures
+
+```{r, echo=FALSE}
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2 #756 taxa and 194 samples
+
+# calculate alpha diversity measures with phyloseq wrapper
+alpha.diversity <- estimate_richness(ps5_BS2, measures = c("Observed","Shannon","Simpson"))
+
+# combine alpha diversity measures with sample metadata
+alpha.diversity <- tibble::rownames_to_column(alpha.diversity, "sample")
+# fix sample names
+alpha.diversity$sample <- gsub('\\.','-',alpha.diversity$sample)
+samples <- tibble::rownames_to_column(samples, "sample")
+alpha_meta <- merge(alpha.diversity, samples, by="sample", all=TRUE)
+
+# set aesthetics
+theme_set(theme_bw()+theme(panel.grid.major = element_blank(),panel.grid.minor = element_blank()))
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+alpha_meta$Treatment<-factor(alpha_meta$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+alpha_meta$Collection.month<-factor(alpha_meta$Collection.month,levels=c("Aug","Oct","Jan"))
+alpha_meta$Condition<-factor(alpha_meta$Condition,levels=c("HH","HD","DD"))
+alpha_meta$sampled<-factor(alpha_meta$sampled,levels=c("Before treatment","Two weeks after treatment","Three months after treatment"))
+
+# plot box and whiskers with points on top
+obs <- ggplot(alpha_meta,aes(x=Treatment,y=Observed))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(aes(color=Treatment))+
+  facet_grid(.~sampled, scales=)+
+  theme(strip.text.y=element_text(face="bold.italic"))+
+  theme(legend.position="none")+
+  theme(axis.title.x=element_blank())+
+  theme(text=element_text(size=14,face="bold"))+
+  scale_color_manual(values=cols)
+obs
+
+shan <- ggplot(alpha_meta,aes(x=Treatment,y=Shannon))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(aes(color=Treatment))+
+  facet_grid(.~sampled)+
+  theme(strip.text.y=element_text(face="bold.italic"))+
+  theme(legend.position="none")+
+  theme(axis.title.x=element_blank())+
+  theme(text=element_text(size=14,face="bold"))+
+  scale_color_manual(values=cols)
+shan
+
+simp <- ggplot(alpha_meta,aes(x=Treatment,y=Simpson))+
+  geom_boxplot(outlier.shape=NA)+
+  geom_jitter(aes(color=Treatment))+
+  facet_grid(.~sampled)+
+  theme(strip.text.y=element_text(face="bold.italic"))+
+  theme(legend.position="none")+
+  theme(axis.title.x=element_blank())+
+  theme(text=element_text(size=14,face="bold"))+
+  scale_color_manual(values=cols)
+simp
+
+# combined plot
+pdf("AlphaDiversity.pdf", bg ="white", width=18,height=8)
+plot_grid(obs,shan,simp, labels=c("A","B","C"), nrow=3)
+dev.off()
+
+library(ggpubr)
+stat_compare_means(comparisons = list(c("probiotic bag","probiotic paste","control bag","control paste","none")),method = "t.test",label = "p.signif")
+
+
+# Test statistical differences in alpha diversity across time points and treatments
+# First test for normality using Shapiro test. If the value of p is equal to or less than 0.05, 
+# then the hypothesis of normality will be rejected. 
+shapiro.test(alpha_meta$Observed) # p-value = 3.112e-14
+shapiro.test(alpha_meta$Shannon) # p-value = 0.01597
+shapiro.test(alpha_meta$Simpson) # p-value = 5.889e-15
+#none are normal
+# 2-way ANOVA on ranked data for non-normally distributed diversity measures
+anova_obs <- aov(rank(Observed) ~ Treatment + Collection.month + Treatment:Collection.month, alpha_meta) 
+summary(anova_obs) 
+TukeyHSD(anova_obs)
+
+anova_shan <- aov(rank(Shannon) ~ Treatment + Collection.month + Treatment:Collection.month, alpha_meta) 
+summary(anova_shan) 
+TukeyHSD(anova_shan)
+
+anova_simp <- aov(rank(Simpson) ~ Treatment + Collection.month + Treatment:Collection.month, alpha_meta) 
+summary(anova_simp) 
+TukeyHSD(anova_simp)
 
 ```
 
@@ -529,6 +627,7 @@ perm6<-pairwise.adonis2(dist.clr~Treatment/Collection.month,as(sample_data(ps5_B
 print(perm6)
 
 
+
 #Look at diseased samples only
 ps5_BS2_DD = subset_samples(ps5_BS2, Condition == "DD")
 ps5_BS2_DD #756 taxa and 79 samples
@@ -550,6 +649,98 @@ perm9<-pairwise.adonis2(dist.clr2~Collection.month,as(sample_data(ps5_BS2_DD),"d
 print(perm9)
 
 ```
+
+
+## Dispersion of beta diversity
+
+
+```{r, echo=FALSE}
+otu <- read.table("silva_nochloronomito_otu_table_ps5_BS2.txt",sep="\t",header=TRUE, row.names=1)
+taxon <- read.table("silva_nochloronomito_taxa_table_ps5_BS2.txt",sep="\t",header=TRUE,row.names=1)
+samples<-read.table("metadata_ps5_BS2.txt",sep="\t",header=T,row.names=1)
+OTU = otu_table(otu, taxa_are_rows=FALSE)
+taxon<-as.matrix(taxon)
+TAX = tax_table(taxon)
+sampledata = sample_data(samples)
+ps5_BS2 <- phyloseq(otu_table(otu, taxa_are_rows=FALSE), 
+               sample_data(samples), 
+               tax_table(taxon))
+ps5_BS2 #756 taxa and 194 samples
+
+# First, replace 0 values with an estimate (because normalization is taking log, can't have 0)
+# Also transposing here, need samples as rows
+d.czm <- cmultRepl(t(otu), method="CZM", label=0, z.warning=1)
+# Perform the center-log-ratio (CLR) transformation 
+d.clr <- codaSeq.clr(d.czm)
+# transpose matrix of CLR transformed data for ordination and dendrogram
+E.clr <- t(d.clr)
+dist.clr <- dist(E.clr)
+
+# set metadata as factors for anova
+treat<-as.character(samples$Treatment)
+month<-as.character(samples$Collection.month)
+#calculate multivariate dispersions based on Treatment
+mod <-betadisper(dist.clr, treat)
+#one way anova
+anova(mod)  # n.s.
+#boxplots
+plot(mod)
+boxplot(mod)
+
+mod2 <-betadisper(dist.clr, month)
+anova(mod2) # p < 0.001
+plot(mod2)
+boxplot(mod2) # lower mean distance to centroid in Oct
+
+## Compute mean distance to centroid by treatment
+#this just prints values on the console
+tapply(mod$distances, treat, mean)
+## Same, but variance instead
+tapply(mod$distances, treat, var)
+# look at dispersion by collection month
+tapply(mod2$distances, month, mean)
+tapply(mod2$distances, month, var)
+
+#Get the distances to centroid from the model
+mod2$distances
+dis <- mod$distances
+#melt
+dis.melt <- melt(dis)
+#move rownames to columns so we can merge the dispersion values and metadata
+dis.melt$Sample <- rownames(dis.melt)
+samples$Sample <- rownames(samples)
+#merge metadata and dispersion 
+dis.treat <- merge(samples, dis.melt)
+#rename column
+colnames(dis.treat)[15] <- "distance"
+
+#run linear model to test significance
+distlm <-lm(distance ~ Treatment * Collection.month, data=dis.treat)
+summary(distlm)
+anova(distlm) # collection month significant
+
+# plot average dispersion by group, with all points shown  
+cols<-c("none"="#000000","probiotic paste"="#FFC080","probiotic bag"="#FF8000","control paste"="#90BFF9","control bag"="#0000C0")
+dis.treat$Treatment<-factor(dis.treat$Treatment,levels=c("probiotic bag","probiotic paste","control bag","control paste","none"))
+dis.treat$Collection.month<-factor(dis.treat$Collection.month,levels=c("Aug","Oct","Jan"))
+dis.treat$Condition<-factor(dis.treat$Condition,levels=c("HH","HD","DD"))
+
+
+pdf("DistanceToCentroid.pdf",width=8.5,height=11)
+p1<-ggplot(dis.treat,aes(x=Collection.month,y=distance))+
+  geom_boxplot()+
+  facet_grid(.~Treatment)+
+  geom_jitter(position=position_jitter(width=.1, height=0),aes(color=Treatment),size=3)+
+  scale_color_manual(values=cols)+
+  theme(axis.title.x=element_blank())+
+  theme(legend.position="none")+
+  theme(text=element_text(size=14))+
+  theme(strip.text.y=element_text(face="italic",size=14))+
+  ylab("Distance to Centroid")
+p1
+dev.off()
+```
+
 
 
 Subset BS2 by month to examine treatments within time points
@@ -869,7 +1060,7 @@ panels<-plot_grid(
   p2+theme(legend.position="none"),
   p3+theme(legend.position="none"),
   align = 'vh',
-  #labels=c("Before treatment","Two weeks after treatment","Two months after treatment"), #the alignment of labels is weird, add with inkscape when I add the legend
+  #labels=c("Before treatment","Two weeks after treatment","Three months after treatment"), #the alignment of labels is weird, add with inkscape when I add the legend
   nrow=1)
 panels
 dev.off()

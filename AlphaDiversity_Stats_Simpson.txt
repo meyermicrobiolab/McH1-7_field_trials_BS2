@@ -1,0 +1,138 @@
+                            Df Sum Sq Mean Sq F value   Pr(>F)    
+Treatment                    4  15309    3827   1.539    0.193    
+Collection.month             2 133239   66619  26.784 6.27e-11 ***
+Treatment:Collection.month   4   4707    1177   0.473    0.755    
+Residuals                  183 455178    2487                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = rank(Simpson) ~ Treatment + Collection.month + Treatment:Collection.month, data = alpha_meta)
+
+$Treatment
+                                    diff        lwr      upr     p adj
+probiotic paste-probiotic bag 28.3600000 -12.862487 69.58249 0.3234367
+control bag-probiotic bag     24.5076923 -16.360948 65.37633 0.4662307
+control paste-probiotic bag   28.7555556 -11.782694 69.29380 0.2927246
+none-probiotic bag            29.8250000  -3.949686 63.59969 0.1112410
+control bag-probiotic paste   -3.8523077 -42.341726 34.63711 0.9987226
+control paste-probiotic paste  0.3955556 -37.742867 38.53398 0.9999998
+none-probiotic paste           1.4650000 -29.388185 32.31819 0.9999335
+control paste-control bag      4.2478632 -33.507819 42.00355 0.9979796
+none-control bag               5.3173077 -25.061489 35.69610 0.9889013
+none-control paste             1.0694444 -28.863401 31.00229 0.9999786
+
+$Collection.month
+              diff       lwr       upr     p adj
+Oct-Aug -53.210457 -74.32703 -32.09388 0.0000000
+Jan-Aug  -8.637904 -30.83596  13.56015 0.6286891
+Jan-Oct  44.572552  24.72209  64.42301 0.0000010
+
+$`Treatment:Collection.month`
+                                              diff          lwr         upr     p adj
+probiotic paste:Aug-probiotic bag:Aug           NA           NA          NA        NA
+control bag:Aug-probiotic bag:Aug               NA           NA          NA        NA
+control paste:Aug-probiotic bag:Aug             NA           NA          NA        NA
+none:Aug-probiotic bag:Aug                      NA           NA          NA        NA
+probiotic bag:Oct-probiotic bag:Aug             NA           NA          NA        NA
+probiotic paste:Oct-probiotic bag:Aug           NA           NA          NA        NA
+control bag:Oct-probiotic bag:Aug               NA           NA          NA        NA
+control paste:Oct-probiotic bag:Aug             NA           NA          NA        NA
+none:Oct-probiotic bag:Aug                      NA           NA          NA        NA
+probiotic bag:Jan-probiotic bag:Aug             NA           NA          NA        NA
+probiotic paste:Jan-probiotic bag:Aug           NA           NA          NA        NA
+control bag:Jan-probiotic bag:Aug               NA           NA          NA        NA
+control paste:Jan-probiotic bag:Aug             NA           NA          NA        NA
+none:Jan-probiotic bag:Aug                      NA           NA          NA        NA
+control bag:Aug-probiotic paste:Aug             NA           NA          NA        NA
+control paste:Aug-probiotic paste:Aug           NA           NA          NA        NA
+none:Aug-probiotic paste:Aug                    NA           NA          NA        NA
+probiotic bag:Oct-probiotic paste:Aug           NA           NA          NA        NA
+probiotic paste:Oct-probiotic paste:Aug         NA           NA          NA        NA
+control bag:Oct-probiotic paste:Aug             NA           NA          NA        NA
+control paste:Oct-probiotic paste:Aug           NA           NA          NA        NA
+none:Oct-probiotic paste:Aug                    NA           NA          NA        NA
+probiotic bag:Jan-probiotic paste:Aug           NA           NA          NA        NA
+probiotic paste:Jan-probiotic paste:Aug         NA           NA          NA        NA
+control bag:Jan-probiotic paste:Aug             NA           NA          NA        NA
+control paste:Jan-probiotic paste:Aug           NA           NA          NA        NA
+none:Jan-probiotic paste:Aug                    NA           NA          NA        NA
+control paste:Aug-control bag:Aug               NA           NA          NA        NA
+none:Aug-control bag:Aug                        NA           NA          NA        NA
+probiotic bag:Oct-control bag:Aug               NA           NA          NA        NA
+probiotic paste:Oct-control bag:Aug             NA           NA          NA        NA
+control bag:Oct-control bag:Aug                 NA           NA          NA        NA
+control paste:Oct-control bag:Aug               NA           NA          NA        NA
+none:Oct-control bag:Aug                        NA           NA          NA        NA
+probiotic bag:Jan-control bag:Aug               NA           NA          NA        NA
+probiotic paste:Jan-control bag:Aug             NA           NA          NA        NA
+control bag:Jan-control bag:Aug                 NA           NA          NA        NA
+control paste:Jan-control bag:Aug               NA           NA          NA        NA
+none:Jan-control bag:Aug                        NA           NA          NA        NA
+none:Aug-control paste:Aug                      NA           NA          NA        NA
+probiotic bag:Oct-control paste:Aug             NA           NA          NA        NA
+probiotic paste:Oct-control paste:Aug           NA           NA          NA        NA
+control bag:Oct-control paste:Aug               NA           NA          NA        NA
+control paste:Oct-control paste:Aug             NA           NA          NA        NA
+none:Oct-control paste:Aug                      NA           NA          NA        NA
+probiotic bag:Jan-control paste:Aug             NA           NA          NA        NA
+probiotic paste:Jan-control paste:Aug           NA           NA          NA        NA
+control bag:Jan-control paste:Aug               NA           NA          NA        NA
+control paste:Jan-control paste:Aug             NA           NA          NA        NA
+none:Jan-control paste:Aug                      NA           NA          NA        NA
+probiotic bag:Oct-none:Aug              -67.834087 -121.1130572 -14.5551178 0.0018404
+probiotic paste:Oct-none:Aug            -57.789216 -112.8087815  -2.7696499 0.0292375
+control bag:Oct-none:Aug                -51.172549 -101.5416090  -0.8034891 0.0423476
+control paste:Oct-none:Aug              -38.526395  -91.8053649  14.7525745 0.4555049
+none:Oct-none:Aug                       -70.816993 -111.6304076 -30.0035793 0.0000013
+probiotic bag:Jan-none:Aug              -29.943978  -99.0637794  39.1758242 0.9763021
+probiotic paste:Jan-none:Aug              2.935143  -50.3438264  56.2141130 1.0000000
+control bag:Jan-none:Aug                 -1.281640  -58.2897980  55.7265182 1.0000000
+control paste:Jan-none:Aug              -14.015406  -65.7558521  37.7250398 0.9998197
+none:Jan-none:Aug                       -25.761438  -72.7752860  21.2524102 0.8580309
+probiotic paste:Oct-probiotic bag:Oct    10.044872  -58.6035094  78.6932530 0.9999999
+control bag:Oct-probiotic bag:Oct        16.661538  -48.3191495  81.6422265 0.9999058
+control paste:Oct-probiotic bag:Oct      29.307692  -37.9537099  96.5690945 0.9750798
+none:Oct-probiotic bag:Oct               -2.982906  -60.8723039  54.9064919 1.0000000
+probiotic bag:Jan-probiotic bag:Oct      37.890110  -42.5026424 118.2828621 0.9520833
+probiotic paste:Jan-probiotic bag:Oct    70.769231    3.5078285 138.0306330 0.0286589
+control bag:Jan-probiotic bag:Oct        66.552448   -3.6997959 136.8046910 0.0842128
+control paste:Jan-probiotic bag:Oct      53.818681  -12.2307045 119.8680671 0.2555130
+none:Jan-probiotic bag:Oct               42.072650  -20.3432901 104.4885893 0.5788152
+control bag:Oct-probiotic paste:Oct       6.616667  -59.7986465  73.0319798 1.0000000
+control paste:Oct-probiotic paste:Oct    19.262821  -49.3855607  87.9112017 0.9997284
+none:Oct-probiotic paste:Oct            -13.027778  -72.5230415  46.4674859 0.9999863
+probiotic bag:Jan-probiotic paste:Oct    27.845238  -53.7114822 109.4019584 0.9976266
+probiotic paste:Jan-probiotic paste:Oct  60.724359   -7.9240222 129.3727402 0.1479631
+control bag:Jan-probiotic paste:Oct      56.507576  -15.0737187 128.0888702 0.3048809
+control paste:Jan-probiotic paste:Oct    43.773810  -23.6874784 111.2350975 0.6421612
+none:Jan-probiotic paste:Oct             32.027778  -31.8803871  95.9359427 0.9232904
+control paste:Oct-control bag:Oct        12.646154  -52.3345342  77.6268419 0.9999969
+none:Oct-control bag:Oct                -19.644444  -74.8674105  35.5785216 0.9963675
+probiotic bag:Jan-control bag:Oct        21.228571  -57.2659392  99.7230821 0.9998231
+probiotic paste:Jan-control bag:Oct      54.107692  -10.8729957 119.0883803 0.2240542
+control bag:Jan-control bag:Oct          49.890909  -18.1809007 117.9627189 0.4316321
+control paste:Jan-control bag:Oct        37.157143  -26.5681657 100.8824514 0.7929156
+none:Jan-control bag:Oct                 25.411111  -34.5400617  85.3622839 0.9804549
+none:Oct-control paste:Oct              -32.290598  -90.1799962  25.5987996 0.8411179
+probiotic bag:Jan-control paste:Oct       8.582418  -71.8103347  88.9751698 1.0000000
+probiotic paste:Jan-control paste:Oct    41.461538  -25.7998638 108.7229407 0.7202123
+control bag:Jan-control paste:Oct        37.244755  -33.0074882 107.4969987 0.8858198
+control paste:Jan-control paste:Oct      24.510989  -41.5383968  90.5603748 0.9944332
+none:Jan-control paste:Oct               12.764957  -49.6509825  75.1808970 0.9999942
+probiotic bag:Jan-none:Oct               40.873016  -31.8599256 113.6059574 0.8336455
+probiotic paste:Jan-none:Oct             73.752137   15.8627388 131.6415347 0.0018196
+control bag:Jan-none:Oct                 69.535354    8.1964273 130.8742797 0.0111582
+control paste:Jan-none:Oct               56.801587    0.3249769 113.2781977 0.0471122
+none:Jan-none:Oct                        45.055556   -7.1252426  97.2363537 0.1761982
+probiotic paste:Jan-probiotic bag:Jan    32.879121  -47.5136314 113.2718731 0.9858648
+control bag:Jan-probiotic bag:Jan        28.662338  -54.2489166 111.5735920 0.9972966
+control paste:Jan-probiotic bag:Jan      15.928571  -63.4529110  95.3100538 0.9999954
+none:Jan-probiotic bag:Jan                4.182540  -72.2023274  80.5674067 1.0000000
+control bag:Jan-probiotic paste:Jan      -4.216783  -74.4690266  66.0354602 1.0000000
+control paste:Jan-probiotic paste:Jan   -16.950549  -82.9999352  49.0988363 0.9999048
+none:Jan-probiotic paste:Jan            -28.696581  -91.1125209  33.7193585 0.9607885
+control paste:Jan-control bag:Jan       -12.733766  -81.8264781  56.3589457 0.9999985
+none:Jan-control bag:Jan                -24.479798  -90.1077722  41.1481763 0.9941425
+none:Jan-control paste:Jan              -11.746032  -72.8539254  49.3618619 0.9999974
